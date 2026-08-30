@@ -105,7 +105,7 @@ class FirmsService:
         return geojson_data
 
     def _fetch_from_nasa_area(self, days: int = 2) -> Optional[Dict[str, Any]]:
-        map_key = os.getenv("FIRMS_MAP_KEY", "2f990c194b466a206f37cf2946dee14b")
+        map_key = os.getenv("FIRMS_MAP_KEY", "").strip()
         if not map_key:
             return None
 
