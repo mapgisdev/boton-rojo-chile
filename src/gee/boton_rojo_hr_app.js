@@ -80,7 +80,7 @@ function cargarFecha(fechaStr) {
 
   if (isHistorical) {
     startDate = ee.Date(fechaStr);
-    endDate = startDate.advance(2, "day");
+    endDate = startDate.advance(1, "day"); // Ventana exacta del día del evento (24h)
     
     // Tarde en Chile (14:00 a 19:00 local = 17:00 a 22:00 UTC)
     var era5 = ee.ImageCollection("ECMWF/ERA5_LAND/HOURLY")
