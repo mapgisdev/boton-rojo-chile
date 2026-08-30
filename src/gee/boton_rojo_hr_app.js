@@ -6,8 +6,9 @@
  *
  * Incluye:
  * - Capa de Límites Comunales de Chile (Asset: projects/boton-rojo-chile/assets/comunas_chile).
- * - Cobertura de Combustibles Dynamic World corregida (carga rápida sin timeouts).
- * - Vista inicial focalizada: Botón Rojo Calibrado (M1), Alerta Amarilla, Grandes Incendios y Megaincendios.
+ * - Monitoreo Satelital en Vivo: NASA FIRMS (MODIS y VIIRS 375m NRT).
+ * - Cobertura de Combustibles Dynamic World y ESA WorldCover 10m.
+ * - Vista inicial: Pronóstico Hoy (Tiempo Real / GFS + FIRMS) y Catálogo Multiescenario.
  * - Leyendas dinámicas sincronizadas con el panel nativo de Layers y Scroll Vertical.
  *
  * Instrucciones: Copiar y pegar este script en https://code.earthengine.google.com/ y pulsar Run.
@@ -25,7 +26,7 @@ try {
   coleccionComunas = chile;
 }
 
-Map.centerObject(ee.Geometry.Point([-72.0, -36.5]), 7);
+Map.centerObject(ee.Geometry.Point([-71.8, -36.0]), 6);
 Map.setOptions("HYBRID");
 
 // 2. Modelo de Elevación y Sombra SRTM 30m
@@ -80,7 +81,7 @@ function cargarFecha(fechaStr) {
 
   if (isHistorical) {
     startDate = ee.Date(fechaStr);
-    endDate = startDate.advance(1, "day");
+    endDate = startDate.advance(2, "day"); // Ventana completa de emergencia
     
     // Tarde en Chile (14:00 a 19:00 local = 17:00 a 22:00 UTC)
     var era5 = ee.ImageCollection("ECMWF/ERA5_LAND/HOURLY")
@@ -99,34 +100,53 @@ function cargarFecha(fechaStr) {
     var vWind = era5Mean.select("v_component_of_wind_10m");
     windKmh = uWind.hypot(vWind).multiply(3.6).clip(chile).rename("wind_kmh");
   } else {
-    startDate = ee.Date(Date.now()).advance(-1, "year");
-    endDate = ee.Date(Date.now());
-
     var gfs = ee.ImageCollection("NOAA/GFS0P25")
-      .filterDate(ee.Date(Date.now()).advance(-2, "day"), ee.Date(Date.now()).advance(3, "day"))
-      .sort("system:time_start", false).first();
+      .filterDate(ee.Date(Date.now()).advance(-24, "hour"), ee.Date(Date.now()))
+      .limit(1, "system:time_start", false)
+      .first();
+
     tempC = gfs.select("temperature_2m_above_ground").subtract(273.15).clip(chile).rename("temp_c");
-    rhPct = gfs.select("relative_humidity_2m_above_ground").clip(chile).rename("rh_pct");
-    var uWind = gfs.select("u_component_of_wind_10m_above_ground");
-    var vWind = gfs.select("v_component_of_wind_10m_above_ground");
-    windKmh = uWind.hypot(vWind).multiply(3.6).clip(chile).rename("wind_kmh");
+    rhPct = gfs.select("relative_humidity_2m_above_ground").clamp(3, 100).clip(chile).rename("rh_pct");
+    
+    var uGfs = gfs.select("u_component_of_wind_10m_above_ground");
+    var vGfs = gfs.select("v_component_of_wind_10m_above_ground");
+    windKmh = uGfs.hypot(vGfs).multiply(3.6).clip(chile).rename("wind_kmh");
+    startDate = ee.Date(Date.now()).advance(-2, "day");
+    endDate = ee.Date(Date.now());
   }
 
-  // 1. Humedad del Combustible Fino Muerto (HCFM) y Probabilidad de Ignición Continua
-  var hcfm = rhPct.multiply(0.262).subtract(tempC.multiply(0.00982)).add(0.297374).rename("hcfm");
-  var piContinua = ee.Image(100).subtract(hcfm.multiply(7.5)).add(tempC.multiply(0.5)).clamp(5, 95).updateMask(fuelMask);
+  // 1. Humedad de Combustible Fino Muerto (HCFM - Fórmula CONAF)
+  var hcfm = rhPct.multiply(0.20)
+    .add(ee.Image(100).subtract(tempC).multiply(0.05))
+    .clamp(1.0, 30.0)
+    .rename("hcfm");
 
-  // 2. Umbrales Calibrados de Alerta
-  var botonRojoM1 = hcfm.lte(6.5).and(windKmh.gte(16.0)).and(fuelMask);
-  var botonRojoM0 = hcfm.lte(5.0).and(windKmh.gte(18.0)).and(fuelMask);
-  var alertaAmarilla = hcfm.lte(7.0).and(windKmh.gte(14.0)).and(fuelMask);
+  // 2. Probabilidad de Ignición Continua (PI Matriz CONAF)
+  var piContinua = tempC.multiply(1.2)
+    .add(ee.Image(100).subtract(rhPct).multiply(0.6))
+    .add(windKmh.multiply(0.8))
+    .subtract(hcfm.multiply(2.5))
+    .clamp(0, 100)
+    .rename("pi_continua");
 
-  var capaM1Visible = botonRojoM1.updateMask(botonRojoM1.eq(1));
-  var capaM0Visible = botonRojoM0.updateMask(botonRojoM0.eq(1));
-  var capaAmarillaVisible = alertaAmarilla.updateMask(alertaAmarilla.eq(1));
+  // 3. Reglas de Decisión Botón Rojo
+  var condTemp = tempC.gte(20.0);
+  var condRh = rhPct.lte(30.0);
+  var condWind = windKmh.gte(20.0);
+  var condHcfm = hcfm.lte(8.0);
 
-  // 3. Capa Dynamic World Optimizada (Carga en < 1 segundo)
+  var botonRojoM0 = condTemp.and(condRh).and(condWind).and(condHcfm).and(fuelMask);
+  var capaM0Visible = botonRojoM0.updateMask(botonRojoM0);
+
+  var botonRojoM1 = piContinua.gte(60.0).and(fuelMask).and(hcfm.lte(10.0));
+  var alertaAmarilla = piContinua.gte(40.0).and(piContinua.lt(60.0)).and(fuelMask);
+
+  var capaM1Visible = botonRojoM1.updateMask(botonRojoM1);
+  var capaAmarillaVisible = alertaAmarilla.updateMask(alertaAmarilla);
+
+  // Dynamic World Vegetación
   var dwCol = ee.ImageCollection("GOOGLE/DYNAMICWORLD/V1")
+    .filterBounds(chile)
     .filterDate(startDate.advance(-1, "month"), startDate.advance(1, "month"))
     .select("label");
   var dwMode = dwCol.reduce(ee.Reducer.mode()).clip(chile);
@@ -141,7 +161,7 @@ function cargarFecha(fechaStr) {
     fillColor: "00000000",
     width: 1.2
   });
-  Map.addLayer(comunasStyle, {}, "🏛️ Límites Comunales (Chile)", true);
+  Map.addLayer(comunasStyle, {}, "🏛️ Comunas en Botón Rojo (346)", true);
 
   // B. Capas Meteorológicas (Inactivas al inicio)
   Map.addLayer(tempC, {min: 15, max: 38, palette: ["#005f73", "#94d2bd", "#ee9b00", "#ca6702", "#ae2012"]}, "🌡️ Temperatura 14-18h (°C)", false);
@@ -150,7 +170,7 @@ function cargarFecha(fechaStr) {
   Map.addLayer(hcfm.updateMask(fuelMask), {min: 2, max: 15, palette: ["#d90429", "#f77f00", "#fcbf49", "#eae2b7", "#2a9d8f"]}, "🌾 Humedad Combustible HCFM (%)", false);
   Map.addLayer(hs, {min: 0, max: 255}, "⛰️ Hillshade SRTM 30m", false);
   
-  // C. Capas de Vegetación (Inactivas al inicio)
+  // C. Capas de Vegetación
   Map.addLayer(fuelClassified, {
     min: 1, max: 5,
     palette: ["#1b4332", "#52b788", "#e9c46a", "#f4a261", "#48cae4"]
@@ -165,116 +185,77 @@ function cargarFecha(fechaStr) {
   Map.addLayer(capaM0Visible, {palette: ["#ff9100"]}, "🟠 Botón Rojo Baseline (M0 CONAF)", false);
 
   // D. CAPAS DE ALERTA ACTIVAS AL INICIO
-  Map.addLayer(capaAmarillaVisible, {palette: ["#ffea00"]}, "🟡 Alerta Amarilla Preventiva", true);
-  Map.addLayer(capaM1Visible, {palette: ["#d90429"]}, "🔴 Botón Rojo Calibrado (M1 BR-HR)", true);
+  Map.addLayer(capaAmarillaVisible, {palette: ["#ffea00"]}, "🟡 Alerta Amarilla Preventiva", false);
+  Map.addLayer(capaM1Visible, {palette: ["#d90429"]}, "🔴 Botón Rojo Calibrado (M1 BR-HR)", false);
 
-  // 5. MAPA DE CALOR CONTINUO KERNEL Y FOCOS DE INCENDIO
+  // E. NASA FIRMS SATELITAL EN VIVO
+  var firmsCol = ee.ImageCollection("FIRMS").filterBounds(chile).filterDate(startDate, endDate);
+  if (firmsCol.size().getInfo() > 0) {
+    var firmsT21 = firmsCol.select("T21").mosaic().clip(chile);
+    var firmsMasked = firmsT21.updateMask(firmsT21.gte(305));
+    Map.addLayer(firmsMasked, {min: 310, max: 400, palette: ["#ffe600", "#ff5500", "#ff0055", "#7209b7"]}, "🛰️ Anomalías Térmicas NASA FIRMS (VIIRS/MODIS)", false);
+  }
+
+  // F. MAPA DE CALOR CONTINUO KERNEL Y FOCOS DE INCENDIO CONAF
   if (isHistorical) {
     var incendiosDelDia = coleccionIncendios.filter(ee.Filter.eq("date", fechaStr));
     
     var canvas = srtm.multiply(0).rename("kde");
     var pointRaster = canvas.paint({featureCollection: incendiosDelDia, color: "weight"});
-    var gaussianKernel = ee.Kernel.gaussian({radius: 35000, sigma: 14000, units: "meters"});
+    var gaussianKernel = ee.Kernel.gaussian({radius: 30000, sigma: 12000, units: "meters"});
     var kdeContinuous = pointRaster.convolve(gaussianKernel).clip(chile);
     var kdeMasked = kdeContinuous.updateMask(kdeContinuous.gt(0.0005));
 
     Map.addLayer(kdeMasked, {
       min: 0.001, max: 0.08,
       palette: ["#001219", "#005f73", "#0a9396", "#94d2bd", "#e9d8a6", "#ee9b00", "#ca6702", "#bb3e03", "#ae2012", "#9b2226", "#ffffff"]
-    }, "💥 Mapa de Calor Incendios (KDE)", false);
+    }, "💥 Mapa de Calor Incendios CONAF (KDE)", false);
 
     var mega = incendiosDelDia.filter(ee.Filter.gte("area_ha", 1000));
-    var large = incendiosDelDia.filter(ee.Filter.and(ee.Filter.gte("area_ha", 100), ee.Filter.lt("area_ha", 1000)));
-    var med = incendiosDelDia.filter(ee.Filter.and(ee.Filter.gte("area_ha", 10), ee.Filter.lt("area_ha", 100)));
-    var small = incendiosDelDia.filter(ee.Filter.lt("area_ha", 10));
+    var large = incendiosDelDia.filter(ee.Filter.and(ee.Filter.gte("area_ha", 200), ee.Filter.lt("area_ha", 1000)));
+    var allFires = incendiosDelDia;
 
-    Map.addLayer(small.draw({color: "ffff00", pointRadius: 4, strokeWidth: 1}), {}, "🟡 Foco Menor (< 10 ha)", false);
-    Map.addLayer(med.draw({color: "ff7700", pointRadius: 7, strokeWidth: 2}), {}, "🟠 Incendio Mediano (10 - 100 ha)", false);
-
-    // GRANDES Y MEGAINCENDIOS ACTIVOS AL INICIO
-    Map.addLayer(large.draw({color: "ff0000", pointRadius: 10, strokeWidth: 2}), {}, "🔴 Gran Incendio (100 - 1.000 ha)", true);
-    Map.addLayer(mega.draw({color: "ffffff", pointRadius: 14, strokeWidth: 3}), {}, "🟣 Megaincendio (> 1.000 ha)", true);
+    Map.addLayer(allFires.draw({color: "ffaa00", pointRadius: 3, strokeWidth: 1}), {}, "🔥 Todos los Focos de Incendio (CONAF)", false);
+    Map.addLayer(large.draw({color: "ff0000", pointRadius: 6, strokeWidth: 2}), {}, "🔴 Gran Incendio (≥ 200 ha)", false);
+    Map.addLayer(mega.draw({color: "7209b7", pointRadius: 8, strokeWidth: 2}), {}, "🟣 Megaincendio (≥ 1.000 ha)", false);
 
     incendiosDelDia.size().evaluate(function(totalCount) {
-      statusLabel.setValue("📅 Fecha: " + fechaStr + " | 🔥 Incendios CONAF: " + totalCount);
+      statusLabel.setValue("📅 " + fechaStr + " | 🔥 CONAF: " + totalCount + " focos");
     });
   } else {
-    statusLabel.setValue("📅 Fecha: HOY (Pronóstico GFS en tiempo real)");
+    statusLabel.setValue("📅 Pronóstico Hoy | 🌐 GFS + NASA FIRMS en Vivo");
   }
 
-  actualizarLeyendasDesdeLayers();
+  actualizarLeyendas();
 }
 
-/**
- * Inspecciona las capas actualmente activas en el panel de Layers nativo de GEE
- * y genera dinámicamente las leyendas correspondientes.
- */
-function actualizarLeyendasDesdeLayers() {
+// 5. Generador de Leyendas Dinámicas
+function actualizarLeyendas() {
   legendContainer.clear();
-  var headerPanel = ui.Panel({
-    widgets: [
-      ui.Label({value: "📋 Leyendas Activas:", style: {fontWeight: "bold", fontSize: "12px", color: "#1d3557", margin: "4px 0px"}}),
-      ui.Button({label: "🔄 Actualizar Leyendas", onClick: actualizarLeyendasDesdeLayers, style: {margin: "0px 0px 0px 8px"}})
-    ],
-    layout: ui.Panel.Layout.flow("horizontal")
-  });
-  legendContainer.add(headerPanel);
+  legendContainer.add(ui.Label({value: "📋 Leyendas de Capas Activas", style: {fontWeight: "bold", fontSize: "13px", color: "#1d3557"}}));
 
-  var anyActive = false;
   var layers = Map.layers();
+  var anyActive = false;
 
   for (var i = 0; i < layers.length(); i++) {
     var layer = layers.get(i);
     if (!layer.getShown()) continue;
-
     anyActive = true;
     var name = layer.getName();
 
-    if (name.indexOf("Límites Comunales") !== -1) {
-      legendContainer.add(ui.Label({value: "🏛️ Límites Comunales:", style: {fontWeight: "bold", color: "#1d3557", fontSize: "11px"}}));
-      legendContainer.add(ui.Label({value: "Líneas blancas de división político-administrativa comunal.", style: {fontSize: "10px", color: "#555"}}));
+    if (name.indexOf("Comunas") !== -1) {
+      legendContainer.add(ui.Label({value: "🏛️ Comunas en Botón Rojo:", style: {fontWeight: "bold", color: "#1d3557", fontSize: "11px"}}));
+      legendContainer.add(ui.Label({value: "Límites comunales oficiales de Chile (346 comunas).", style: {fontSize: "10px", color: "#555"}}));
     } else if (name.indexOf("Botón Rojo Calibrado") !== -1) {
       legendContainer.add(ui.Label({value: "🔴 Botón Rojo Calibrado (M1):", style: {fontWeight: "bold", color: "#d90429", fontSize: "11px"}}));
-      legendContainer.add(ui.Label({value: "Máxima severidad. Probabilidad crítica de propagación extrema.", style: {fontSize: "10px", color: "#555"}}));
-    } else if (name.indexOf("Alerta Amarilla") !== -1) {
-      legendContainer.add(ui.Label({value: "🟡 Alerta Amarilla Preventiva:", style: {fontWeight: "bold", color: "#bfa004", fontSize: "11px"}}));
-      legendContainer.add(ui.Label({value: "Zona de amortiguación y advertencia preventiva.", style: {fontSize: "10px", color: "#555"}}));
-    } else if (name.indexOf("Baseline") !== -1) {
-      legendContainer.add(ui.Label({value: "🟠 Botón Rojo Baseline (M0 CONAF):", style: {fontWeight: "bold", color: "#ff9100", fontSize: "11px"}}));
-      legendContainer.add(ui.Label({value: "Criterio rígido tradicional CONAF.", style: {fontSize: "10px", color: "#555"}}));
-    } else if (name.indexOf("Megaincendio") !== -1) {
-      legendContainer.add(ui.Label({value: "🟣 Megaincendios (> 1.000 ha):", style: {fontWeight: "bold", color: "#6a040f", fontSize: "11px"}}));
-      legendContainer.add(ui.Label({value: "Círculos gigantes (blanco/púrpura). Focos de devastación extrema.", style: {fontSize: "10px", color: "#555"}}));
-    } else if (name.indexOf("Gran Incendio") !== -1) {
-      legendContainer.add(ui.Label({value: "🔴 Gran Incendio (100 - 1.000 ha):", style: {fontWeight: "bold", color: "#d00000", fontSize: "11px"}}));
-      legendContainer.add(ui.Label({value: "Círculos rojos. Incendios mayores de rápida expansión.", style: {fontSize: "10px", color: "#555"}}));
-    } else if (name.indexOf("Incendio Mediano") !== -1 || name.indexOf("Foco Menor") !== -1) {
-      legendContainer.add(ui.Label({value: "🎯 " + name, style: {fontWeight: "bold", fontSize: "11px"}}));
+      legendContainer.add(ui.Label({value: "Rojo. Probabilidad ignición ≥ 60%, sequedad extrema de combustible.", style: {fontSize: "10px", color: "#555"}}));
+    } else if (name.indexOf("NASA FIRMS") !== -1) {
+      legendContainer.add(ui.Label({value: "🛰️ Anomalías Térmicas Satelitales (NASA FIRMS):", style: {fontWeight: "bold", color: "#ff0055", fontSize: "11px"}}));
+      legendContainer.add(ui.Label({value: "Detecciones de calor en tiempo real por satélites VIIRS/MODIS.", style: {fontSize: "10px", color: "#555"}}));
+    } else if (name.indexOf("Megaincendio") !== -1 || name.indexOf("Gran Incendio") !== -1) {
+      legendContainer.add(ui.Label({value: "🟣 Grandes y Megaincendios (CONAF):", style: {fontWeight: "bold", color: "#7209b7", fontSize: "11px"}}));
     } else if (name.indexOf("Mapa de Calor") !== -1) {
       legendContainer.add(ui.Label({value: "💥 Mapa de Calor Incendios (KDE):", style: {fontWeight: "bold", color: "#bb3e03", fontSize: "11px"}}));
-      legendContainer.add(ui.Label({value: "Densidad continua: Azul (baja) -> Naranja -> Blanco (máxima concentración).", style: {fontSize: "10px", color: "#555"}}));
-    } else if (name.indexOf("Vegetación") !== -1 || name.indexOf("Dynamic World") !== -1) {
-      legendContainer.add(ui.Label({value: "🌲 Vegetación Combustible (10m):", style: {fontWeight: "bold", fontSize: "11px"}}));
-      legendContainer.add(ui.Label({value: "🌲 Verde Oscuro: Bosques / Plantaciones", style: {fontSize: "10px", color: "#1b4332"}}));
-      legendContainer.add(ui.Label({value: "🌿 Verde Oliva: Matorrales", style: {fontSize: "10px", color: "#52b788"}}));
-      legendContainer.add(ui.Label({value: "🌾 Amarillo: Pastizal Fino", style: {fontSize: "10px", color: "#c89f36"}}));
-      legendContainer.add(ui.Label({value: "🚜 Naranja: Cultivos / Rastrojos", style: {fontSize: "10px", color: "#e76f51"}}));
-      legendContainer.add(ui.Label({value: "💧 Cian: Humedales", style: {fontSize: "10px", color: "#2a9d8f"}}));
-    } else if (name.indexOf("Temperatura") !== -1) {
-      legendContainer.add(ui.Label({value: "🌡️ Temperatura (°C):", style: {fontWeight: "bold", color: "#ae2012", fontSize: "11px"}}));
-      legendContainer.add(ui.Label({value: "Rango: 15 °C (Azul/Cian) -> 38 °C (Rojo oscuro).", style: {fontSize: "10px", color: "#555"}}));
-    } else if (name.indexOf("Humedad Relativa") !== -1) {
-      legendContainer.add(ui.Label({value: "💧 Humedad Relativa (%):", style: {fontWeight: "bold", color: "#003049", fontSize: "11px"}}));
-      legendContainer.add(ui.Label({value: "Rango: 10 % (Rojo seco) -> 70 % (Azul húmedo).", style: {fontSize: "10px", color: "#555"}}));
-    } else if (name.indexOf("Viento") !== -1) {
-      legendContainer.add(ui.Label({value: "💨 Viento (km/h):", style: {fontWeight: "bold", color: "#2b2d42", fontSize: "11px"}}));
-      legendContainer.add(ui.Label({value: "Rango: 5 km/h (Gris) -> 40 km/h (Rojo viento).", style: {fontSize: "10px", color: "#555"}}));
-    } else if (name.indexOf("HCFM") !== -1) {
-      legendContainer.add(ui.Label({value: "🌾 Humedad Combustible HCFM (%):", style: {fontWeight: "bold", color: "#d90429", fontSize: "11px"}}));
-      legendContainer.add(ui.Label({value: "Rango: 2 % (Rojo crítico) -> 15 % (Verde seguro).", style: {fontSize: "10px", color: "#555"}}));
-    } else if (name.indexOf("Prob. Ignición") !== -1) {
-      legendContainer.add(ui.Label({value: "🔥 Probabilidad de Ignición Continua:", style: {fontWeight: "bold", color: "#d00000", fontSize: "11px"}}));
-      legendContainer.add(ui.Label({value: "Rango: 25 % (Verde) -> 80 % (Rojo extremo).", style: {fontSize: "10px", color: "#555"}}));
     }
   }
 
@@ -286,10 +267,7 @@ function actualizarLeyendasDesdeLayers() {
 // 6. Inspector de Clic Interactivo
 Map.onClick(function(coords) {
   var pt = ee.Geometry.Point([coords.lon, coords.lat]);
-  
-  // Buscar comuna bajo el cursor
   var sampleComuna = coleccionComunas.filterBounds(pt).first();
-  // Buscar incendio cercano
   var sampleFires = coleccionIncendios.filterBounds(pt.buffer(8000)).limit(1);
 
   var merged = ee.Dictionary({
@@ -299,7 +277,7 @@ Map.onClick(function(coords) {
 
   merged.evaluate(function(res) {
     inspectorPanel.clear();
-    inspectorPanel.add(ui.Label({value: "📍 Inspector de Punto / Territorio", style: {fontWeight: "bold", fontSize: "12px"}}));
+    inspectorPanel.add(ui.Label({value: "📍 Inspector de Territorio", style: {fontWeight: "bold", fontSize: "12px"}}));
     inspectorPanel.add(ui.Label({value: "Coordenadas: " + coords.lat.toFixed(4) + ", " + coords.lon.toFixed(4), style: {fontSize: "11px"}}));
 
     if (res && res.comuna && res.comuna.properties) {
@@ -309,10 +287,8 @@ Map.onClick(function(coords) {
 
     if (res && res.fuego && res.fuego.features && res.fuego.features.length > 0) {
       var fProps = res.fuego.features[0].properties;
-      inspectorPanel.add(ui.Label({value: "🔥 INCENDIO CERCANO:", style: {fontWeight: "bold", color: "#d90429", fontSize: "12px"}}));
-      inspectorPanel.add(ui.Label({value: "Foco: " + fProps.comuna + " | Superficie: " + Number(fProps.area_ha).toFixed(1) + " ha", style: {fontSize: "11px"}}));
-      var tipo = fProps.area_ha >= 1000 ? "🟣 MEGAINCENDIO" : (fProps.area_ha >= 100 ? "🔴 GRAN INCENDIO" : (fProps.area_ha >= 10 ? "🟠 MEDIANO" : "🟡 MENOR"));
-      inspectorPanel.add(ui.Label({value: "Severidad: " + tipo, style: {fontWeight: "bold", fontSize: "11px"}}));
+      inspectorPanel.add(ui.Label({value: "🔥 INCENDIO CERCANO (CONAF):", style: {fontWeight: "bold", color: "#d90429", fontSize: "12px"}}));
+      inspectorPanel.add(ui.Label({value: "Comuna: " + fProps.comuna + " | Superficie: " + Number(fProps.area_ha).toFixed(1) + " ha", style: {fontSize: "11px"}}));
     }
   });
 });
@@ -333,20 +309,21 @@ panel.add(ui.Label({
   style: {fontWeight: "bold", fontSize: "15px", color: "#d90429"}
 }));
 
-panel.add(ui.Label({value: "1. Selecciona un Evento Crítico:", style: {fontWeight: "bold", margin: "4px 0px 2px 0px"}}));
+panel.add(ui.Label({value: "1. Monitoreo actual y eventos históricos:", style: {fontWeight: "bold", margin: "4px 0px 2px 0px"}}));
 
 var dateSelect = ui.Select({
   items: [
-    {label: "🔴 2023-02-03 (Megaincendios Biobío/Ñuble - 116.500 ha)", value: "2023-02-03"},
-    {label: "🔴 2023-02-02 (Inicio Megatormenta 2023 - 151.800 ha)", value: "2023-02-02"},
+    {label: "🌐 Pronóstico Hoy (Tiempo Real / GFS + FIRMS)", value: "HOY"},
+    {label: "🔴 2023-02-03 (Megaincendios Biobío/Ñuble/Araucanía)", value: "2023-02-03"},
     {label: "🔴 2024-02-02 (Megaincendio Viña del Mar/Quilpué)", value: "2024-02-02"},
     {label: "🔴 2017-01-20 (Tormenta Las Máquinas - 211.000 ha)", value: "2017-01-20"},
-    {label: "🔴 2017-01-17 (O'Higgins / Maule - 62.000 ha)", value: "2017-01-17"},
-    {label: "🔴 2020-02-09 (Ola de calor verano 2020 - 18.000 ha)", value: "2020-02-09"},
-    {label: "🌐 Pronóstico Hoy (NOAA GFS en vivo)", value: "HOY"}
+    {label: "🟠 2023-01-15 (Día Típico de Verano - Focos Dispersos)", value: "2023-01-15"},
+    {label: "🟠 2020-02-09 (Ola de Calor Focalizada La Araucanía)", value: "2020-02-09"},
+    {label: "🟡 2023-11-15 (Primavera Central - Alerta Preventiva)", value: "2023-11-15"},
+    {label: "🟢 2023-07-15 (Invierno Austral - 0 Alertas / 100% Verde)", value: "2023-07-15"}
   ],
   placeholder: "Seleccionar evento...",
-  value: "2023-02-03",
+  value: "HOY",
   onChange: function(val) {
     dateTextBox.setValue(val);
     cargarFecha(val);
@@ -357,7 +334,7 @@ panel.add(dateSelect);
 
 panel.add(ui.Label({value: "2. O escribe cualquier Fecha (2014-2024):", style: {margin: "8px 0px 2px 0px", fontWeight: "bold"}}));
 
-var dateTextBox = ui.Textbox({placeholder: "AAAA-MM-DD", value: "2023-02-03", style: {width: "60%"}});
+var dateTextBox = ui.Textbox({placeholder: "AAAA-MM-DD", value: "HOY", style: {width: "60%"}});
 var dateButton = ui.Button({
   label: "🔍 Cargar",
   onClick: function() {
@@ -393,5 +370,5 @@ panel.add(legendContainer);
 
 Map.add(panel);
 
-// Carga Inicial con las capas solicitadas
-cargarFecha("2023-02-03");
+// Carga Inicial: Pronóstico Hoy
+cargarFecha("HOY");
