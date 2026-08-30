@@ -12,7 +12,7 @@ let communesList = [];
 let allFiresGeoJSON = null;
 let communeH3Lookup = {};
 let selectedCommuneFilter = null;
-let activeEventDate = "2023-02-03";
+let activeEventDate = "LATEST";
 
 // Coordenadas focales y configuración de los escenarios
 const EVENT_CENTERS = {
@@ -420,8 +420,8 @@ async function loadInitialData() {
 
     setupMapInteractions();
 
-    // Cargar Evento Inicial
-    await loadForecastData("2023-02-03");
+    // Cargar Evento Inicial: Pronóstico Hoy (Tiempo Real)
+    await loadForecastData("LATEST");
 
   } catch (error) {
     console.error("Error inicializando mapa:", error);

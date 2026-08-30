@@ -52,8 +52,11 @@
         <h3>📅 Monitoreo actual y eventos históricos</h3>
         <label for="event-select" class="form-label">Escenarios Históricos y Pronóstico:</label>
         <select id="event-select" class="form-select">
+          <optgroup label="🌐 Monitoreo Operativo en Vivo:">
+            <option value="LATEST" selected>🌐 Pronóstico Hoy (Tiempo Real / GFS + FIRMS)</option>
+          </optgroup>
           <optgroup label="🚨 Megaincendios Catastróficos:">
-            <option value="2023-02-03" selected>🔴 2023-02-03 (Megaincendios Biobío/Ñuble/Araucanía)</option>
+            <option value="2023-02-03">🔴 2023-02-03 (Megaincendios Biobío/Ñuble/Araucanía)</option>
             <option value="2024-02-02">🔴 2024-02-02 (Megaincendio Viña del Mar/Quilpué)</option>
             <option value="2017-01-20">🔴 2017-01-20 (Tormenta Las Máquinas - 211.000 ha)</option>
           </optgroup>
@@ -66,9 +69,6 @@
           </optgroup>
           <optgroup label="❄️ Invierno / Condición Normal:">
             <option value="2023-07-15">🟢 2023-07-15 (Invierno Austral - 0 Alertas / 100% Verde)</option>
-          </optgroup>
-          <optgroup label="🌐 Monitoreo Operativo:">
-            <option value="LATEST">🌐 Pronóstico Hoy (Tiempo Real / GFS + FIRMS)</option>
           </optgroup>
         </select>
         <div id="status-date-info" class="status-badge">Cargando datos...</div>
