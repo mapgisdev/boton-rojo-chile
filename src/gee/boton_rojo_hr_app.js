@@ -202,6 +202,8 @@ function cargarFecha(fechaStr) {
   // B. Capas de Alerta de Alta Resolución (Píxeles Activos en Menú Layers)
   Map.addLayer(capaAmarillaVisible, {palette: ["#ffea00"]}, "🟡 Alerta Amarilla Preventiva (Píxeles)", false);
   Map.addLayer(capaM1Visible, {palette: ["#d90429"]}, "🔴 Botón Rojo Calibrado M1 (Píxeles)", false);
+  Map.addLayer(capaM0Visible, {palette: ["#800f2f"]}, "🔴 Botón Rojo Original CONAF (M0 Booleano)", false);
+  Map.addLayer(piContinua.updateMask(fuelMask), {min: 20, max: 80, palette: ["#2a9d8f", "#e9c46a", "#f4a261", "#e76f51", "#d90429"]}, "🔥 Probabilidad de Ignición PI (Continua 0-100%)", false);
 
   // C. Capas Meteorológicas Opcionales
   Map.addLayer(tempC, {min: 15, max: 38, palette: ["#005f73", "#94d2bd", "#ee9b00", "#ca6702", "#ae2012"]}, "🌡️ Temperatura 14-18h (°C)", false);
