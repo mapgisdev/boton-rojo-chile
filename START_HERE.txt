@@ -1,0 +1,17 @@
+BR-HR / ANTIGRAVITY
+
+1) Copia en insumos/:
+   - Boton_Rojo.zip
+   - Consolidado_incendios_2014_2024_temporada(1).csv
+
+2) Abre toda esta carpeta como workspace en Antigravity.
+
+3) Lee README_PRIMERO.md.
+
+4) Usa SUPERPROMPT_ANTIGRAVITY.md como primer prompt.
+
+5) Antigravity debe comenzar por auditoría + PLAN_IMPLEMENTACION.md,
+   no por reescribir el sistema.
+
+Opcional antes de iniciar:
+   python scripts/verify_inputs.py

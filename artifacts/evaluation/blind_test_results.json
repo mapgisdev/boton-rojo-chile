@@ -1,0 +1,580 @@
+{
+  "evaluation_name": "BR-HR Blind Test Evaluation (2022-2024 Seasons)",
+  "test_dataset_summary": {
+    "total_samples": 103512,
+    "historical_fires": 12939,
+    "controls": 90573,
+    "seasons": [
+      "2022 al 2023",
+      "2023 al 2024"
+    ]
+  },
+  "m0_baseline": {
+    "model": "M0_BR_CONAF",
+    "tp": 3521,
+    "fp": 24946,
+    "fn": 9418,
+    "tn": 65627,
+    "pod": 0.2721,
+    "far": 0.8763,
+    "csi": 0.0929,
+    "precision": 0.1237,
+    "f1": 0.1701,
+    "accuracy": 0.668,
+    "roc_auc": 0.4997,
+    "pr_auc": 0.1255,
+    "brier_score": 0.402549,
+    "ece": 0.509338,
+    "n_bins": 10,
+    "bins_data": [
+      {
+        "bin_idx": 0,
+        "bin_low": 0.0,
+        "bin_high": 0.1,
+        "count": 44,
+        "predicted_prob_mean": 0.0926,
+        "empirical_freq": 0.1136,
+        "calibration_gap": 0.021
+      },
+      {
+        "bin_idx": 1,
+        "bin_low": 0.1,
+        "bin_high": 0.2,
+        "count": 896,
+        "predicted_prob_mean": 0.1804,
+        "empirical_freq": 0.1183,
+        "calibration_gap": 0.0621
+      },
+      {
+        "bin_idx": 2,
+        "bin_low": 0.2,
+        "bin_high": 0.3,
+        "count": 5017,
+        "predicted_prob_mean": 0.2571,
+        "empirical_freq": 0.1248,
+        "calibration_gap": 0.1323
+      },
+      {
+        "bin_idx": 3,
+        "bin_low": 0.3,
+        "bin_high": 0.4,
+        "count": 8266,
+        "predicted_prob_mean": 0.3547,
+        "empirical_freq": 0.1287,
+        "calibration_gap": 0.226
+      },
+      {
+        "bin_idx": 4,
+        "bin_low": 0.4,
+        "bin_high": 0.5,
+        "count": 6359,
+        "predicted_prob_mean": 0.4442,
+        "empirical_freq": 0.1219,
+        "calibration_gap": 0.3224
+      },
+      {
+        "bin_idx": 5,
+        "bin_low": 0.5,
+        "bin_high": 0.6,
+        "count": 25520,
+        "predicted_prob_mean": 0.5625,
+        "empirical_freq": 0.1271,
+        "calibration_gap": 0.4354
+      },
+      {
+        "bin_idx": 6,
+        "bin_low": 0.6,
+        "bin_high": 0.7,
+        "count": 18190,
+        "predicted_prob_mean": 0.6702,
+        "empirical_freq": 0.1214,
+        "calibration_gap": 0.5488
+      },
+      {
+        "bin_idx": 7,
+        "bin_low": 0.7,
+        "bin_high": 0.8,
+        "count": 17190,
+        "predicted_prob_mean": 0.7458,
+        "empirical_freq": 0.1246,
+        "calibration_gap": 0.6212
+      },
+      {
+        "bin_idx": 8,
+        "bin_low": 0.8,
+        "bin_high": 0.9,
+        "count": 13534,
+        "predicted_prob_mean": 0.8291,
+        "empirical_freq": 0.1223,
+        "calibration_gap": 0.7068
+      },
+      {
+        "bin_idx": 9,
+        "bin_low": 0.9,
+        "bin_high": 1.0,
+        "count": 8496,
+        "predicted_prob_mean": 0.9252,
+        "empirical_freq": 0.1311,
+        "calibration_gap": 0.7941
+      }
+    ],
+    "top_5pct_fires": 4.74,
+    "top_10pct_fires": 10.37,
+    "top_20pct_fires": 15.84
+  },
+  "m1_recalibrated": {
+    "model": "M1_BR_CAL",
+    "threshold_pi": 45.0,
+    "threshold_wind": 22.0,
+    "tp": 6684,
+    "fp": 46581,
+    "fn": 6255,
+    "tn": 43992,
+    "pod": 0.5166,
+    "far": 0.8745,
+    "csi": 0.1123,
+    "precision": 0.1255,
+    "f1": 0.2019,
+    "accuracy": 0.4896,
+    "roc_auc": 0.502,
+    "pr_auc": 0.1252,
+    "brier_score": 0.24964,
+    "ece": 0.374268,
+    "n_bins": 10,
+    "bins_data": [
+      {
+        "bin_idx": 0,
+        "bin_low": 0.0,
+        "bin_high": 0.1,
+        "count": 2,
+        "predicted_prob_mean": 0.066,
+        "empirical_freq": 0.0,
+        "calibration_gap": 0.066
+      },
+      {
+        "bin_idx": 1,
+        "bin_low": 0.1,
+        "bin_high": 0.2,
+        "count": 4,
+        "predicted_prob_mean": 0.166,
+        "empirical_freq": 0.25,
+        "calibration_gap": 0.084
+      },
+      {
+        "bin_idx": 2,
+        "bin_low": 0.2,
+        "bin_high": 0.3,
+        "count": 51,
+        "predicted_prob_mean": 0.2763,
+        "empirical_freq": 0.1569,
+        "calibration_gap": 0.1194
+      },
+      {
+        "bin_idx": 3,
+        "bin_low": 0.3,
+        "bin_high": 0.4,
+        "count": 151,
+        "predicted_prob_mean": 0.3453,
+        "empirical_freq": 0.1258,
+        "calibration_gap": 0.2195
+      },
+      {
+        "bin_idx": 4,
+        "bin_low": 0.4,
+        "bin_high": 0.5,
+        "count": 59921,
+        "predicted_prob_mean": 0.4939,
+        "empirical_freq": 0.1249,
+        "calibration_gap": 0.3689
+      },
+      {
+        "bin_idx": 5,
+        "bin_low": 0.5,
+        "bin_high": 0.6,
+        "count": 43383,
+        "predicted_prob_mean": 0.5076,
+        "empirical_freq": 0.125,
+        "calibration_gap": 0.3825
+      },
+      {
+        "bin_idx": 6,
+        "bin_low": 0.6,
+        "bin_high": 0.7,
+        "count": 0,
+        "predicted_prob_mean": 0.65,
+        "empirical_freq": 0.0,
+        "calibration_gap": 0.0
+      },
+      {
+        "bin_idx": 7,
+        "bin_low": 0.7,
+        "bin_high": 0.8,
+        "count": 0,
+        "predicted_prob_mean": 0.75,
+        "empirical_freq": 0.0,
+        "calibration_gap": 0.0
+      },
+      {
+        "bin_idx": 8,
+        "bin_low": 0.8,
+        "bin_high": 0.9,
+        "count": 0,
+        "predicted_prob_mean": 0.85,
+        "empirical_freq": 0.0,
+        "calibration_gap": 0.0
+      },
+      {
+        "bin_idx": 9,
+        "bin_low": 0.9,
+        "bin_high": 1.0,
+        "count": 0,
+        "predicted_prob_mean": 0.95,
+        "empirical_freq": 0.0,
+        "calibration_gap": 0.0
+      }
+    ],
+    "top_5pct_fires": 5.14,
+    "top_10pct_fires": 8.21,
+    "top_20pct_fires": 15.89
+  },
+  "m2_champion_p_ign": {
+    "model": "M2_P_IGNITION_CHAMPION",
+    "operational_cutoff": 0.2,
+    "tp": 2321,
+    "fp": 6778,
+    "fn": 10618,
+    "tn": 83795,
+    "pod": 0.1794,
+    "far": 0.7449,
+    "csi": 0.1177,
+    "precision": 0.2551,
+    "f1": 0.2106,
+    "accuracy": 0.8319,
+    "roc_auc": 0.5866,
+    "pr_auc": 0.4001,
+    "brier_score": 0.258346,
+    "ece": 0.006132,
+    "n_bins": 10,
+    "bins_data": [
+      {
+        "bin_idx": 0,
+        "bin_low": 0.0,
+        "bin_high": 0.1,
+        "count": 55165,
+        "predicted_prob_mean": 0.0795,
+        "empirical_freq": 0.0863,
+        "calibration_gap": 0.0068
+      },
+      {
+        "bin_idx": 1,
+        "bin_low": 0.1,
+        "bin_high": 0.2,
+        "count": 39248,
+        "predicted_prob_mean": 0.1447,
+        "empirical_freq": 0.1492,
+        "calibration_gap": 0.0045
+      },
+      {
+        "bin_idx": 2,
+        "bin_low": 0.2,
+        "bin_high": 0.3,
+        "count": 7473,
+        "predicted_prob_mean": 0.2539,
+        "empirical_freq": 0.2492,
+        "calibration_gap": 0.0048
+      },
+      {
+        "bin_idx": 3,
+        "bin_low": 0.3,
+        "bin_high": 0.4,
+        "count": 1620,
+        "predicted_prob_mean": 0.3107,
+        "empirical_freq": 0.2833,
+        "calibration_gap": 0.0274
+      },
+      {
+        "bin_idx": 4,
+        "bin_low": 0.4,
+        "bin_high": 0.5,
+        "count": 0,
+        "predicted_prob_mean": 0.45,
+        "empirical_freq": 0.0,
+        "calibration_gap": 0.0
+      },
+      {
+        "bin_idx": 5,
+        "bin_low": 0.5,
+        "bin_high": 0.6,
+        "count": 6,
+        "predicted_prob_mean": 0.5,
+        "empirical_freq": 0.0,
+        "calibration_gap": 0.5
+      },
+      {
+        "bin_idx": 6,
+        "bin_low": 0.6,
+        "bin_high": 0.7,
+        "count": 0,
+        "predicted_prob_mean": 0.65,
+        "empirical_freq": 0.0,
+        "calibration_gap": 0.0
+      },
+      {
+        "bin_idx": 7,
+        "bin_low": 0.7,
+        "bin_high": 0.8,
+        "count": 0,
+        "predicted_prob_mean": 0.75,
+        "empirical_freq": 0.0,
+        "calibration_gap": 0.0
+      },
+      {
+        "bin_idx": 8,
+        "bin_low": 0.8,
+        "bin_high": 0.9,
+        "count": 0,
+        "predicted_prob_mean": 0.85,
+        "empirical_freq": 0.0,
+        "calibration_gap": 0.0
+      },
+      {
+        "bin_idx": 9,
+        "bin_low": 0.9,
+        "bin_high": 1.0,
+        "count": 0,
+        "predicted_prob_mean": 0.95,
+        "empirical_freq": 0.0,
+        "calibration_gap": 0.0
+      }
+    ],
+    "top_5pct_fires": 11.04,
+    "top_10pct_fires": 18.71,
+    "top_20pct_fires": 33.97
+  },
+  "m3_large_fire_potential": {
+    "p_gt10ha": {
+      "target": "P(A > 10 ha | ignicion)",
+      "test_fires": 12939,
+      "observed_gt10ha_fires": 1204,
+      "roc_auc": 0.625,
+      "pr_auc": 0.1275,
+      "brier_score": 0.083023,
+      "ece": 0.003252,
+      "n_bins": 10,
+      "bins_data": [
+        {
+          "bin_idx": 0,
+          "bin_low": 0.0,
+          "bin_high": 0.1,
+          "count": 6904,
+          "predicted_prob_mean": 0.0609,
+          "empirical_freq": 0.0634,
+          "calibration_gap": 0.0026
+        },
+        {
+          "bin_idx": 1,
+          "bin_low": 0.1,
+          "bin_high": 0.2,
+          "count": 6012,
+          "predicted_prob_mean": 0.1233,
+          "empirical_freq": 0.1269,
+          "calibration_gap": 0.0036
+        },
+        {
+          "bin_idx": 2,
+          "bin_low": 0.2,
+          "bin_high": 0.3,
+          "count": 22,
+          "predicted_prob_mean": 0.236,
+          "empirical_freq": 0.1364,
+          "calibration_gap": 0.0996
+        },
+        {
+          "bin_idx": 3,
+          "bin_low": 0.3,
+          "bin_high": 0.4,
+          "count": 1,
+          "predicted_prob_mean": 0.3079,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.3079
+        },
+        {
+          "bin_idx": 4,
+          "bin_low": 0.4,
+          "bin_high": 0.5,
+          "count": 0,
+          "predicted_prob_mean": 0.45,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.0
+        },
+        {
+          "bin_idx": 5,
+          "bin_low": 0.5,
+          "bin_high": 0.6,
+          "count": 0,
+          "predicted_prob_mean": 0.55,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.0
+        },
+        {
+          "bin_idx": 6,
+          "bin_low": 0.6,
+          "bin_high": 0.7,
+          "count": 0,
+          "predicted_prob_mean": 0.65,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.0
+        },
+        {
+          "bin_idx": 7,
+          "bin_low": 0.7,
+          "bin_high": 0.8,
+          "count": 0,
+          "predicted_prob_mean": 0.75,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.0
+        },
+        {
+          "bin_idx": 8,
+          "bin_low": 0.8,
+          "bin_high": 0.9,
+          "count": 0,
+          "predicted_prob_mean": 0.85,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.0
+        },
+        {
+          "bin_idx": 9,
+          "bin_low": 0.9,
+          "bin_high": 1.0,
+          "count": 0,
+          "predicted_prob_mean": 0.95,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.0
+        }
+      ],
+      "top_5pct_fires": 7.23,
+      "top_10pct_fires": 15.03,
+      "top_20pct_fires": 28.82
+    },
+    "p_gt100ha": {
+      "target": "P(A > 100 ha | ignicion)",
+      "test_fires": 12939,
+      "observed_gt100ha_fires": 339,
+      "roc_auc": 0.6526,
+      "pr_auc": 0.0406,
+      "brier_score": 0.025412,
+      "ece": 0.007345,
+      "n_bins": 10,
+      "bins_data": [
+        {
+          "bin_idx": 0,
+          "bin_low": 0.0,
+          "bin_high": 0.1,
+          "count": 12939,
+          "predicted_prob_mean": 0.0189,
+          "empirical_freq": 0.0262,
+          "calibration_gap": 0.0073
+        },
+        {
+          "bin_idx": 1,
+          "bin_low": 0.1,
+          "bin_high": 0.2,
+          "count": 0,
+          "predicted_prob_mean": 0.15,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.0
+        },
+        {
+          "bin_idx": 2,
+          "bin_low": 0.2,
+          "bin_high": 0.3,
+          "count": 0,
+          "predicted_prob_mean": 0.25,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.0
+        },
+        {
+          "bin_idx": 3,
+          "bin_low": 0.3,
+          "bin_high": 0.4,
+          "count": 0,
+          "predicted_prob_mean": 0.35,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.0
+        },
+        {
+          "bin_idx": 4,
+          "bin_low": 0.4,
+          "bin_high": 0.5,
+          "count": 0,
+          "predicted_prob_mean": 0.45,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.0
+        },
+        {
+          "bin_idx": 5,
+          "bin_low": 0.5,
+          "bin_high": 0.6,
+          "count": 0,
+          "predicted_prob_mean": 0.55,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.0
+        },
+        {
+          "bin_idx": 6,
+          "bin_low": 0.6,
+          "bin_high": 0.7,
+          "count": 0,
+          "predicted_prob_mean": 0.65,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.0
+        },
+        {
+          "bin_idx": 7,
+          "bin_low": 0.7,
+          "bin_high": 0.8,
+          "count": 0,
+          "predicted_prob_mean": 0.75,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.0
+        },
+        {
+          "bin_idx": 8,
+          "bin_low": 0.8,
+          "bin_high": 0.9,
+          "count": 0,
+          "predicted_prob_mean": 0.85,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.0
+        },
+        {
+          "bin_idx": 9,
+          "bin_low": 0.9,
+          "bin_high": 1.0,
+          "count": 0,
+          "predicted_prob_mean": 0.95,
+          "empirical_freq": 0.0,
+          "calibration_gap": 0.0
+        }
+      ],
+      "top_5pct_fires": 8.55,
+      "top_10pct_fires": 16.81,
+      "top_20pct_fires": 33.92
+    }
+  },
+  "comparative_summary": {
+    "pod_m0": 0.2721,
+    "pod_m1": 0.5166,
+    "pod_m2": 0.1794,
+    "csi_m0": 0.0929,
+    "csi_m1": 0.1123,
+    "csi_m2": 0.1177,
+    "brier_m0": 0.402549,
+    "brier_m1": 0.24964,
+    "brier_m2": 0.258346,
+    "top10_concentration_m0": 10.37,
+    "top10_concentration_m1": 8.21,
+    "top10_concentration_m2": 18.71
+  }
+}

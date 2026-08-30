@@ -1,0 +1,33 @@
+openapi: 3.1.0
+info:
+  title: BR-HR API
+  version: 0.1.0
+servers:
+  - url: /api/v1
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        "200":
+          description: OK
+  /runs/latest:
+    get:
+      summary: Latest valid run
+      responses:
+        "200":
+          description: Run metadata
+  /hex/{h3_id}:
+    get:
+      summary: Dynamic attributes for a hexagon
+      parameters:
+        - in: path
+          name: h3_id
+          required: true
+          schema: {type: string}
+        - in: query
+          name: horizon
+          schema: {type: integer}
+      responses:
+        "200":
+          description: H3 forecast attributes

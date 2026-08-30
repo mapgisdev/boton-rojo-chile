@@ -1,0 +1,12 @@
+{
+  "date": "2023-11-15",
+  "event_name": "Primavera Central (Riesgo Temprano / Alerta Amarilla)",
+  "total_cells": 33237,
+  "red_cells_count": 0,
+  "yellow_cells_count": 464,
+  "red_alert_percentage": 0.0,
+  "pct_territorio_rojo": 0.0,
+  "total_communes": 411,
+  "red_communes_count": 0,
+  "yellow_communes_count": 0
+}

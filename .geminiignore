@@ -1,0 +1,6 @@
+# Avoid ingesting very large generated artifacts by default
+work/**
+data/derived/**
+artifacts/**
+
+# Do not ignore the two original inputs: the agent must inspect them deliberately.

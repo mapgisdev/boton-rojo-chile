@@ -1,0 +1,54 @@
+{
+  "model_id": "M1_BR_CAL_v1.0",
+  "description": "Bot\u00f3n Rojo Recalibrado Emp\u00edricamente con observaciones 2014-2021",
+  "train_samples": 389210,
+  "validation_samples": 55574,
+  "optimal_thresholds": {
+    "umbral_pi": 45.0,
+    "umbral_viento_kmh": 22.0
+  },
+  "metrics_validation_m0": {
+    "tp": 1942,
+    "fp": 13339,
+    "fn": 5005,
+    "tn": 35288,
+    "pod": 0.2795,
+    "far": 0.8729,
+    "csi": 0.0957,
+    "precision": 0.1271,
+    "f1": 0.1747,
+    "accuracy": 0.6699,
+    "roc_auc": 0.5013,
+    "pr_auc": 0.1258,
+    "brier_score": 0.398574,
+    "top_5pct_fires": 5.92,
+    "top_10pct_fires": 10.02,
+    "top_20pct_fires": 20.04
+  },
+  "metrics_validation_m1": {
+    "tp": 3637,
+    "fp": 24677,
+    "fn": 3310,
+    "tn": 23950,
+    "pod": 0.5235,
+    "far": 0.8715,
+    "csi": 0.115,
+    "precision": 0.1285,
+    "f1": 0.2063,
+    "accuracy": 0.4964,
+    "roc_auc": 0.5047,
+    "pr_auc": 0.1268,
+    "brier_score": 0.249735,
+    "top_5pct_fires": 5.27,
+    "top_10pct_fires": 9.14,
+    "top_20pct_fires": 18.09
+  },
+  "comparison": {
+    "pr_auc_gain": 0.001,
+    "roc_auc_gain": 0.0034,
+    "pod_gain": 0.244,
+    "csi_gain": 0.0193,
+    "f1_gain": 0.0316,
+    "far_reduction": 0.0014
+  }
+}

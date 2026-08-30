@@ -1,0 +1,447 @@
+/* styles.css — Estilos modernos e institucionales para BR-HR GeoLibre Frontend */
+
+:root {
+  --primary-red: #d90429;
+  --secondary-red: #ef233c;
+  --alert-yellow: #ffd166;
+  --alert-green: #06d6a0;
+  --alert-purple: #7209b7;
+  --bg-dark: #0f172a;
+  --bg-card: #ffffff;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: #f8fafc;
+  color: var(--text-dark);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header */
+.app-header {
+  height: 64px;
+  background-color: var(--bg-dark);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: var(--shadow-md);
+  z-index: 100;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon {
+  font-size: 28px;
+}
+
+.brand-text h1 {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge-version {
+  font-size: 11px;
+  font-weight: 700;
+  background-color: var(--primary-red);
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.subtitle {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.header-kpis {
+  display: flex;
+  gap: 12px;
+}
+
+.kpi-card {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 6px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.kpi-label {
+  font-size: 10px;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.kpi-value {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.card-red .kpi-value { color: #ff4d6d; }
+.card-yellow .kpi-value { color: var(--alert-yellow); }
+.card-blue .kpi-value { color: #38bdf8; }
+
+/* Contenedor Principal */
+.app-main {
+  flex: 1;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 380px;
+  background-color: var(--bg-card);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  z-index: 10;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar-section {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-section h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 8px;
+}
+
+.form-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.form-select, .form-input, .search-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--text-dark);
+  background-color: #f8fafc;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-select:focus, .form-input:focus, .search-input:focus {
+  border-color: var(--primary-red);
+  background-color: #ffffff;
+}
+
+.custom-date-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.btn-primary {
+  background-color: var(--primary-red);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-red);
+}
+
+.status-badge {
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+/* Layer Items */
+.layer-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.layer-item input[type="checkbox"] {
+  cursor: pointer;
+  accent-color: var(--primary-red);
+  width: 15px;
+  height: 15px;
+}
+
+.highlight-layer {
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-bottom: 8px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 8px 0;
+}
+
+.layer-group-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.color-dot.red { background-color: var(--primary-red); }
+.color-dot.yellow { background-color: var(--alert-yellow); }
+.color-dot.white { background-color: #ffffff; border-color: #94a3b8; }
+.color-dot.purple { background-color: var(--alert-purple); }
+.color-dot.orange { background-color: #fb8500; }
+.color-dot.green { background-color: var(--alert-green); }
+
+/* Leyenda */
+.legend-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legend-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 11px;
+}
+
+.legend-row strong {
+  display: block;
+  font-size: 11px;
+  color: var(--text-dark);
+}
+
+.legend-row small {
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+.legend-box {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.legend-box.com-red { background-color: rgba(217, 4, 41, 0.65); border: 1px solid #9b2226; }
+.legend-box.com-yellow { background-color: rgba(255, 209, 102, 0.75); border: 1px solid #b45309; }
+.legend-box.com-green { background-color: #ffffff; border: 1px solid #94a3b8; }
+
+/* Tabla Comunas */
+.section-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.header-actions-flex {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-reset {
+  background-color: #f1f5f9;
+  border: 1px solid var(--border-color);
+  color: #334155;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-reset:hover {
+  background-color: #e2e8f0;
+  color: var(--primary-red);
+  border-color: #cbd5e1;
+}
+
+.btn-reset.hidden {
+  display: none;
+}
+
+.search-input {
+  width: 100px;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+.communes-table-container {
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.communes-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.communes-table th {
+  background-color: #f1f5f9;
+  padding: 6px 8px;
+  text-align: left;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.communes-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+.communes-table tr:hover {
+  background-color: #f8fafc;
+}
+
+.badge-alert {
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.badge-alert.rojo { background-color: #ffe5e8; color: var(--primary-red); }
+.badge-alert.amarillo { background-color: #fff9db; color: #b45309; }
+.badge-alert.verde { background-color: #e6fcf5; color: #087f5b; }
+
+/* Mapa */
+.map-container {
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+
+/* Zoom LOD Badge */
+.zoom-lod-badge {
+  position: absolute;
+  bottom: 24px;
+  left: 16px;
+  background-color: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+  z-index: 20;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.zoom-lod-badge span {
+  color: var(--alert-yellow);
+}
+
+/* Inspector Card */
+.inspector-card {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 320px;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 14px;
+  box-shadow: var(--shadow-lg);
+  z-index: 50;
+  font-size: 12px;
+}
+
+.inspector-card.hidden {
+  display: none;
+}
+
+.inspector-card h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-red);
+  margin-bottom: 8px;
+}
+
+.btn-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: var(--text-muted);
+  cursor: pointer;
+}

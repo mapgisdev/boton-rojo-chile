@@ -1,0 +1,107 @@
+[
+  {
+    "date": "2017-01-20",
+    "total_fires": 82,
+    "total_area_ha": 211261.49999999997,
+    "large_fires_gt100ha": 8,
+    "regions": "Valpara\u00edso, O'Higgins"
+  },
+  {
+    "date": "2023-02-02",
+    "total_fires": 100,
+    "total_area_ha": 151882.52,
+    "large_fires_gt100ha": 25,
+    "regions": "Valpara\u00edso, Maule"
+  },
+  {
+    "date": "2023-02-03",
+    "total_fires": 104,
+    "total_area_ha": 116541.93000000001,
+    "large_fires_gt100ha": 32,
+    "regions": "Valpara\u00edso, O'Higgins"
+  },
+  {
+    "date": "2017-01-17",
+    "total_fires": 64,
+    "total_area_ha": 62112.899999999994,
+    "large_fires_gt100ha": 5,
+    "regions": "Coquimbo, Valpara\u00edso"
+  },
+  {
+    "date": "2017-01-25",
+    "total_fires": 57,
+    "total_area_ha": 61781.229999999996,
+    "large_fires_gt100ha": 11,
+    "regions": "Valpara\u00edso, Maule"
+  },
+  {
+    "date": "2017-01-14",
+    "total_fires": 76,
+    "total_area_ha": 54412.97,
+    "large_fires_gt100ha": 5,
+    "regions": "Valpara\u00edso, O'Higgins"
+  },
+  {
+    "date": "2017-01-18",
+    "total_fires": 64,
+    "total_area_ha": 27729.68,
+    "large_fires_gt100ha": 6,
+    "regions": "Coquimbo, Valpara\u00edso"
+  },
+  {
+    "date": "2017-01-26",
+    "total_fires": 73,
+    "total_area_ha": 19254.54,
+    "large_fires_gt100ha": 12,
+    "regions": "Valpara\u00edso, O'Higgins"
+  },
+  {
+    "date": "2020-02-09",
+    "total_fires": 62,
+    "total_area_ha": 18198.18,
+    "large_fires_gt100ha": 6,
+    "regions": "Valpara\u00edso, O'Higgins"
+  },
+  {
+    "date": "2023-02-04",
+    "total_fires": 60,
+    "total_area_ha": 18101.09,
+    "large_fires_gt100ha": 13,
+    "regions": "Valpara\u00edso, O'Higgins"
+  },
+  {
+    "date": "2015-01-11",
+    "total_fires": 102,
+    "total_area_ha": 17998.059999999998,
+    "large_fires_gt100ha": 9,
+    "regions": "Coquimbo, Valpara\u00edso"
+  },
+  {
+    "date": "2016-12-13",
+    "total_fires": 59,
+    "total_area_ha": 17755.63,
+    "large_fires_gt100ha": 9,
+    "regions": "Valpara\u00edso, O'Higgins"
+  },
+  {
+    "date": "2019-02-04",
+    "total_fires": 83,
+    "total_area_ha": 16746.079999999998,
+    "large_fires_gt100ha": 4,
+    "regions": "Coquimbo, Valpara\u00edso"
+  },
+  {
+    "date": "2024-02-02",
+    "total_fires": 43,
+    "total_area_ha": 14377.93,
+    "large_fires_gt100ha": 5,
+    "regions": "Valpara\u00edso, O'Higgins"
+  },
+  {
+    "date": "2021-12-21",
+    "total_fires": 56,
+    "total_area_ha": 14179.51,
+    "large_fires_gt100ha": 3,
+    "regions": "Valpara\u00edso, O'Higgins"
+  }
+]

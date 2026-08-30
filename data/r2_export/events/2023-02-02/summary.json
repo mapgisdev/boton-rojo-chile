@@ -1,0 +1,12 @@
+{
+  "date": "2023-02-02",
+  "event_name": "Inicio Megatormenta 2023",
+  "total_cells": 33237,
+  "red_cells_count": 22246,
+  "yellow_cells_count": 279,
+  "red_alert_percentage": 66.93,
+  "pct_territorio_rojo": 66.93,
+  "total_communes": 411,
+  "red_communes_count": 218,
+  "yellow_communes_count": 0
+}

@@ -1,0 +1,1284 @@
+{
+  "n_rows": 68546,
+  "n_cols": 79,
+  "exact_duplicates": 0,
+  "index_duplicates": 0,
+  "temporadas": {},
+  "coord_stats": {
+    "lat_col": "Lat Calculada",
+    "lon_col": "Lon Calculada",
+    "lat_min": -336.25,
+    "lat_max": -0.0655555555555555,
+    "lat_mean": -36.61338589946858,
+    "lon_min": -109.44305555555556,
+    "lon_max": -67.88722222222223,
+    "lon_mean": -72.49554542735419,
+    "lat_null": 8,
+    "lon_null": 8,
+    "valid_within_chile_count": 68536,
+    "valid_within_chile_pct": 99.99,
+    "lat_out_bounds": 2,
+    "lon_out_bounds": 0
+  },
+  "admin_stats": {
+    "region_counts": {
+      "Biobío": 23668,
+      "Araucanía": 13658,
+      "Maule": 8325,
+      "Valparaíso": 6889,
+      "Metropolitana": 4153,
+      "Ñuble": 3477,
+      "O'Higgins": 3020,
+      "Los Lagos": 2545,
+      "Los Ríos": 1225,
+      "Coquimbo": 782,
+      "Aysén": 310,
+      "Atacama": 192,
+      "Magallanes": 181,
+      "Arica y Parinacota": 58,
+      "Tarapacá": 32,
+      "Antofagasta": 31
+    },
+    "codcom_nulls": 0,
+    "codcom_uniques": 319
+  },
+  "area_stats": {
+    "total_area_col": "Superficie total",
+    "min_ha": 0.0,
+    "max_ha": 159812.58,
+    "median_ha": 0.39,
+    "mean_ha": 23.73468415201692,
+    "p90_ha": 7.748839999999996,
+    "p95_ha": 23.0,
+    "p99_ha": 244.63399999999848,
+    "count_gt0": 68528,
+    "count_eq0": 17,
+    "count_gt10ha": 5681,
+    "count_gt50ha": 2045,
+    "count_gt100ha": 1290,
+    "count_gt1000ha": 228,
+    "total_sum_ha": 1626893.9252
+  },
+  "fuel_stats": {
+    "Combustible inicial": {
+      "Pastizal": 27052,
+      "nan": 17693,
+      "Matorral": 12299,
+      "Desechos": 4223,
+      "Plantacion eucaliptus": 2403,
+      "Plantacion pino": 1985,
+      "Arbolado natural": 1221,
+      "Cultivo agrícola": 595,
+      "Basural": 513,
+      "Otros": 450,
+      "Otras plantaciones": 112
+    }
+  },
+  "cause_stats": {
+    "Causa General": {
+      "2.1 - Incendios intencionales": 24323,
+      "1.7 - Tránsito de personas  vehículos o aeronaves": 16716,
+      "4.1 - Incendios de causa desconocida": 4811,
+      "1.2 - Faenas agrícolas y pecuarias": 3352,
+      "1.1 - Faenas forestales": 3282,
+      "1.8 - Quema de desechos": 3220,
+      "1.9 - Accidentes eléctricos": 2070,
+      "1.4 - Actividades recreativas": 1916,
+      "2.1 - Incendios Intencionales": 1877,
+      "1.6 - Actividades extinción incendios forestales   incendios estructurales u otros": 1081,
+      "1.10 - Otras actividades": 1029,
+      "4.8 - Otras quemas": 737,
+      "5.1 - Incendios de causa indeterminada": 685,
+      "1.3 - Confección y/o extracción productos secundarios del bosque": 423,
+      "nan": 365
+    },
+    "Causa Específica": {
+      "1.7.1. Uso de fuego por transeúntes": 16458,
+      "2.1.11. Otros intencionales no clasificados": 12370,
+      "2.1.8. Vandalismo (excluidos terrorismo y atentado incendiario)": 5268,
+      "4.1.2. No determinada (la causa no es investigada)": 3146,
+      "nan": 2333,
+      "1.8.1. Quema de basuras  desechos vegetales u otros no clasificados (distintos de vertederos o basurales autorizados)": 2189,
+      "2.1.3. Atentado incendiario por conflicto": 1834,
+      "2.1.4. Conflicto territorial o patrimonial": 1717,
+      "4.1.1. Desconocida (se investiga pero no es posible establecer la causa origen)": 1659,
+      "2.1.1. Pirómano (insano mental que disfruta del fuego)": 1350,
+      "1.2.2. Quema ilegal de desechos agrícolas": 1222,
+      "1.1.10. Quema ilegal para reducción de combustible (silvicultura preventiva)": 1123,
+      "1.9.4. Corte de cable por otro accidente o acción no clasificada": 802,
+      "2.1.7. Provocado para obtener beneficios económicos (compra de madera  presión por trabajo  etc.)": 775,
+      "1.6.1. Rebrote de incendio anterior  declarado controlado": 743
+    },
+    "Grupo de Causa": {
+      "nan": 62932,
+      "4 - Negligentes": 2549,
+      "2 - Intencionales": 1877,
+      "5 - Indeterminadas": 685,
+      "1 - Accidentales": 469,
+      "3 - Naturales": 34
+    }
+  },
+  "met_stats": {
+    "Temperatura": {
+      "null_count": 8224,
+      "null_pct": 12.0,
+      "min": -2.0,
+      "max": 225.0,
+      "mean": 23.076011073903384,
+      "median": 23.0
+    },
+    "Humedad": {
+      "null_count": 8259,
+      "null_pct": 12.05,
+      "min": 0.0,
+      "max": 369.0,
+      "mean": 48.221815150861715,
+      "median": 47.0
+    },
+    "Dirección viento": {
+      "null_count": 8631,
+      "null_pct": 12.59,
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null
+    },
+    "Velocidad viento": {
+      "null_count": 8780,
+      "null_pct": 12.81,
+      "min": 0.0,
+      "max": 433368.0,
+      "mean": 274.06543166490957,
+      "median": 60.0
+    },
+    "temporada": {
+      "null_count": 0,
+      "null_pct": 0.0,
+      "min": null,
+      "max": null,
+      "mean": null,
+      "median": null
+    }
+  },
+  "time_cols": [
+    "Recurso detección",
+    "Institución rec. detección",
+    "Tipo de rec. detección",
+    "Recurso de aviso",
+    "Institución rec. aviso",
+    "Tipo rec. aviso",
+    "Inicio cercano a",
+    "Inicio",
+    "Detección",
+    "Aviso",
+    "Control",
+    "Extinción",
+    "Control Superficie afectada ha",
+    "Rango horario",
+    "Duración (horas)",
+    "Día de inicio",
+    "Fecha Meteorólogica"
+  ],
+  "columns_info": [
+    {
+      "name": "index",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 68546,
+      "samples": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "dtype": "int64"
+    },
+    {
+      "name": "Región",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 16,
+      "samples": [
+        "Coquimbo",
+        "Valparaíso",
+        "O'Higgins",
+        "Maule",
+        "Biobío"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Provincia",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 53,
+      "samples": [
+        "Limarí",
+        "Elqui",
+        "Choapa",
+        "Isla de Pascua",
+        "Marga Marga"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Comuna",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 319,
+      "samples": [
+        "Rio Hurtado",
+        "Ovalle",
+        "La Serena",
+        "Salamanca",
+        "Coquimbo"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Ámbito",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 2,
+      "samples": [
+        "Conaf",
+        "Empresa"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Empresa",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 29,
+      "samples": [
+        "CONAF",
+        "FORMIN",
+        "CELCO",
+        "FASA",
+        "MASISA"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Número regional",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 4777,
+      "samples": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "dtype": "int64"
+    },
+    {
+      "name": "Nombre",
+      "null_count": 4,
+      "null_pct": 0.01,
+      "unique_count": 29799,
+      "samples": [
+        "EL CHAÑAR",
+        "EL ARRAYÁN DE HUALLILLINGA",
+        "SAN JULIAN",
+        "CENDYR",
+        "POTRERILLOS BAJOS"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Escenario",
+      "null_count": 24260,
+      "null_pct": 35.39,
+      "unique_count": 8,
+      "samples": [
+        "IFor-Vn",
+        "IFIUr-Fo",
+        "IFor-PI",
+        "IFASP",
+        "IFIns"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "NICOM",
+      "null_count": 41335,
+      "null_pct": 60.3,
+      "unique_count": 5,
+      "samples": [
+        "1 - Bajo",
+        "2 - Moderado",
+        "3 - Alto",
+        "4 - Muy Alto",
+        "5 - Extremo"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Coord. operativas UTM E",
+      "null_count": 8,
+      "null_pct": 0.01,
+      "unique_count": 58708,
+      "samples": [
+        "341934 E",
+        "300594 E",
+        "269783 E",
+        "283830 E",
+        "289318 E"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Coord. operativas UTM N",
+      "null_count": 8,
+      "null_pct": 0.01,
+      "unique_count": 63341,
+      "samples": [
+        "6648406 S",
+        "6602756 S",
+        "6608906 S",
+        "6687789 S",
+        "6610588 S"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Huso op.",
+      "null_count": 8,
+      "null_pct": 0.01,
+      "unique_count": 12,
+      "samples": [
+        "19J",
+        "12J",
+        "19H",
+        "18H",
+        "18G"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Coord. operativas Lat",
+      "null_count": 8,
+      "null_pct": 0.01,
+      "unique_count": 23710,
+      "samples": [
+        "30°17'09\" S",
+        "30°41'29\" S",
+        "30°37'49\" S",
+        "29°55'18\" S",
+        "30°37'08\" S"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Coord. operativas Lon",
+      "null_count": 8,
+      "null_pct": 0.01,
+      "unique_count": 12120,
+      "samples": [
+        "70°38'37\" O",
+        "71°04'55\" O",
+        "71°24'07\" O",
+        "71°14'21\" O",
+        "71°11'53\" O"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Recurso detección",
+      "null_count": 41443,
+      "null_pct": 60.46,
+      "unique_count": 2114,
+      "samples": [
+        "TORRE-2 / BC-MOLLE-6",
+        "BC-MOLLE-6",
+        "TORRE-4",
+        "Lugareños",
+        "DELTA-TORRE / -TORRE"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Institución rec. detección",
+      "null_count": 54061,
+      "null_pct": 78.87,
+      "unique_count": 108,
+      "samples": [
+        "Forestal\tHancock / Forestal\tHancock",
+        "Forestal\tHancock",
+        "CONAF",
+        "Bombero",
+        "SENAPRED"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Tipo de rec. detección",
+      "null_count": 53825,
+      "null_pct": 78.52,
+      "unique_count": 71,
+      "samples": [
+        "Torre de detección / Torre de detección",
+        "Torre de detección",
+        "P.Técnico Terrestre",
+        "CBB",
+        "P.Técnico"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Recurso de aviso",
+      "null_count": 35625,
+      "null_pct": 51.97,
+      "unique_count": 1922,
+      "samples": [
+        "130",
+        "TORRE-2",
+        "BC-MOLLE-7",
+        "130 / BC-MOLLE-6",
+        "S-4 - Vladimir Cuq"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Institución rec. aviso",
+      "null_count": 61036,
+      "null_pct": 89.04,
+      "unique_count": 65,
+      "samples": [
+        "Bombero",
+        "CONAF",
+        "SENAPRED",
+        "CONAF / CONAF",
+        "Forestal Arauco S.A."
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Tipo rec. aviso",
+      "null_count": 60656,
+      "null_pct": 88.49,
+      "unique_count": 69,
+      "samples": [
+        "CBB",
+        "Brigada Terrestre",
+        "P.Técnico",
+        "Torre de detección",
+        "Otro"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Recurso primer ataque",
+      "null_count": 19582,
+      "null_pct": 28.57,
+      "unique_count": 2557,
+      "samples": [
+        "Bomberos La Serena",
+        "Brigada Molle-6",
+        "Brigada Molle-5",
+        "Brigada P.N.Bosque de Fray Jorge",
+        "Brigada Molle-9"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Institución rec. primer ataque",
+      "null_count": 46112,
+      "null_pct": 67.27,
+      "unique_count": 25,
+      "samples": [
+        "Bombero",
+        "CONAF",
+        "Particulares",
+        "Nilahue S.A.",
+        "Forestal Mininco S. A."
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Tipo de rec. primer ataque",
+      "null_count": 45719,
+      "null_pct": 66.7,
+      "unique_count": 18,
+      "samples": [
+        "CBB",
+        "P.Técnico",
+        "Brigada",
+        "Otro",
+        "Helicóptero combate"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Inicio cercano a",
+      "null_count": 6941,
+      "null_pct": 10.13,
+      "unique_count": 546,
+      "samples": [
+        "Otros",
+        "Casa o refugio",
+        "Lugares pic-nic",
+        "Orilla curso de agua",
+        "Camino secundario"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Combustible inicial",
+      "null_count": 17693,
+      "null_pct": 25.81,
+      "unique_count": 10,
+      "samples": [
+        "Pastizal",
+        "Matorral",
+        "Desechos",
+        "Plantacion eucaliptus",
+        "Otras plantaciones"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Predio",
+      "null_count": 17689,
+      "null_pct": 25.81,
+      "unique_count": 14542,
+      "samples": [
+        "FISCAL",
+        "TERRENO FISCAL",
+        "PARTICULAR",
+        "SIN INFORMACIÓN",
+        "PARCELA 6 LIMARÍ"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Propietario predio",
+      "null_count": 17731,
+      "null_pct": 25.87,
+      "unique_count": 16577,
+      "samples": [
+        "FISCAL",
+        "TERRENO FISCAL",
+        "PEDRO ARAYA",
+        "ISRAEL ARAYA",
+        "PILAR MUNDACA"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Causa General",
+      "null_count": 365,
+      "null_pct": 0.53,
+      "unique_count": 36,
+      "samples": [
+        "4.1 - Incendios de causa desconocida",
+        "1.2 - Faenas agrícolas y pecuarias",
+        "1.7 - Tránsito de personas  vehículos o aeronaves",
+        "2.1 - Incendios intencionales",
+        "1.1 - Faenas forestales"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Causa Específica",
+      "null_count": 2333,
+      "null_pct": 3.4,
+      "unique_count": 176,
+      "samples": [
+        "4.1.1. Desconocida (se investiga pero no es posible establecer la causa origen)",
+        "1.2.4. Quema ilegal con otros fines agrícola (quema sanitaria  otras)",
+        "1.7.1. Uso de fuego por transeúntes",
+        "2.1.11. Otros intencionales no clasificados",
+        "1.1.10. Quema ilegal para reducción de combustible (silvicultura preventiva)"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Pino 0 a 10",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 925,
+      "samples": [
+        "0.0",
+        "3.43",
+        "0.05",
+        "0.02",
+        "0.1"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Pino 11 a 17",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 762,
+      "samples": [
+        "0.0",
+        "0.9",
+        "0.08",
+        "0.01",
+        "0.83"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Pino 18 o más",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 809,
+      "samples": [
+        "0.0",
+        "26.1",
+        "0.5",
+        "0.83",
+        "0.2"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Eucalipto",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 1405,
+      "samples": [
+        "0.0",
+        "0.2",
+        "0.01",
+        "0.5",
+        "0.3"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Otras plantaciones",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 234,
+      "samples": [
+        "0.0",
+        "0.01",
+        "2.5",
+        "0.7",
+        "0.15"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Subtotal plantaciones",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 2206,
+      "samples": [
+        "0.0",
+        "0.01",
+        "0.2",
+        "0.5",
+        "0.3"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Arbolado",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 1268,
+      "samples": [
+        "10.0",
+        "0.0",
+        "0.01",
+        "0.3",
+        "0.5"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Matorral",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 2507,
+      "samples": [
+        "4.0",
+        "0.0",
+        "0.01",
+        "0.2",
+        "0.08"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Pastizal",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 1783,
+      "samples": [
+        "1.0",
+        "0.0",
+        "0.1",
+        "0.02",
+        "0.2"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Subtotal vegetación natural",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 3484,
+      "samples": [
+        "15.0",
+        "0.0",
+        "0.01",
+        "0.3",
+        "0.1"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Agrícola",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 568,
+      "samples": [
+        "0.0",
+        "0.2",
+        "0.1",
+        "0.09",
+        "1.0"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Desechos",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 1080,
+      "samples": [
+        "0.0",
+        "0.11",
+        "0.02",
+        "0.05",
+        "12.0"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Subtotal otras superficies",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 1397,
+      "samples": [
+        "0.0",
+        "0.11",
+        "0.02",
+        "0.05",
+        "12.0"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Superficie total",
+      "null_count": 1,
+      "null_pct": 0.0,
+      "unique_count": 4432,
+      "samples": [
+        "15.0",
+        "0.01",
+        "0.3",
+        "0.1",
+        "1.0"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Snaspe",
+      "null_count": 67857,
+      "null_pct": 98.99,
+      "unique_count": 63,
+      "samples": [
+        "Bosque Fray Jorge",
+        "Pichasca",
+        "Rapa Nui",
+        "Río Blanco",
+        "Lago Peñuelas"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "BOEN/BOSC/BOFR/BOCT",
+      "null_count": 64238,
+      "null_pct": 93.72,
+      "unique_count": 4,
+      "samples": [
+        "BOSC",
+        "BOEN",
+        "BOFR",
+        "BOCT"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Inicio",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 66103,
+      "samples": [
+        "2014-11-16 11:00:00",
+        "2014-11-26 12:15:00",
+        "2014-11-26 18:45:00",
+        "2014-12-01 15:40:00",
+        "2014-12-01 17:00:00"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Detección",
+      "null_count": 785,
+      "null_pct": 1.15,
+      "unique_count": 65854,
+      "samples": [
+        "2014-11-16 11:15:00",
+        "2014-11-26 12:30:00",
+        "2014-11-26 19:00:00",
+        "2014-12-01 15:45:00",
+        "2014-12-01 17:10:00"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Aviso",
+      "null_count": 122,
+      "null_pct": 0.18,
+      "unique_count": 66370,
+      "samples": [
+        "2014-11-16 11:30:00",
+        "2014-11-26 12:48:00",
+        "2014-11-26 19:07:00",
+        "2014-12-01 15:45:00",
+        "2014-12-01 17:30:00"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Despacho",
+      "null_count": 7007,
+      "null_pct": 10.22,
+      "unique_count": 59771,
+      "samples": [
+        "2014-11-16 12:00:00",
+        "2014-11-26 12:55:00",
+        "2014-11-26 19:07:00",
+        "2014-12-01 15:50:00",
+        "2014-12-01 17:30:00"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Salida",
+      "null_count": 18248,
+      "null_pct": 26.62,
+      "unique_count": 48966,
+      "samples": [
+        "2014-11-16 12:00:00",
+        "2014-11-26 12:58:00",
+        "2014-11-26 19:10:00",
+        "2014-12-01 15:50:00",
+        "2014-12-01 17:40:00"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Arribo",
+      "null_count": 18276,
+      "null_pct": 26.66,
+      "unique_count": 48688,
+      "samples": [
+        "2014-11-16 14:00:00",
+        "2014-11-26 14:02:00",
+        "2014-11-26 19:10:00",
+        "2014-12-01 16:25:00",
+        "2014-12-01 17:50:00"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Primer ataque",
+      "null_count": 1443,
+      "null_pct": 2.11,
+      "unique_count": 64826,
+      "samples": [
+        "2014-11-16 15:15:00",
+        "2014-11-26 14:03:00",
+        "2014-11-26 19:15:00",
+        "2014-12-01 16:29:00",
+        "2014-12-01 17:55:00"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Control",
+      "null_count": 606,
+      "null_pct": 0.88,
+      "unique_count": 64747,
+      "samples": [
+        "2014-11-16 17:58:00",
+        "2014-11-26 14:15:00",
+        "2014-11-26 20:20:00",
+        "2014-12-01 16:29:00",
+        "2014-12-01 19:37:00"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Extinción",
+      "null_count": 111,
+      "null_pct": 0.16,
+      "unique_count": 61061,
+      "samples": [
+        "2014-11-17 11:15:00",
+        "2014-11-26 14:15:00",
+        "2014-11-26 20:45:00",
+        "2014-12-01 17:30:00",
+        "2014-12-01 20:25:00"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Arribo Superficie afectada ha",
+      "null_count": 48032,
+      "null_pct": 70.07,
+      "unique_count": 530,
+      "samples": [
+        "2.0",
+        "0.03",
+        "0.4",
+        "1.8",
+        "0.1"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Primer ataque Superficie afectada ha",
+      "null_count": 20970,
+      "null_pct": 30.59,
+      "unique_count": 860,
+      "samples": [
+        "10.0",
+        "0.01",
+        "0.02",
+        "0.1",
+        "0.05"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Control Superficie afectada ha",
+      "null_count": 2093,
+      "null_pct": 3.05,
+      "unique_count": 3800,
+      "samples": [
+        "15.0",
+        "0.01",
+        "0.1",
+        "1.0",
+        "0.3"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Rango horario",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 24,
+      "samples": [
+        "11",
+        "13",
+        "19",
+        "16",
+        "17"
+      ],
+      "dtype": "int64"
+    },
+    {
+      "name": "Duración (horas)",
+      "null_count": 111,
+      "null_pct": 0.16,
+      "unique_count": 6423,
+      "samples": [
+        "24.3",
+        "2.0",
+        "1.8",
+        "3.4",
+        "4.5"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Día de inicio",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 7,
+      "samples": [
+        "Domingo",
+        "Miércoles",
+        "Lunes",
+        "Martes",
+        "Sábado"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Día de semana",
+      "null_count": 5958,
+      "null_pct": 8.69,
+      "unique_count": 7,
+      "samples": [
+        "7.0",
+        "3.0",
+        "1.0",
+        "2.0",
+        "6.0"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Estación Meteorólogica",
+      "null_count": 33602,
+      "null_pct": 49.02,
+      "unique_count": 6141,
+      "samples": [
+        "kestrel",
+        "RODELILLO - PALMA 1",
+        "RODELILLO",
+        "METEORED",
+        "AERODROMO SANTO DOMINGO"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Fecha Meteorólogica",
+      "null_count": 33461,
+      "null_pct": 48.82,
+      "unique_count": 32280,
+      "samples": [
+        "2017-04-25 16:55:00",
+        "2017-04-25 17:15:00",
+        "2017-04-27 15:04:00",
+        "2017-04-27 16:00:00",
+        "2017-04-28 15:24:00"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Temperatura",
+      "null_count": 8224,
+      "null_pct": 12.0,
+      "unique_count": 418,
+      "samples": [
+        "27.0",
+        "28.0",
+        "23.0",
+        "18.0",
+        "25.0"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Nubosidad",
+      "null_count": 5257,
+      "null_pct": 7.67,
+      "unique_count": 10,
+      "samples": [
+        "0.0",
+        "8.0",
+        "-1.0",
+        "6.0",
+        "1.0"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Humedad",
+      "null_count": 8259,
+      "null_pct": 12.05,
+      "unique_count": 919,
+      "samples": [
+        "38.0",
+        "32.0",
+        "45.0",
+        "76.0",
+        "28.0"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Exposición",
+      "null_count": 19594,
+      "null_pct": 28.59,
+      "unique_count": 9,
+      "samples": [
+        "N",
+        "S",
+        "E",
+        "SW",
+        "Plano"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Dirección viento",
+      "null_count": 8631,
+      "null_pct": 12.59,
+      "unique_count": 9,
+      "samples": [
+        "W",
+        "NE",
+        "SW",
+        "S",
+        "SE"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Velocidad viento",
+      "null_count": 8780,
+      "null_pct": 12.81,
+      "unique_count": 594,
+      "samples": [
+        "20.0",
+        "4.0",
+        "8.0",
+        "3.0",
+        "10.0"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Topografía",
+      "null_count": 20282,
+      "null_pct": 29.59,
+      "unique_count": 3,
+      "samples": [
+        "Abrupta",
+        "Suave",
+        "Irregular"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Pendiente",
+      "null_count": 5257,
+      "null_pct": 7.67,
+      "unique_count": 158,
+      "samples": [
+        "10 %",
+        "60 %",
+        "0 %",
+        "5 %",
+        "15 %"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "ruta",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 10,
+      "samples": [
+        "Base de datos incendios forestales Geprif_2014-2015.xlsx",
+        "Base de datos incendios forestales Geprif_2015-2016.xlsx",
+        "Base de datos incendios forestales Geprif_2016-2017.xlsx",
+        "Base de datos incendios forestales Geprif_2017-2018.xlsx",
+        "Base de datos incendios forestales Geprif_2018-2019.xlsx"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Rebrote",
+      "null_count": 68469,
+      "null_pct": 99.89,
+      "unique_count": 75,
+      "samples": [
+        "16-ene-2017 16:02",
+        "2-nov-2016 11:55",
+        "4-nov-2016 20:16",
+        "28-nov-2016 13:34",
+        "28-nov-2016 22:11"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Grupo de Causa",
+      "null_count": 62932,
+      "null_pct": 91.81,
+      "unique_count": 5,
+      "samples": [
+        "5 - Indeterminadas",
+        "4 - Negligentes",
+        "2 - Intencionales",
+        "1 - Accidentales",
+        "3 - Naturales"
+      ],
+      "dtype": "object"
+    },
+    {
+      "name": "Codcom",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 319,
+      "samples": [
+        "4305",
+        "4301",
+        "4101",
+        "4204",
+        "4102"
+      ],
+      "dtype": "int64"
+    },
+    {
+      "name": "Lat Calculada",
+      "null_count": 8,
+      "null_pct": 0.01,
+      "unique_count": 23577,
+      "samples": [
+        "-30.285833333333336",
+        "-30.691388888888888",
+        "-30.630277777777778",
+        "-29.921666666666667",
+        "-30.61888888888889"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "Lon Calculada",
+      "null_count": 8,
+      "null_pct": 0.01,
+      "unique_count": 11996,
+      "samples": [
+        "-70.64361111111111",
+        "-71.08194444444445",
+        "-71.40194444444445",
+        "-71.23916666666666",
+        "-71.19805555555556"
+      ],
+      "dtype": "float64"
+    },
+    {
+      "name": "temporada",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 10,
+      "samples": [
+        "2014 al 2015",
+        "2015 al 2016",
+        "2016 al 2017",
+        "2017 al 2018",
+        "2018 al 2019"
+      ],
+      "dtype": "object"
+    }
+  ]
+}

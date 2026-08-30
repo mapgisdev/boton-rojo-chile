@@ -1,0 +1,42 @@
+project:
+  name: brhr
+  timezone_main: America/Santiago
+  timezone_easter_island: Pacific/Easter
+
+spatial:
+  h3_resolution_operational: 8
+  h3_resolution_experimental: 9
+  internal_grid_m: 250
+  dem_target_m: 30
+
+boton_rojo:
+  local_hours: [14, 15, 16, 17, 18]
+  pi_threshold_baseline: 70
+  wind_threshold_kmh_baseline: 20
+
+sampling:
+  spatial_controls_per_positive: 10
+  temporal_controls_per_positive: 5
+  random_seed: 20260828
+
+splits:
+  train_seasons:
+    - 2014-2015
+    - 2015-2016
+    - 2016-2017
+    - 2017-2018
+    - 2018-2019
+    - 2019-2020
+    - 2020-2021
+  validation_seasons:
+    - 2021-2022
+  test_seasons:
+    - 2022-2023
+    - 2023-2024
+
+forecast:
+  horizons_days: [1, 2, 3, 4, 5]
+
+outputs:
+  derived_format: parquet
+  run_prefix: BRHR

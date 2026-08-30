@@ -1,0 +1,23 @@
+# Insumos pesados originales (solo lectura local)
+insumos/Boton_Rojo.zip
+insumos/Consolidado_incendios_2014_2024_temporada(1).csv
+
+# Archivos de trabajo temporales
+work/
+.cache/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Secretos y credenciales privadas (se configuran en variables de entorno en la nube)
+.env
+*.pem
+*service-account*.json
+credentials*.json
+insumos/*.json
+*.json.key
+secrets/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

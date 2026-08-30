@@ -1,0 +1,539 @@
+{
+  "type": "FeatureCollection",
+  "total_active_hotspots": 23,
+  "source": "NASA FIRMS (VIIRS 375m NRT)",
+  "territory": "Chile Continental e Insular (Filtrado por Frontera Oficial)",
+  "timezone_reference": "America/Santiago (CLT / CLST)",
+  "updated_at": "2026-08-30 19:16:49 UTC",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8605,
+          -52.8817
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 309.99,
+        "brightness_c": 36.8,
+        "frp_mw": 0.93,
+        "confidence": "Nominal",
+        "date": "2026-08-29",
+        "time_utc": "04:46 UTC",
+        "time_local": "29/08/2026 00:46 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3167,
+          -23.8248
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 306.04,
+        "brightness_c": 32.9,
+        "frp_mw": 1.23,
+        "confidence": "Nominal",
+        "date": "2026-08-29",
+        "time_utc": "06:18 UTC",
+        "time_local": "29/08/2026 02:18 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8823,
+          -22.3171
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 333.53,
+        "brightness_c": 60.4,
+        "frp_mw": 7.08,
+        "confidence": "Nominal",
+        "date": "2026-08-29",
+        "time_utc": "06:18 UTC",
+        "time_local": "29/08/2026 02:18 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.4584,
+          -34.1058
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 326.27,
+        "brightness_c": 53.1,
+        "frp_mw": 3.59,
+        "confidence": "Nominal",
+        "date": "2026-08-29",
+        "time_utc": "06:20 UTC",
+        "time_local": "29/08/2026 02:20 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.9531,
+          -32.8026
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 325.12,
+        "brightness_c": 52.0,
+        "frp_mw": 1.96,
+        "confidence": "Nominal",
+        "date": "2026-08-29",
+        "time_utc": "18:43 UTC",
+        "time_local": "29/08/2026 14:43 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8793,
+          -22.317
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 326.35,
+        "brightness_c": 53.2,
+        "frp_mw": 7.88,
+        "confidence": "Nominal",
+        "date": "2026-08-30",
+        "time_utc": "05:57 UTC",
+        "time_local": "30/08/2026 01:57 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.883,
+          -22.3164
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 295.97,
+        "brightness_c": 22.8,
+        "frp_mw": 5.81,
+        "confidence": "Nominal",
+        "date": "2026-08-30",
+        "time_utc": "05:57 UTC",
+        "time_local": "30/08/2026 01:57 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8861,
+          -22.3125
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 302.07,
+        "brightness_c": 28.9,
+        "frp_mw": 1.02,
+        "confidence": "Nominal",
+        "date": "2026-08-30",
+        "time_utc": "05:57 UTC",
+        "time_local": "30/08/2026 01:57 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.4568,
+          -34.1068
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 335.3,
+        "brightness_c": 62.2,
+        "frp_mw": 6.35,
+        "confidence": "Nominal",
+        "date": "2026-08-30",
+        "time_utc": "06:01 UTC",
+        "time_local": "30/08/2026 02:01 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8826,
+          -22.3147
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 318.96,
+        "brightness_c": 45.8,
+        "frp_mw": 3.38,
+        "confidence": "Nominal",
+        "date": "2026-08-29",
+        "time_utc": "04:55 UTC",
+        "time_local": "29/08/2026 00:55 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.4563,
+          -34.1031
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 343.41,
+        "brightness_c": 70.3,
+        "frp_mw": 6.82,
+        "confidence": "Nominal",
+        "date": "2026-08-29",
+        "time_utc": "04:59 UTC",
+        "time_local": "29/08/2026 00:59 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8604,
+          -52.8799
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 312.8,
+        "brightness_c": 39.7,
+        "frp_mw": 1.56,
+        "confidence": "Nominal",
+        "date": "2026-08-29",
+        "time_utc": "05:04 UTC",
+        "time_local": "29/08/2026 01:04 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8861,
+          -22.3163
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 313.15,
+        "brightness_c": 40.0,
+        "frp_mw": 5.22,
+        "confidence": "Nominal",
+        "date": "2026-08-29",
+        "time_utc": "06:35 UTC",
+        "time_local": "29/08/2026 02:35 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8836,
+          -22.3134
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 352.09,
+        "brightness_c": 78.9,
+        "frp_mw": 7.28,
+        "confidence": "Nominal",
+        "date": "2026-08-29",
+        "time_utc": "06:35 UTC",
+        "time_local": "29/08/2026 02:35 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3189,
+          -23.8237
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 305.32,
+        "brightness_c": 32.2,
+        "frp_mw": 1.29,
+        "confidence": "Nominal",
+        "date": "2026-08-29",
+        "time_utc": "06:37 UTC",
+        "time_local": "29/08/2026 02:37 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.4615,
+          -34.1077
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 322.8,
+        "brightness_c": 49.7,
+        "frp_mw": 2.8,
+        "confidence": "Nominal",
+        "date": "2026-08-29",
+        "time_utc": "06:40 UTC",
+        "time_local": "29/08/2026 02:40 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.859,
+          -52.8804
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 333.38,
+        "brightness_c": 60.2,
+        "frp_mw": 2.95,
+        "confidence": "Nominal",
+        "date": "2026-08-29",
+        "time_utc": "18:56 UTC",
+        "time_local": "29/08/2026 14:56 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.4603,
+          -34.1044
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 306.25,
+        "brightness_c": 33.1,
+        "frp_mw": 2.28,
+        "confidence": "Nominal",
+        "date": "2026-08-30",
+        "time_utc": "04:40 UTC",
+        "time_local": "30/08/2026 00:40 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.4556,
+          -34.1012
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 305.6,
+        "brightness_c": 32.5,
+        "frp_mw": 2.79,
+        "confidence": "Nominal",
+        "date": "2026-08-30",
+        "time_utc": "04:40 UTC",
+        "time_local": "30/08/2026 00:40 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8805,
+          -22.3181
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 337.12,
+        "brightness_c": 64.0,
+        "frp_mw": 11.07,
+        "confidence": "Nominal",
+        "date": "2026-08-30",
+        "time_utc": "06:18 UTC",
+        "time_local": "30/08/2026 02:18 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.954,
+          -32.8035
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 302.2,
+        "brightness_c": 29.1,
+        "frp_mw": 1.24,
+        "confidence": "Nominal",
+        "date": "2026-08-30",
+        "time_utc": "06:20 UTC",
+        "time_local": "30/08/2026 02:20 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.3679,
+          -29.9995
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 296.68,
+        "brightness_c": 23.5,
+        "frp_mw": 0.35,
+        "confidence": "Nominal",
+        "date": "2026-08-30",
+        "time_utc": "06:20 UTC",
+        "time_local": "30/08/2026 02:20 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.4587,
+          -34.1043
+        ]
+      },
+      "properties": {
+        "sensor": "VIIRS 375m NRT",
+        "satellite": "SNPP / NOAA-20",
+        "brightness_k": 312.64,
+        "brightness_c": 39.5,
+        "frp_mw": 2.6,
+        "confidence": "Nominal",
+        "date": "2026-08-30",
+        "time_utc": "06:22 UTC",
+        "time_local": "30/08/2026 02:22 hrs",
+        "pais": "Chile",
+        "tipo": "\ud83d\udef0\ufe0f Foco Activo Satelital (NASA FIRMS)"
+      }
+    }
+  ]
+}

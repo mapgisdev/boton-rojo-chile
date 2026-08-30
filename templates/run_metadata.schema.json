@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BRHR Run Metadata",
+  "type": "object",
+  "required": [
+    "run_id",
+    "model_version",
+    "created_at",
+    "valid_times",
+    "code_commit"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "model_version": {
+      "type": "string"
+    },
+    "input_cycle": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "valid_times": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    "horizons_days": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "data_versions": {
+      "type": "object"
+    },
+    "code_commit": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

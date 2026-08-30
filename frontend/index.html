@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Botón Rojo Chile — Alta Resolución (BR-HR 2026)</title>
+  
+  <!-- MapLibre GL JS CSS & JS -->
+  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header Institucional -->
+  <header class="app-header">
+    <div class="header-brand">
+      <span class="brand-icon">🔥</span>
+      <div class="brand-text">
+        <h1>Botón Rojo Chile <span class="badge-version">Versión 2026</span></h1>
+        <p class="subtitle">Alertas de Incendios Forestales por Comuna</p>
+      </div>
+    </div>
+
+    <!-- KPIs Rápidos -->
+    <div class="header-kpis">
+      <div class="kpi-card card-red">
+        <span class="kpi-label">Comunas Alerta Roja</span>
+        <span class="kpi-value" id="kpi-red-communes">--</span>
+      </div>
+      <div class="kpi-card card-yellow">
+        <span class="kpi-label">Alerta Amarilla</span>
+        <span class="kpi-value" id="kpi-yellow-communes">--</span>
+      </div>
+      <div class="kpi-card card-blue">
+        <span class="kpi-label">Territorio en Riesgo</span>
+        <span class="kpi-value" id="kpi-risk-pct">-- %</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenedor Principal -->
+  <main class="app-main">
+    <!-- Panel Lateral Izquierdo -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-section">
+        <h3>📅 Monitoreo actual y eventos históricos</h3>
+        <label for="event-select" class="form-label">Escenarios Históricos y Pronóstico:</label>
+        <select id="event-select" class="form-select">
+          <optgroup label="🚨 Megaincendios Catastróficos:">
+            <option value="2023-02-03" selected>🔴 2023-02-03 (Megaincendios Biobío/Ñuble/Araucanía)</option>
+            <option value="2024-02-02">🔴 2024-02-02 (Megaincendio Viña del Mar/Quilpué)</option>
+            <option value="2017-01-20">🔴 2017-01-20 (Tormenta Las Máquinas - 211.000 ha)</option>
+          </optgroup>
+          <optgroup label="🔥 Actividad de Verano Moderada:">
+            <option value="2023-01-15">🟠 2023-01-15 (Día Típico de Verano - Focos Dispersos)</option>
+            <option value="2020-02-09">🟠 2020-02-09 (Ola de Calor Focalizada La Araucanía)</option>
+          </optgroup>
+          <optgroup label="🌱 Primavera / Riesgo Inicial:">
+            <option value="2023-11-15">🟡 2023-11-15 (Primavera Central - Alerta Preventiva)</option>
+          </optgroup>
+          <optgroup label="❄️ Invierno / Condición Normal:">
+            <option value="2023-07-15">🟢 2023-07-15 (Invierno Austral - 0 Alertas / 100% Verde)</option>
+          </optgroup>
+          <optgroup label="🌐 Monitoreo Operativo:">
+            <option value="LATEST">🌐 Pronóstico Hoy (Tiempo Real / GFS + FIRMS)</option>
+          </optgroup>
+        </select>
+        <div id="status-date-info" class="status-badge">Cargando datos...</div>
+      </div>
+
+      <!-- Control de Capas -->
+      <div class="sidebar-section">
+        <h3>🗺️ Capas Operativas</h3>
+        <!-- Capa Principal Comunal (Superior) -->
+        <div class="layer-item highlight-layer">
+          <input type="checkbox" id="layer-comunas" checked />
+          <label for="layer-comunas" id="label-layer-comunas"><strong>🏛️ Comunas en Botón Rojo (0)</strong></label>
+        </div>
+
+        <hr class="divider" />
+        <div class="layer-group-title">Detalle Sectorial (Hexágonos H3 Res 7):</div>
+        
+        <div class="layer-item">
+          <input type="checkbox" id="layer-h3-red" />
+          <label for="layer-h3-red"><span class="color-dot red"></span> Hexágonos en Botón Rojo</label>
+        </div>
+        <div class="layer-item">
+          <input type="checkbox" id="layer-h3-yellow" />
+          <label for="layer-h3-yellow"><span class="color-dot yellow"></span> Hexágonos en Alerta Amarilla</label>
+        </div>
+
+        <hr class="divider" />
+        <div class="layer-group-title">Mapas de Calor Continuos (KDE):</div>
+
+        <div class="layer-item">
+          <input type="checkbox" id="layer-alert-kde" />
+          <label for="layer-alert-kde"><span class="color-dot orange"></span> Mapa de Calor: Alerta Botón Rojo</label>
+        </div>
+
+        <hr class="divider" />
+        <div class="layer-group-title">Monitoreo Satelital (NASA FIRMS):</div>
+
+        <div class="layer-item">
+          <input type="checkbox" id="layer-firms" />
+          <label for="layer-firms"><span class="color-dot red"></span> 🛰️ Focos Satelitales (NASA FIRMS / VIIRS)</label>
+        </div>
+        <div class="layer-item">
+          <input type="checkbox" id="layer-firms-kde" />
+          <label for="layer-firms-kde"><span class="color-dot orange"></span> 🛰️ Mapa de Calor Satelital (NASA FIRMS)</label>
+        </div>
+
+        <hr class="divider" />
+        <div class="layer-group-title">Evidencia Histórica (CONAF):</div>
+
+        <div class="layer-item">
+          <input type="checkbox" id="layer-fires-all" />
+          <label for="layer-fires-all"><span class="color-dot orange"></span> 🔥 Todos los Focos de Incendio (CONAF)</label>
+        </div>
+        <div class="layer-item">
+          <input type="checkbox" id="layer-fires" />
+          <label for="layer-fires"><span class="color-dot purple"></span> 🟣 Grandes y Megaincendios (≥ 200 ha)</label>
+        </div>
+        <div class="layer-item">
+          <input type="checkbox" id="layer-fires-kde" />
+          <label for="layer-fires-kde"><span class="color-dot purple"></span> 🟣 Mapa de Calor: Incendios Ocurridos (KDE)</label>
+        </div>
+      </div>
+
+      <!-- Leyendas Dinámicas -->
+      <div class="sidebar-section" id="legend-section">
+        <h3>📋 Leyenda de Alerta Comunal</h3>
+        <div class="legend-content" id="legend-container">
+          <div class="legend-row">
+            <span class="legend-box com-red"></span>
+            <div>
+              <strong>Comuna en Alerta Roja</strong>
+              <small>≥ 30% de superficie en condición Botón Rojo.</small>
+            </div>
+          </div>
+          <div class="legend-row">
+            <span class="legend-box com-yellow"></span>
+            <div>
+              <strong>Comuna en Alerta Amarilla</strong>
+              <small>10% a 29% de superficie en riesgo severo.</small>
+            </div>
+          </div>
+          <div class="legend-row">
+            <span class="legend-box com-green"></span>
+            <div>
+              <strong>Condición Normal</strong>
+              <small>Sin concentración crítica de combustible seco y viento.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ranking Comunal Crítico -->
+      <div class="sidebar-section">
+        <div class="section-header-flex">
+          <h3>🏛️ Comunas más Afectadas</h3>
+          <div class="header-actions-flex">
+            <button id="btn-reset-view" class="btn-reset hidden" title="Restaurar vista de todas las comunas">🔄 Limpiar</button>
+            <input type="text" id="commune-search" placeholder="Buscar..." class="search-input" />
+          </div>
+        </div>
+        <div class="communes-table-container">
+          <table class="communes-table" id="communes-table">
+            <thead>
+              <tr>
+                <th>Comuna</th>
+                <th>Región</th>
+                <th>% Rojo</th>
+                <th>Alerta</th>
+              </tr>
+            </thead>
+            <tbody id="communes-tbody">
+              <tr><td colspan="4" class="text-center">Cargando comunas...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mapa Interactivo MapLibre -->
+    <div id="map" class="map-container">
+      <!-- Inspector Flotante de Clic -->
+      <div id="inspector-card" class="inspector-card hidden">
+        <button id="btn-close-inspector" class="btn-close">&times;</button>
+        <h4 id="insp-title">📍 Detalle Territorial</h4>
+        <div id="insp-content">Haz clic en una comuna o sector de alerta.</div>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

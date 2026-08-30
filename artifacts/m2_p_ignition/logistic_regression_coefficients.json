@@ -1,0 +1,18 @@
+{
+  "coefficients": {
+    "temperature_c": -0.005,
+    "relative_humidity_pct": 0.0075,
+    "wind_speed_kmh": 0.0073,
+    "vpd_kpa": 0.0227,
+    "hcfm_pct": 0.0075,
+    "pi_m0_pct": 0.0132,
+    "slope_degrees": 0.0068,
+    "elevation_m": -0.017,
+    "fuel_forest_fraction": -0.0007,
+    "fuel_shrub_fraction": 0.0108,
+    "fuel_grass_fraction": 0.003,
+    "fuel_total_fraction": -0.0025,
+    "prior_fire_density_h3": 0.1701
+  },
+  "intercept": -0.7264365692785688
+}

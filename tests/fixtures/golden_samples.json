@@ -1,0 +1,62 @@
+{
+  "description": "Vectores de prueba dorados (Golden Samples) para regresión del baseline M0 BR-CONAF",
+  "version": "1.0",
+  "cases": [
+    {
+      "name": "verano_chile_central_critico",
+      "inputs": { "temp_c": 32.0, "hr_pct": 20.0, "u10": 5.0, "v10": 5.0, "hs": 200.0 },
+      "expected": {
+        "hcfm": 5.223,
+        "viento_kmh": 25.456,
+        "reclass_a": 8,
+        "reclass_c": 6000,
+        "reclass_g": 100,
+        "clave": 6108,
+        "pi_pct": 59.6,
+        "boton_rojo": false
+      }
+    },
+    {
+      "name": "ola_calor_extrema_activacion",
+      "inputs": { "temp_c": 36.0, "hr_pct": 14.0, "u10": 6.0, "v10": 4.0, "hs": 200.0 },
+      "expected": {
+        "hcfm": 3.612,
+        "viento_kmh": 25.960,
+        "reclass_a": 9,
+        "reclass_c": 4000,
+        "reclass_g": 100,
+        "clave": 4109,
+        "pi_pct": 80.8,
+        "boton_rojo": true
+      }
+    },
+    {
+      "name": "costero_humedo_seguro",
+      "inputs": { "temp_c": 18.0, "hr_pct": 75.0, "u10": 3.0, "v10": 2.0, "hs": 100.0 },
+      "expected": {
+        "hcfm": 19.771,
+        "viento_kmh": 12.980,
+        "reclass_a": 5,
+        "reclass_c": 17000,
+        "reclass_g": 200,
+        "clave": 17205,
+        "pi_pct": 7.8,
+        "boton_rojo": false
+      }
+    },
+    {
+      "name": "borde_termico_extremo_42c",
+      "inputs": { "temp_c": 42.0, "hr_pct": 10.0, "u10": 7.0, "v10": 3.0, "hs": 200.0 },
+      "expected": {
+        "hcfm": 2.505,
+        "viento_kmh": 27.417,
+        "reclass_a": 9,
+        "reclass_c": 3000,
+        "reclass_g": 100,
+        "clave": 3109,
+        "pi_pct": 92.3,
+        "boton_rojo": true
+      }
+    }
+  ]
+}
