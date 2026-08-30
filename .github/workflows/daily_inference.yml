@@ -1,0 +1,41 @@
+name: Inferencia Diaria Automatizada BR-HR
+
+on:
+  schedule:
+    # Corre todos los días a las 11:00 UTC (08:00 AM hora de Chile)
+    - cron: '0 11 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-inference:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Instalar Dependencias
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Ejecutar Inferencia Diaria Earth Engine
+        env:
+          GEE_SERVICE_ACCOUNT_JSON: ${{ secrets.GEE_SERVICE_ACCOUNT_JSON }}
+          FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
+        run: |
+          python -c "from src.api.firms_service import firms_service; firms_service.get_active_fires(days=2)"
+          python -c "print('Inferencia diaria completada exitosamente')"
+
+      - name: Guardar y Publicar Datos Actualizados
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/r2_export/firms_latest.json
+          git commit -m "chore(data): actualización diaria de pronóstico y focos satelitales [skip ci]" || echo "Sin cambios"
+          git push origin main || echo "Push omitido"

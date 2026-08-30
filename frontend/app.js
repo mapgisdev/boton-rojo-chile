@@ -93,22 +93,26 @@ async function loadInitialData() {
 
   try {
     // A. Cargar Límites Comunales Base
-    const comResp = await fetch("/data/r2_export/comunas_chile.geojson")
-      .catch(() => fetch("../data/r2_export/comunas_chile.geojson"))
-      .catch(() => null);
-    if (comResp) communesGeoJSON = await comResp.json();
+    communesGeoJSON = await safeFetchJSON([
+      "./data/r2_export/comunas_chile.geojson",
+      "/data/r2_export/comunas_chile.geojson",
+      "data/r2_export/comunas_chile.geojson"
+    ]);
 
     // B. Cargar Diccionario de Celdas H3 por Comuna
-    const lookupResp = await fetch("/data/r2_export/commune_h3_lookup.json")
-      .catch(() => fetch("../data/r2_export/commune_h3_lookup.json"))
-      .catch(() => null);
-    if (lookupResp) communeH3Lookup = await lookupResp.json();
+    communeH3Lookup = await safeFetchJSON([
+      "./data/r2_export/commune_h3_lookup.json",
+      "/data/r2_export/commune_h3_lookup.json",
+      "data/r2_export/commune_h3_lookup.json"
+    ]) || {};
 
     // C. Cargar Universo Histórico CONAF (68.187 eventos)
-    const allFiresResp = await fetch("/data/r2_export/incendios_historicos_all.json")
-      .catch(() => fetch("/data/r2_export/incendios_historicos_top.json"))
-      .catch(() => null);
-    if (allFiresResp) allFiresGeoJSON = await allFiresResp.json();
+    allFiresGeoJSON = await safeFetchJSON([
+      "./data/r2_export/incendios_historicos_all.json",
+      "/data/r2_export/incendios_historicos_all.json",
+      "./data/r2_export/incendios_historicos_top.json",
+      "/data/r2_export/incendios_historicos_top.json"
+    ]);
 
     // D. Inicializar Fuentes en MapLibre
     if (communesGeoJSON) {
@@ -425,10 +429,20 @@ async function loadInitialData() {
   }
 }
 
-// Helper de Fetch Resiliente con Múltiples Fallbacks
+// Helper de Fetch Resiliente con Múltiples Fallbacks (Compatible con Localhost, Cloudflare y GitHub Pages)
 async function safeFetchJSON(urls) {
-  for (const url of urls) {
-    if (!url) continue;
+  const candidateUrls = [];
+  for (const u of urls) {
+    if (!u) continue;
+    candidateUrls.push(u);
+    if (u.startsWith("/")) {
+      candidateUrls.push("." + u);
+      candidateUrls.push(u.substring(1));
+      candidateUrls.push("../" + u.substring(1));
+    }
+  }
+
+  for (const url of candidateUrls) {
     try {
       const resp = await fetch(url);
       if (resp.ok) {
