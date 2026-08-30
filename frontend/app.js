@@ -696,29 +696,43 @@ function synthesizeDateForecast(dateStr, firesData) {
   };
 }
 
-// 4. Vincular Alertas a Comunas
+// 4. Vincular Alertas a Comunas con Normalización de Acentos y Códigos CUT
 function vincularAlertasAComunas() {
   if (!communesGeoJSON || !communesList || communesList.length === 0) return;
 
   const comMap = {};
   communesList.forEach(c => {
-    if (c.comuna) comMap[c.comuna.toLowerCase().trim()] = c;
-    if (c.codcom) comMap[String(c.codcom).trim()] = c;
+    if (c.comuna) {
+      const cNorm = c.comuna.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+      comMap[cNorm] = c;
+      comMap[c.comuna.toLowerCase().trim()] = c;
+    }
+    if (c.codcom) {
+      const strCod = String(c.codcom).trim();
+      comMap[strCod] = c;
+      comMap[String(parseInt(strCod, 10))] = c;
+    }
   });
 
   communesGeoJSON.features.forEach(feat => {
-    const name = (feat.properties.comuna || feat.properties.Comuna || "").toLowerCase().trim();
-    const cod = String(feat.properties.cod_comuna || feat.properties.codcom || "").trim();
-    const match = comMap[name] || comMap[cod];
+    const rawName = feat.properties.comuna || feat.properties.Comuna || feat.properties.NOM_COM || "";
+    const name = rawName.toLowerCase().trim();
+    const nameNorm = name.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const cod = String(feat.properties.cod_comuna || feat.properties.codcom || feat.properties.CUT || "").trim();
+    const codInt = String(parseInt(cod, 10));
+
+    const match = comMap[cod] || comMap[codInt] || comMap[nameNorm] || comMap[name];
 
     if (match) {
       feat.properties.pct_rojo = match.pct_superficie_roja || 0;
+      feat.properties.pct_amarillo = match.pct_superficie_amarilla || 0;
       feat.properties.alerta = match.alerta_comunal || "NORMAL";
       feat.properties.total_h3 = match.total_hexagons || match.total_cells || 0;
       feat.properties.red_h3 = match.red_hexagons || match.red_cells_count || 0;
       feat.properties.region_name = match.region || feat.properties.region || feat.properties.Region || "";
     } else {
       feat.properties.pct_rojo = 0;
+      feat.properties.pct_amarillo = 0;
       feat.properties.alerta = "NORMAL";
       feat.properties.total_h3 = 0;
       feat.properties.red_h3 = 0;

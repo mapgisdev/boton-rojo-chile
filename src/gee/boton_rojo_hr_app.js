@@ -240,10 +240,47 @@ function cargarFecha(fechaStr) {
     Map.addLayer(mega.draw({color: "7209b7", pointRadius: 9, strokeWidth: 2}), {}, "🟣 Megaincendio (≥ 1.000 ha)", true);
 
     incendiosDelDia.size().evaluate(function(totalCount) {
-      statusLabel.setValue("📅 " + fechaStr + " | 🔥 CONAF: " + totalCount + " focos");
+      // Contar comunas en GEE
+      var comunasRojas = comunasConRiesgo.filter(ee.Filter.gte("rojo", 0.30));
+      var comunasAmarillas = comunasConRiesgo.filter(
+        ee.Filter.and(
+          ee.Filter.lt("rojo", 0.30),
+          ee.Filter.or(
+            ee.Filter.gte("amarillo", 0.25),
+            ee.Filter.gte("rojo", 0.10)
+          )
+        )
+      );
+
+      ee.Dictionary({
+        "rojas": comunasRojas.size(),
+        "amarillas": comunasAmarillas.size()
+      }).evaluate(function(counts) {
+        var nr = counts ? counts.rojas : 0;
+        var ny = counts ? counts.amarillas : 0;
+        statusLabel.setValue("📅 " + fechaStr + " | 🔴 Rojas: " + nr + " | 🟡 Amarillas: " + ny + " | 🔥 CONAF: " + totalCount);
+      });
     });
   } else {
-    statusLabel.setValue("📅 Pronóstico Hoy | 🌐 GFS + NASA FIRMS en Vivo");
+    var comunasRojasHoy = comunasConRiesgo.filter(ee.Filter.gte("rojo", 0.30));
+    var comunasAmarillasHoy = comunasConRiesgo.filter(
+      ee.Filter.and(
+        ee.Filter.lt("rojo", 0.30),
+        ee.Filter.or(
+          ee.Filter.gte("amarillo", 0.25),
+          ee.Filter.gte("rojo", 0.10)
+        )
+      )
+    );
+
+    ee.Dictionary({
+      "rojas": comunasRojasHoy.size(),
+      "amarillas": comunasAmarillasHoy.size()
+    }).evaluate(function(counts) {
+      var nr = counts ? counts.rojas : 0;
+      var ny = counts ? counts.amarillas : 0;
+      statusLabel.setValue("📅 Pronóstico Hoy | 🔴 Rojas: " + nr + " | 🟡 Amarillas: " + ny + " | 🌐 GFS + FIRMS");
+    });
   }
 
   actualizarLeyendas();
