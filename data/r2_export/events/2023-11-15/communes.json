@@ -4,20 +4,22 @@
     "comuna": "Algarrobo",
     "region": "Valpara\u00edso",
     "total_hexagons": 60,
-    "red_hexagons": 0,
-    "yellow_hexagons": 3,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 2,
+    "yellow_hexagons": 58,
+    "pct_superficie_roja": 3.3,
+    "pct_superficie_amarilla": 96.7,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "13502",
     "comuna": "Alhu\u00e9",
     "region": "Metropolitana",
     "total_hexagons": 69,
-    "red_hexagons": 0,
-    "yellow_hexagons": 7,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 1,
+    "yellow_hexagons": 28,
+    "pct_superficie_roja": 1.4,
+    "pct_superficie_amarilla": 40.6,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "8314",
@@ -27,6 +29,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -37,6 +40,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -47,6 +51,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -57,6 +62,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -67,6 +73,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -77,6 +84,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -87,6 +95,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -97,6 +106,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -107,6 +117,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -115,29 +126,32 @@
     "region": "Metropolitana",
     "total_hexagons": 1,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 100.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "13401",
     "comuna": "Buin",
     "region": "Metropolitana",
     "total_hexagons": 1,
-    "red_hexagons": 0,
+    "red_hexagons": 1,
     "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "13402",
     "comuna": "Buin",
     "region": "Metropolitana",
     "total_hexagons": 64,
-    "red_hexagons": 0,
-    "yellow_hexagons": 2,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 63,
+    "yellow_hexagons": 1,
+    "pct_superficie_roja": 98.4,
+    "pct_superficie_amarilla": 1.6,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "16102",
@@ -147,6 +161,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -157,6 +172,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -165,8 +181,9 @@
     "region": "Valpara\u00edso",
     "total_hexagons": 19,
     "red_hexagons": 0,
-    "yellow_hexagons": 3,
+    "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -177,6 +194,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -187,6 +205,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -197,6 +216,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -207,6 +227,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -217,6 +238,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -227,6 +249,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -237,6 +260,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -244,30 +268,33 @@
     "comuna": "Calera",
     "region": "Valpara\u00edso",
     "total_hexagons": 39,
-    "red_hexagons": 0,
-    "yellow_hexagons": 3,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 16,
+    "yellow_hexagons": 23,
+    "pct_superficie_roja": 41.0,
+    "pct_superficie_amarilla": 59.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "13403",
     "comuna": "Calera de Tango",
     "region": "Metropolitana",
     "total_hexagons": 12,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 11,
+    "yellow_hexagons": 1,
+    "pct_superficie_roja": 91.7,
+    "pct_superficie_amarilla": 8.3,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "5302",
     "comuna": "Calle Larga",
     "region": "Valpara\u00edso",
     "total_hexagons": 15,
-    "red_hexagons": 0,
-    "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 5,
+    "yellow_hexagons": 10,
+    "pct_superficie_roja": 33.3,
+    "pct_superficie_amarilla": 66.7,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "15102",
@@ -277,6 +304,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -287,6 +315,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -297,6 +326,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -307,6 +337,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -317,6 +348,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -325,29 +357,32 @@
     "region": "Valpara\u00edso",
     "total_hexagons": 1,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 100.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "5603",
     "comuna": "Cartagena",
     "region": "Valpara\u00edso",
     "total_hexagons": 86,
-    "red_hexagons": 0,
-    "yellow_hexagons": 4,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 6,
+    "yellow_hexagons": 80,
+    "pct_superficie_roja": 7.0,
+    "pct_superficie_amarilla": 93.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "5102",
     "comuna": "Casablanca",
     "region": "Valpara\u00edso",
     "total_hexagons": 188,
-    "red_hexagons": 0,
-    "yellow_hexagons": 12,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 101,
+    "yellow_hexagons": 87,
+    "pct_superficie_roja": 53.7,
+    "pct_superficie_amarilla": 46.3,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "10201",
@@ -357,6 +392,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -364,10 +400,11 @@
     "comuna": "Catemu",
     "region": "Valpara\u00edso",
     "total_hexagons": 50,
-    "red_hexagons": 0,
-    "yellow_hexagons": 5,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 17,
+    "yellow_hexagons": 33,
+    "pct_superficie_roja": 34.0,
+    "pct_superficie_amarilla": 66.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "16201",
@@ -377,6 +414,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -387,6 +425,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -397,6 +436,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -405,8 +445,9 @@
     "region": "Maule",
     "total_hexagons": 404,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.2,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -417,6 +458,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -424,10 +466,11 @@
     "comuna": "Cerrillos",
     "region": "Metropolitana",
     "total_hexagons": 5,
-    "red_hexagons": 0,
+    "red_hexagons": 4,
     "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 80.0,
+    "pct_superficie_amarilla": 20.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "10401",
@@ -437,6 +480,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -447,6 +491,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -457,6 +502,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -467,6 +513,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -477,6 +524,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -487,6 +535,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -497,6 +546,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -507,6 +557,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -517,6 +568,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -527,6 +579,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -535,29 +588,32 @@
     "region": "O'Higgins",
     "total_hexagons": 2,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 50.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "6303",
     "comuna": "Chimbarongo",
     "region": "Maule",
     "total_hexagons": 3,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 1,
+    "yellow_hexagons": 2,
+    "pct_superficie_roja": 33.3,
+    "pct_superficie_amarilla": 66.7,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "6303",
     "comuna": "Chimbarongo",
     "region": "O'Higgins",
     "total_hexagons": 61,
-    "red_hexagons": 0,
-    "yellow_hexagons": 4,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 14,
+    "yellow_hexagons": 37,
+    "pct_superficie_roja": 23.0,
+    "pct_superficie_amarilla": 60.7,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "9101",
@@ -567,6 +623,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -577,6 +634,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -587,6 +645,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -597,6 +656,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -607,6 +667,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -614,10 +675,11 @@
     "comuna": "Ch\u00e9pica",
     "region": "O'Higgins",
     "total_hexagons": 37,
-    "red_hexagons": 0,
-    "yellow_hexagons": 2,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 14,
+    "yellow_hexagons": 23,
+    "pct_superficie_roja": 37.8,
+    "pct_superficie_amarilla": 62.2,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "11202",
@@ -627,6 +689,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -637,6 +700,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -647,6 +711,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -657,6 +722,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -667,6 +733,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -677,6 +744,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -687,6 +755,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -694,10 +763,11 @@
     "comuna": "Codegua",
     "region": "O'Higgins",
     "total_hexagons": 45,
-    "red_hexagons": 0,
-    "yellow_hexagons": 2,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 23,
+    "yellow_hexagons": 22,
+    "pct_superficie_roja": 51.1,
+    "pct_superficie_amarilla": 48.9,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "16203",
@@ -707,6 +777,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -717,6 +788,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -727,6 +799,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -737,6 +810,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -745,9 +819,10 @@
     "region": "O'Higgins",
     "total_hexagons": 47,
     "red_hexagons": 0,
-    "yellow_hexagons": 2,
+    "yellow_hexagons": 17,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 36.2,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "7109",
@@ -757,6 +832,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -767,6 +843,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -777,6 +854,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -784,20 +862,22 @@
     "comuna": "Colina",
     "region": "Metropolitana",
     "total_hexagons": 1,
-    "red_hexagons": 0,
+    "red_hexagons": 1,
     "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "13301",
     "comuna": "Colina",
     "region": "Metropolitana",
     "total_hexagons": 122,
-    "red_hexagons": 0,
-    "yellow_hexagons": 8,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 109,
+    "yellow_hexagons": 13,
+    "pct_superficie_roja": 89.3,
+    "pct_superficie_amarilla": 10.7,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "8305",
@@ -807,6 +887,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -817,6 +898,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -825,9 +907,10 @@
     "region": "O'Higgins",
     "total_hexagons": 106,
     "red_hexagons": 0,
-    "yellow_hexagons": 10,
+    "yellow_hexagons": 37,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 34.9,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "4302",
@@ -837,6 +920,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -847,6 +931,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -854,30 +939,33 @@
     "comuna": "Conchal\u00ed",
     "region": "Metropolitana",
     "total_hexagons": 1,
-    "red_hexagons": 0,
+    "red_hexagons": 1,
     "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "5103",
     "comuna": "Conc\u00f3n",
     "region": "Valpara\u00edso",
     "total_hexagons": 48,
-    "red_hexagons": 0,
-    "yellow_hexagons": 4,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 18,
+    "yellow_hexagons": 30,
+    "pct_superficie_roja": 37.5,
+    "pct_superficie_amarilla": 62.5,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "7102",
     "comuna": "Constituci\u00f3n",
     "region": "Maule",
     "total_hexagons": 252,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 88,
+    "yellow_hexagons": 139,
+    "pct_superficie_roja": 34.9,
+    "pct_superficie_amarilla": 55.2,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "14101",
@@ -887,6 +975,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -897,6 +986,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -907,6 +997,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -917,6 +1008,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -927,6 +1019,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -937,6 +1030,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -947,6 +1041,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -957,6 +1052,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -967,6 +1063,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -977,6 +1074,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -987,6 +1085,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -995,19 +1094,21 @@
     "region": "Metropolitana",
     "total_hexagons": 1,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 100.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "13503",
     "comuna": "Curacav\u00ed",
     "region": "Metropolitana",
     "total_hexagons": 186,
-    "red_hexagons": 0,
-    "yellow_hexagons": 13,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 35,
+    "yellow_hexagons": 151,
+    "pct_superficie_roja": 18.8,
+    "pct_superficie_amarilla": 81.2,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "10204",
@@ -1017,6 +1118,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1027,6 +1129,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1037,6 +1140,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1044,20 +1148,22 @@
     "comuna": "Curepto",
     "region": "Maule",
     "total_hexagons": 206,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 65,
+    "yellow_hexagons": 140,
+    "pct_superficie_roja": 31.6,
+    "pct_superficie_amarilla": 68.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "7301",
     "comuna": "Curic\u00f3",
     "region": "Maule",
     "total_hexagons": 273,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 110,
+    "yellow_hexagons": 162,
+    "pct_superficie_roja": 40.3,
+    "pct_superficie_amarilla": 59.3,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "10205",
@@ -1067,6 +1173,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1075,19 +1182,21 @@
     "region": "O'Higgins",
     "total_hexagons": 37,
     "red_hexagons": 0,
-    "yellow_hexagons": 1,
+    "yellow_hexagons": 13,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 35.1,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "13105",
     "comuna": "El Bosque",
     "region": "Metropolitana",
     "total_hexagons": 1,
-    "red_hexagons": 0,
+    "red_hexagons": 1,
     "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "16104",
@@ -1097,6 +1206,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1107,6 +1217,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1115,39 +1226,43 @@
     "region": "Metropolitana",
     "total_hexagons": 2,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 2,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 100.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "13602",
     "comuna": "El Monte",
     "region": "Metropolitana",
     "total_hexagons": 52,
-    "red_hexagons": 0,
-    "yellow_hexagons": 5,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 7,
+    "yellow_hexagons": 45,
+    "pct_superficie_roja": 13.5,
+    "pct_superficie_amarilla": 86.5,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "5604",
     "comuna": "El Quisco",
     "region": "Valpara\u00edso",
     "total_hexagons": 32,
-    "red_hexagons": 0,
-    "yellow_hexagons": 3,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 2,
+    "yellow_hexagons": 30,
+    "pct_superficie_roja": 6.2,
+    "pct_superficie_amarilla": 93.8,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "5605",
     "comuna": "El Tabo",
     "region": "Valpara\u00edso",
     "total_hexagons": 37,
-    "red_hexagons": 0,
-    "yellow_hexagons": 2,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 5,
+    "yellow_hexagons": 32,
+    "pct_superficie_roja": 13.5,
+    "pct_superficie_amarilla": 86.5,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "7104",
@@ -1157,6 +1272,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1167,6 +1283,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1177,6 +1294,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1187,6 +1305,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1197,6 +1316,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1207,6 +1327,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1217,6 +1338,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1227,6 +1349,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1237,6 +1360,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1247,6 +1371,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1257,6 +1382,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1267,6 +1393,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1277,6 +1404,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1287,6 +1415,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1297,6 +1426,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1304,10 +1434,11 @@
     "comuna": "Graneros",
     "region": "O'Higgins",
     "total_hexagons": 16,
-    "red_hexagons": 0,
-    "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 7,
+    "yellow_hexagons": 9,
+    "pct_superficie_roja": 43.8,
+    "pct_superficie_amarilla": 56.2,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "11203",
@@ -1317,6 +1448,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1324,10 +1456,11 @@
     "comuna": "Hijuelas",
     "region": "Valpara\u00edso",
     "total_hexagons": 61,
-    "red_hexagons": 0,
-    "yellow_hexagons": 4,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 31,
+    "yellow_hexagons": 30,
+    "pct_superficie_roja": 50.8,
+    "pct_superficie_amarilla": 49.2,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "10403",
@@ -1337,6 +1470,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1344,10 +1478,11 @@
     "comuna": "Huala\u00f1\u00e9",
     "region": "Maule",
     "total_hexagons": 124,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 50,
+    "yellow_hexagons": 74,
+    "pct_superficie_roja": 40.3,
+    "pct_superficie_amarilla": 59.7,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "8112",
@@ -1357,6 +1492,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1367,6 +1503,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1377,6 +1514,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1387,6 +1525,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1394,10 +1533,11 @@
     "comuna": "Huechuraba",
     "region": "Metropolitana",
     "total_hexagons": 21,
-    "red_hexagons": 0,
-    "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 21,
+    "yellow_hexagons": 0,
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "4201",
@@ -1407,6 +1547,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1414,20 +1555,22 @@
     "comuna": "Isla de Maipo",
     "region": "Metropolitana",
     "total_hexagons": 3,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 2,
+    "yellow_hexagons": 1,
+    "pct_superficie_roja": 66.7,
+    "pct_superficie_amarilla": 33.3,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "13603",
     "comuna": "Isla de Maipo",
     "region": "Metropolitana",
     "total_hexagons": 46,
-    "red_hexagons": 0,
-    "yellow_hexagons": 4,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 37,
+    "yellow_hexagons": 9,
+    "pct_superficie_roja": 80.4,
+    "pct_superficie_amarilla": 19.6,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "5201",
@@ -1435,8 +1578,9 @@
     "region": "Valpara\u00edso",
     "total_hexagons": 126,
     "red_hexagons": 0,
-    "yellow_hexagons": 13,
+    "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1444,20 +1588,22 @@
     "comuna": "La Cruz",
     "region": "Valpara\u00edso",
     "total_hexagons": 1,
-    "red_hexagons": 0,
+    "red_hexagons": 1,
     "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "5504",
     "comuna": "La Cruz",
     "region": "Valpara\u00edso",
     "total_hexagons": 32,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 12,
+    "yellow_hexagons": 20,
+    "pct_superficie_roja": 37.5,
+    "pct_superficie_amarilla": 62.5,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "6113",
@@ -1465,9 +1611,10 @@
     "region": "O'Higgins",
     "total_hexagons": 1,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 100.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "6201",
@@ -1475,48 +1622,53 @@
     "region": "O'Higgins",
     "total_hexagons": 1,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 100.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "6202",
     "comuna": "La Estrella",
     "region": "O'Higgins",
     "total_hexagons": 94,
-    "red_hexagons": 0,
-    "yellow_hexagons": 6,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 30,
+    "yellow_hexagons": 64,
+    "pct_superficie_roja": 31.9,
+    "pct_superficie_amarilla": 68.1,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "13110",
     "comuna": "La Florida",
     "region": "Metropolitana",
     "total_hexagons": 25,
-    "red_hexagons": 0,
+    "red_hexagons": 23,
     "yellow_hexagons": 2,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 92.0,
+    "pct_superficie_amarilla": 8.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "13111",
     "comuna": "La Granja",
     "region": "Metropolitana",
     "total_hexagons": 1,
-    "red_hexagons": 0,
+    "red_hexagons": 1,
     "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "5401",
     "comuna": "La Ligua",
     "region": "Valpara\u00edso",
     "total_hexagons": 117,
-    "red_hexagons": 0,
-    "yellow_hexagons": 8,
-    "pct_superficie_roja": 0.0,
+    "red_hexagons": 4,
+    "yellow_hexagons": 7,
+    "pct_superficie_roja": 3.4,
+    "pct_superficie_amarilla": 6.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1524,20 +1676,22 @@
     "comuna": "La Pintana",
     "region": "Metropolitana",
     "total_hexagons": 14,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 13,
+    "yellow_hexagons": 1,
+    "pct_superficie_roja": 92.9,
+    "pct_superficie_amarilla": 7.1,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "13113",
     "comuna": "La Reina",
     "region": "Metropolitana",
     "total_hexagons": 7,
-    "red_hexagons": 0,
-    "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 7,
+    "yellow_hexagons": 0,
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "4101",
@@ -1547,6 +1701,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1557,6 +1712,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1567,6 +1723,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1577,6 +1734,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1587,6 +1745,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1597,6 +1756,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1607,6 +1767,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1617,6 +1778,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1624,30 +1786,33 @@
     "comuna": "Lampa",
     "region": "Metropolitana",
     "total_hexagons": 2,
-    "red_hexagons": 0,
+    "red_hexagons": 2,
     "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "13125",
     "comuna": "Lampa",
     "region": "Metropolitana",
     "total_hexagons": 3,
-    "red_hexagons": 0,
+    "red_hexagons": 3,
     "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "13302",
     "comuna": "Lampa",
     "region": "Metropolitana",
     "total_hexagons": 209,
-    "red_hexagons": 0,
-    "yellow_hexagons": 18,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 186,
+    "yellow_hexagons": 23,
+    "pct_superficie_roja": 89.0,
+    "pct_superficie_amarilla": 11.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "14103",
@@ -1657,6 +1822,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1664,20 +1830,22 @@
     "comuna": "Las Cabras",
     "region": "O'Higgins",
     "total_hexagons": 130,
-    "red_hexagons": 0,
-    "yellow_hexagons": 11,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 6,
+    "yellow_hexagons": 49,
+    "pct_superficie_roja": 4.6,
+    "pct_superficie_amarilla": 37.7,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "13114",
     "comuna": "Las Condes",
     "region": "Metropolitana",
     "total_hexagons": 12,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 10,
+    "yellow_hexagons": 2,
+    "pct_superficie_roja": 83.3,
+    "pct_superficie_amarilla": 16.7,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "9108",
@@ -1687,6 +1855,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1697,6 +1866,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1704,20 +1874,22 @@
     "comuna": "Licant\u00e9n",
     "region": "Maule",
     "total_hexagons": 53,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 25,
+    "yellow_hexagons": 28,
+    "pct_superficie_roja": 47.2,
+    "pct_superficie_amarilla": 52.8,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "5802",
     "comuna": "Limache",
     "region": "Valpara\u00edso",
     "total_hexagons": 145,
-    "red_hexagons": 0,
-    "yellow_hexagons": 6,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 105,
+    "yellow_hexagons": 40,
+    "pct_superficie_roja": 72.4,
+    "pct_superficie_amarilla": 27.6,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "7401",
@@ -1727,6 +1899,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1734,10 +1907,11 @@
     "comuna": "Litueche",
     "region": "O'Higgins",
     "total_hexagons": 146,
-    "red_hexagons": 0,
-    "yellow_hexagons": 5,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 38,
+    "yellow_hexagons": 77,
+    "pct_superficie_roja": 26.0,
+    "pct_superficie_amarilla": 52.7,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "10107",
@@ -1747,6 +1921,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1754,20 +1929,22 @@
     "comuna": "Llay-Llay",
     "region": "Valpara\u00edso",
     "total_hexagons": 45,
-    "red_hexagons": 0,
-    "yellow_hexagons": 4,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 17,
+    "yellow_hexagons": 28,
+    "pct_superficie_roja": 37.8,
+    "pct_superficie_amarilla": 62.2,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "13115",
     "comuna": "Lo Barnechea",
     "region": "Metropolitana",
     "total_hexagons": 30,
-    "red_hexagons": 0,
-    "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 22,
+    "yellow_hexagons": 8,
+    "pct_superficie_roja": 73.3,
+    "pct_superficie_amarilla": 26.7,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "6206",
@@ -1775,19 +1952,21 @@
     "region": "O'Higgins",
     "total_hexagons": 1,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 100.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "6304",
     "comuna": "Lolol",
     "region": "O'Higgins",
     "total_hexagons": 78,
-    "red_hexagons": 0,
-    "yellow_hexagons": 3,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 29,
+    "yellow_hexagons": 49,
+    "pct_superficie_roja": 37.2,
+    "pct_superficie_amarilla": 62.8,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "9109",
@@ -1797,6 +1976,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1805,8 +1985,9 @@
     "region": "Maule",
     "total_hexagons": 263,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.4,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1817,6 +1998,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1827,6 +2009,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1837,6 +2020,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1844,10 +2028,11 @@
     "comuna": "Los Andes",
     "region": "Valpara\u00edso",
     "total_hexagons": 20,
-    "red_hexagons": 0,
-    "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 5,
+    "yellow_hexagons": 15,
+    "pct_superficie_roja": 25.0,
+    "pct_superficie_amarilla": 75.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "8301",
@@ -1857,6 +2042,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1867,6 +2053,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1877,6 +2064,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1887,6 +2075,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1897,6 +2086,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1907,6 +2097,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1917,6 +2108,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1927,6 +2119,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1935,8 +2128,9 @@
     "region": "Araucan\u00eda",
     "total_hexagons": 543,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.2,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -1944,20 +2138,22 @@
     "comuna": "Machal\u00ed",
     "region": "O'Higgins",
     "total_hexagons": 77,
-    "red_hexagons": 0,
-    "yellow_hexagons": 4,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 23,
+    "yellow_hexagons": 40,
+    "pct_superficie_roja": 29.9,
+    "pct_superficie_amarilla": 51.9,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "13119",
     "comuna": "Maip\u00fa",
     "region": "Metropolitana",
     "total_hexagons": 36,
-    "red_hexagons": 0,
-    "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 36,
+    "yellow_hexagons": 0,
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "6109",
@@ -1965,9 +2161,10 @@
     "region": "O'Higgins",
     "total_hexagons": 46,
     "red_hexagons": 0,
-    "yellow_hexagons": 3,
+    "yellow_hexagons": 19,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 41.3,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "6201",
@@ -1975,19 +2172,21 @@
     "region": "O'Higgins",
     "total_hexagons": 1,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 100.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "6204",
     "comuna": "Marchigue",
     "region": "O'Higgins",
     "total_hexagons": 105,
-    "red_hexagons": 0,
-    "yellow_hexagons": 9,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 46,
+    "yellow_hexagons": 59,
+    "pct_superficie_roja": 43.8,
+    "pct_superficie_amarilla": 56.2,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "14101",
@@ -1997,6 +2196,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2007,6 +2207,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2017,6 +2218,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2025,19 +2227,21 @@
     "region": "Metropolitana",
     "total_hexagons": 7,
     "red_hexagons": 0,
-    "yellow_hexagons": 2,
+    "yellow_hexagons": 7,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 100.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "13504",
     "comuna": "Mar\u00eda Pinto",
     "region": "Metropolitana",
     "total_hexagons": 91,
-    "red_hexagons": 0,
-    "yellow_hexagons": 5,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 5,
+    "yellow_hexagons": 86,
+    "pct_superficie_roja": 5.5,
+    "pct_superficie_amarilla": 94.5,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "7101",
@@ -2045,19 +2249,21 @@
     "region": "Maule",
     "total_hexagons": 1,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 100.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "7105",
     "comuna": "Maule",
     "region": "Maule",
     "total_hexagons": 198,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 43,
+    "yellow_hexagons": 52,
+    "pct_superficie_roja": 21.7,
+    "pct_superficie_amarilla": 26.3,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "10101",
@@ -2067,6 +2273,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2077,6 +2284,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2087,6 +2295,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2094,10 +2303,11 @@
     "comuna": "Melipilla",
     "region": "Metropolitana",
     "total_hexagons": 388,
-    "red_hexagons": 0,
-    "yellow_hexagons": 25,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 18,
+    "yellow_hexagons": 367,
+    "pct_superficie_roja": 4.6,
+    "pct_superficie_amarilla": 94.6,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "7108",
@@ -2105,19 +2315,21 @@
     "region": "Maule",
     "total_hexagons": 5,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 5,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 100.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "7304",
     "comuna": "Molina",
     "region": "Maule",
     "total_hexagons": 171,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 59,
+    "yellow_hexagons": 112,
+    "pct_superficie_roja": 34.5,
+    "pct_superficie_amarilla": 65.5,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "4303",
@@ -2127,6 +2339,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2134,20 +2347,22 @@
     "comuna": "Mostazal",
     "region": "Metropolitana",
     "total_hexagons": 1,
-    "red_hexagons": 0,
+    "red_hexagons": 1,
     "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "6110",
     "comuna": "Mostazal",
     "region": "O'Higgins",
     "total_hexagons": 50,
-    "red_hexagons": 0,
-    "yellow_hexagons": 4,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 44,
+    "yellow_hexagons": 5,
+    "pct_superficie_roja": 88.0,
+    "pct_superficie_amarilla": 10.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "8305",
@@ -2157,6 +2372,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2167,6 +2383,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2177,6 +2394,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2187,6 +2405,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2197,6 +2416,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2204,10 +2424,11 @@
     "comuna": "Nancagua",
     "region": "O'Higgins",
     "total_hexagons": 20,
-    "red_hexagons": 0,
-    "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 8,
+    "yellow_hexagons": 12,
+    "pct_superficie_roja": 40.0,
+    "pct_superficie_amarilla": 60.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "12401",
@@ -2217,6 +2438,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2225,19 +2447,21 @@
     "region": "O'Higgins",
     "total_hexagons": 1,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 100.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "6205",
     "comuna": "Navidad",
     "region": "O'Higgins",
     "total_hexagons": 78,
-    "red_hexagons": 0,
-    "yellow_hexagons": 7,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 6,
+    "yellow_hexagons": 62,
+    "pct_superficie_roja": 7.7,
+    "pct_superficie_amarilla": 79.5,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "8307",
@@ -2247,6 +2471,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2257,6 +2482,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2267,6 +2493,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2277,6 +2504,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2287,6 +2515,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2297,6 +2526,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2304,10 +2534,11 @@
     "comuna": "Nogales",
     "region": "Valpara\u00edso",
     "total_hexagons": 101,
-    "red_hexagons": 0,
-    "yellow_hexagons": 9,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 33,
+    "yellow_hexagons": 68,
+    "pct_superficie_roja": 32.7,
+    "pct_superficie_amarilla": 67.3,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "9101",
@@ -2317,6 +2548,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2327,6 +2559,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2335,9 +2568,10 @@
     "region": "O'Higgins",
     "total_hexagons": 5,
     "red_hexagons": 0,
-    "yellow_hexagons": 1,
+    "yellow_hexagons": 4,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 80.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "5501",
@@ -2345,29 +2579,32 @@
     "region": "Valpara\u00edso",
     "total_hexagons": 1,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 100.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "5801",
     "comuna": "Olmu\u00e9",
     "region": "Valpara\u00edso",
     "total_hexagons": 1,
-    "red_hexagons": 0,
-    "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 1,
+    "yellow_hexagons": 0,
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "5803",
     "comuna": "Olmu\u00e9",
     "region": "Valpara\u00edso",
     "total_hexagons": 63,
-    "red_hexagons": 0,
-    "yellow_hexagons": 2,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 54,
+    "yellow_hexagons": 9,
+    "pct_superficie_roja": 85.7,
+    "pct_superficie_amarilla": 14.3,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "10301",
@@ -2377,6 +2614,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2387,6 +2625,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2394,10 +2633,11 @@
     "comuna": "Padre Hurtado",
     "region": "Metropolitana",
     "total_hexagons": 46,
-    "red_hexagons": 0,
-    "yellow_hexagons": 2,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 41,
+    "yellow_hexagons": 5,
+    "pct_superficie_roja": 89.1,
+    "pct_superficie_amarilla": 10.9,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "9101",
@@ -2407,6 +2647,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2417,6 +2658,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2427,6 +2669,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2437,6 +2680,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2444,10 +2688,11 @@
     "comuna": "Paine",
     "region": "Metropolitana",
     "total_hexagons": 143,
-    "red_hexagons": 0,
-    "yellow_hexagons": 8,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 118,
+    "yellow_hexagons": 25,
+    "pct_superficie_roja": 82.5,
+    "pct_superficie_amarilla": 17.5,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "10404",
@@ -2457,6 +2702,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2464,10 +2710,11 @@
     "comuna": "Palmilla",
     "region": "O'Higgins",
     "total_hexagons": 21,
-    "red_hexagons": 0,
-    "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 7,
+    "yellow_hexagons": 14,
+    "pct_superficie_roja": 33.3,
+    "pct_superficie_amarilla": 66.7,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "14108",
@@ -2477,6 +2724,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2484,40 +2732,44 @@
     "comuna": "Panquehue",
     "region": "Valpara\u00edso",
     "total_hexagons": 4,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 1,
+    "yellow_hexagons": 3,
+    "pct_superficie_roja": 25.0,
+    "pct_superficie_amarilla": 75.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "5704",
     "comuna": "Panquehue",
     "region": "Valpara\u00edso",
     "total_hexagons": 24,
-    "red_hexagons": 0,
-    "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 7,
+    "yellow_hexagons": 17,
+    "pct_superficie_roja": 29.2,
+    "pct_superficie_amarilla": 70.8,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "5403",
     "comuna": "Papudo",
     "region": "Valpara\u00edso",
     "total_hexagons": 35,
-    "red_hexagons": 0,
+    "red_hexagons": 1,
     "yellow_hexagons": 4,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 2.9,
+    "pct_superficie_amarilla": 11.4,
+    "alerta_comunal": "ALERTA TEMPRANA PREVENTIVA"
   },
   {
     "codcom": "6206",
     "comuna": "Paredones",
     "region": "O'Higgins",
     "total_hexagons": 104,
-    "red_hexagons": 0,
-    "yellow_hexagons": 11,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 35,
+    "yellow_hexagons": 69,
+    "pct_superficie_roja": 33.7,
+    "pct_superficie_amarilla": 66.3,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "16303",
@@ -2527,6 +2779,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2537,6 +2790,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2544,20 +2798,22 @@
     "comuna": "Pelarco",
     "region": "Maule",
     "total_hexagons": 3,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 2,
+    "yellow_hexagons": 1,
+    "pct_superficie_roja": 66.7,
+    "pct_superficie_amarilla": 33.3,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "7106",
     "comuna": "Pelarco",
     "region": "Maule",
     "total_hexagons": 84,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 45,
+    "yellow_hexagons": 39,
+    "pct_superficie_roja": 53.6,
+    "pct_superficie_amarilla": 46.4,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "7203",
@@ -2567,6 +2823,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2577,6 +2834,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2587,6 +2845,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2594,10 +2853,11 @@
     "comuna": "Pencahue",
     "region": "Maule",
     "total_hexagons": 191,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 70,
+    "yellow_hexagons": 121,
+    "pct_superficie_roja": 36.6,
+    "pct_superficie_amarilla": 63.4,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "8107",
@@ -2607,6 +2867,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2615,19 +2876,21 @@
     "region": "O'Higgins",
     "total_hexagons": 1,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 100.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "6307",
     "comuna": "Peralillo",
     "region": "O'Higgins",
     "total_hexagons": 47,
-    "red_hexagons": 0,
-    "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 22,
+    "yellow_hexagons": 25,
+    "pct_superficie_roja": 46.8,
+    "pct_superficie_amarilla": 53.2,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "9113",
@@ -2637,6 +2900,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2647,6 +2911,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2655,29 +2920,32 @@
     "region": "O'Higgins",
     "total_hexagons": 22,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 7,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 31.8,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "13605",
     "comuna": "Pe\u00f1aflor",
     "region": "Metropolitana",
     "total_hexagons": 42,
-    "red_hexagons": 0,
-    "yellow_hexagons": 2,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 35,
+    "yellow_hexagons": 7,
+    "pct_superficie_roja": 83.3,
+    "pct_superficie_amarilla": 16.7,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "13122",
     "comuna": "Pe\u00f1alol\u00e9n",
     "region": "Metropolitana",
     "total_hexagons": 14,
-    "red_hexagons": 0,
-    "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 11,
+    "yellow_hexagons": 3,
+    "pct_superficie_roja": 78.6,
+    "pct_superficie_amarilla": 21.4,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "1405",
@@ -2687,6 +2955,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2694,20 +2963,22 @@
     "comuna": "Pichidegua",
     "region": "O'Higgins",
     "total_hexagons": 88,
-    "red_hexagons": 0,
-    "yellow_hexagons": 9,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 31,
+    "yellow_hexagons": 36,
+    "pct_superficie_roja": 35.2,
+    "pct_superficie_amarilla": 40.9,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "6201",
     "comuna": "Pichilemu",
     "region": "O'Higgins",
     "total_hexagons": 91,
-    "red_hexagons": 0,
-    "yellow_hexagons": 11,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 34,
+    "yellow_hexagons": 57,
+    "pct_superficie_roja": 37.4,
+    "pct_superficie_amarilla": 62.6,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "16106",
@@ -2717,6 +2988,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2727,6 +2999,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2734,20 +3007,22 @@
     "comuna": "Pirque",
     "region": "Metropolitana",
     "total_hexagons": 3,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 2,
+    "yellow_hexagons": 1,
+    "pct_superficie_roja": 66.7,
+    "pct_superficie_amarilla": 33.3,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "13202",
     "comuna": "Pirque",
     "region": "Metropolitana",
     "total_hexagons": 73,
-    "red_hexagons": 0,
-    "yellow_hexagons": 6,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 58,
+    "yellow_hexagons": 15,
+    "pct_superficie_roja": 79.5,
+    "pct_superficie_amarilla": 20.5,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "9114",
@@ -2757,6 +3032,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2764,10 +3040,11 @@
     "comuna": "Placilla",
     "region": "O'Higgins",
     "total_hexagons": 12,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 2,
+    "yellow_hexagons": 8,
+    "pct_superficie_roja": 16.7,
+    "pct_superficie_amarilla": 66.7,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "16205",
@@ -2777,6 +3054,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2787,6 +3065,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2797,6 +3076,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2807,6 +3087,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2817,6 +3098,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2824,20 +3106,22 @@
     "comuna": "Providencia",
     "region": "Metropolitana",
     "total_hexagons": 5,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 3,
+    "yellow_hexagons": 1,
+    "pct_superficie_roja": 60.0,
+    "pct_superficie_amarilla": 20.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "5105",
     "comuna": "Puchuncavi",
     "region": "Valpara\u00edso",
     "total_hexagons": 60,
-    "red_hexagons": 0,
-    "yellow_hexagons": 3,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 23,
+    "yellow_hexagons": 37,
+    "pct_superficie_roja": 38.3,
+    "pct_superficie_amarilla": 61.7,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "9115",
@@ -2847,6 +3131,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2854,20 +3139,22 @@
     "comuna": "Pudahuel",
     "region": "Metropolitana",
     "total_hexagons": 67,
-    "red_hexagons": 0,
-    "yellow_hexagons": 2,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 63,
+    "yellow_hexagons": 4,
+    "pct_superficie_roja": 94.0,
+    "pct_superficie_amarilla": 6.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "13201",
     "comuna": "Puente Alto",
     "region": "Metropolitana",
     "total_hexagons": 58,
-    "red_hexagons": 0,
-    "yellow_hexagons": 2,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 51,
+    "yellow_hexagons": 7,
+    "pct_superficie_roja": 87.9,
+    "pct_superficie_amarilla": 12.1,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "10101",
@@ -2877,6 +3164,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2887,6 +3175,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2897,6 +3186,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2904,10 +3194,11 @@
     "comuna": "Pumanque",
     "region": "O'Higgins",
     "total_hexagons": 53,
-    "red_hexagons": 0,
-    "yellow_hexagons": 3,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 29,
+    "yellow_hexagons": 24,
+    "pct_superficie_roja": 54.7,
+    "pct_superficie_amarilla": 45.3,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "4304",
@@ -2917,6 +3208,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2927,6 +3219,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2937,6 +3230,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2947,6 +3241,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2957,6 +3252,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2964,10 +3260,11 @@
     "comuna": "Putaendo",
     "region": "Valpara\u00edso",
     "total_hexagons": 23,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 5,
+    "yellow_hexagons": 14,
+    "pct_superficie_roja": 21.7,
+    "pct_superficie_amarilla": 60.9,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "15201",
@@ -2977,6 +3274,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2987,6 +3285,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -2997,6 +3296,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3007,6 +3307,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3017,6 +3318,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3027,6 +3329,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3034,10 +3337,11 @@
     "comuna": "Quilicura",
     "region": "Metropolitana",
     "total_hexagons": 24,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 23,
+    "yellow_hexagons": 1,
+    "pct_superficie_roja": 95.8,
+    "pct_superficie_amarilla": 4.2,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "8309",
@@ -3047,6 +3351,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3054,20 +3359,22 @@
     "comuna": "Quillota",
     "region": "Valpara\u00edso",
     "total_hexagons": 1,
-    "red_hexagons": 0,
+    "red_hexagons": 1,
     "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "5501",
     "comuna": "Quillota",
     "region": "Valpara\u00edso",
     "total_hexagons": 110,
-    "red_hexagons": 0,
-    "yellow_hexagons": 7,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 40,
+    "yellow_hexagons": 70,
+    "pct_superficie_roja": 36.4,
+    "pct_superficie_amarilla": 63.6,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "16107",
@@ -3077,6 +3384,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3087,6 +3395,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3094,10 +3403,11 @@
     "comuna": "Quilpu\u00e9",
     "region": "Valpara\u00edso",
     "total_hexagons": 145,
-    "red_hexagons": 0,
-    "yellow_hexagons": 11,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 133,
+    "yellow_hexagons": 12,
+    "pct_superficie_roja": 91.7,
+    "pct_superficie_amarilla": 8.3,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "10210",
@@ -3107,6 +3417,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3115,19 +3426,21 @@
     "region": "O'Higgins",
     "total_hexagons": 21,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 7,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 33.3,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "5107",
     "comuna": "Quintero",
     "region": "Valpara\u00edso",
     "total_hexagons": 77,
-    "red_hexagons": 0,
-    "yellow_hexagons": 7,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 37,
+    "yellow_hexagons": 40,
+    "pct_superficie_roja": 48.1,
+    "pct_superficie_amarilla": 51.9,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "16201",
@@ -3137,6 +3450,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3147,6 +3461,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3154,30 +3469,33 @@
     "comuna": "Rancagua",
     "region": "O'Higgins",
     "total_hexagons": 41,
-    "red_hexagons": 0,
-    "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 5,
+    "yellow_hexagons": 24,
+    "pct_superficie_roja": 12.2,
+    "pct_superficie_amarilla": 58.5,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "7305",
     "comuna": "Rauco",
     "region": "Maule",
     "total_hexagons": 70,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 23,
+    "yellow_hexagons": 46,
+    "pct_superficie_roja": 32.9,
+    "pct_superficie_amarilla": 65.7,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "13127",
     "comuna": "Recoleta",
     "region": "Metropolitana",
     "total_hexagons": 9,
-    "red_hexagons": 0,
+    "red_hexagons": 8,
     "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 88.9,
+    "pct_superficie_amarilla": 11.1,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "9209",
@@ -3187,6 +3505,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3194,10 +3513,11 @@
     "comuna": "Renca",
     "region": "Metropolitana",
     "total_hexagons": 14,
-    "red_hexagons": 0,
+    "red_hexagons": 14,
     "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "6115",
@@ -3205,9 +3525,10 @@
     "region": "O'Higgins",
     "total_hexagons": 108,
     "red_hexagons": 0,
-    "yellow_hexagons": 4,
+    "yellow_hexagons": 41,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 38.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "6116",
@@ -3215,9 +3536,10 @@
     "region": "O'Higgins",
     "total_hexagons": 44,
     "red_hexagons": 0,
-    "yellow_hexagons": 1,
+    "yellow_hexagons": 10,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 22.7,
+    "alerta_comunal": "ALERTA TEMPRANA PREVENTIVA"
   },
   {
     "codcom": "7405",
@@ -3227,6 +3549,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3234,10 +3557,11 @@
     "comuna": "Rinconada",
     "region": "Valpara\u00edso",
     "total_hexagons": 14,
-    "red_hexagons": 0,
-    "yellow_hexagons": 3,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 7,
+    "yellow_hexagons": 7,
+    "pct_superficie_roja": 50.0,
+    "pct_superficie_amarilla": 50.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "4305",
@@ -3247,6 +3571,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3254,10 +3579,11 @@
     "comuna": "Romeral",
     "region": "Maule",
     "total_hexagons": 102,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 48,
+    "yellow_hexagons": 54,
+    "pct_superficie_roja": 47.1,
+    "pct_superficie_amarilla": 52.9,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "16206",
@@ -3267,6 +3593,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3277,6 +3604,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3287,6 +3615,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3294,10 +3623,11 @@
     "comuna": "R\u00edo Claro",
     "region": "Maule",
     "total_hexagons": 158,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 70,
+    "yellow_hexagons": 88,
+    "pct_superficie_roja": 44.3,
+    "pct_superficie_amarilla": 55.7,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "11402",
@@ -3307,6 +3637,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3317,6 +3648,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3327,6 +3659,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3337,6 +3670,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3344,10 +3678,11 @@
     "comuna": "Sagrada Familia",
     "region": "Maule",
     "total_hexagons": 128,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 56,
+    "yellow_hexagons": 72,
+    "pct_superficie_roja": 43.8,
+    "pct_superficie_amarilla": 56.2,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "4204",
@@ -3357,6 +3692,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3364,20 +3700,22 @@
     "comuna": "San Antonio",
     "region": "Valpara\u00edso",
     "total_hexagons": 146,
-    "red_hexagons": 0,
-    "yellow_hexagons": 11,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 7,
+    "yellow_hexagons": 133,
+    "pct_superficie_roja": 4.8,
+    "pct_superficie_amarilla": 91.1,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "13401",
     "comuna": "San Bernardo",
     "region": "Metropolitana",
     "total_hexagons": 66,
-    "red_hexagons": 0,
-    "yellow_hexagons": 2,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 58,
+    "yellow_hexagons": 8,
+    "pct_superficie_roja": 87.9,
+    "pct_superficie_amarilla": 12.1,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "16301",
@@ -3387,6 +3725,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3397,6 +3736,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3404,30 +3744,33 @@
     "comuna": "San Clemente",
     "region": "Maule",
     "total_hexagons": 2,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 1,
+    "yellow_hexagons": 1,
+    "pct_superficie_roja": 50.0,
+    "pct_superficie_amarilla": 50.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "7109",
     "comuna": "San Clemente",
     "region": "Maule",
     "total_hexagons": 317,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 40,
+    "yellow_hexagons": 59,
+    "pct_superficie_roja": 12.6,
+    "pct_superficie_amarilla": 18.6,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "5304",
     "comuna": "San Esteban",
     "region": "Valpara\u00edso",
     "total_hexagons": 20,
-    "red_hexagons": 0,
-    "yellow_hexagons": 1,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 12,
+    "yellow_hexagons": 8,
+    "pct_superficie_roja": 60.0,
+    "pct_superficie_amarilla": 40.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "16303",
@@ -3437,6 +3780,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3447,6 +3791,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3457,6 +3802,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3464,10 +3810,11 @@
     "comuna": "San Felipe",
     "region": "Valpara\u00edso",
     "total_hexagons": 41,
-    "red_hexagons": 0,
-    "yellow_hexagons": 2,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 15,
+    "yellow_hexagons": 26,
+    "pct_superficie_roja": 36.6,
+    "pct_superficie_amarilla": 63.4,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "6117",
@@ -3475,9 +3822,10 @@
     "region": "O'Higgins",
     "total_hexagons": 1,
     "red_hexagons": 0,
-    "yellow_hexagons": 0,
+    "yellow_hexagons": 1,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 100.0,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "6301",
@@ -3485,9 +3833,10 @@
     "region": "O'Higgins",
     "total_hexagons": 126,
     "red_hexagons": 0,
-    "yellow_hexagons": 10,
+    "yellow_hexagons": 42,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 33.3,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "12104",
@@ -3497,6 +3846,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3507,6 +3857,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3517,6 +3868,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3524,9 +3876,10 @@
     "comuna": "San Javier",
     "region": "Maule",
     "total_hexagons": 417,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
+    "red_hexagons": 6,
+    "yellow_hexagons": 10,
+    "pct_superficie_roja": 1.4,
+    "pct_superficie_amarilla": 2.4,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3534,10 +3887,11 @@
     "comuna": "San Jos\u00e9 de Maipo",
     "region": "Metropolitana",
     "total_hexagons": 46,
-    "red_hexagons": 0,
-    "yellow_hexagons": 3,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 16,
+    "yellow_hexagons": 26,
+    "pct_superficie_roja": 34.8,
+    "pct_superficie_amarilla": 56.5,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "10306",
@@ -3547,6 +3901,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3554,10 +3909,11 @@
     "comuna": "San Miguel",
     "region": "Metropolitana",
     "total_hexagons": 2,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 1,
+    "yellow_hexagons": 1,
+    "pct_superficie_roja": 50.0,
+    "pct_superficie_amarilla": 50.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "16305",
@@ -3567,6 +3923,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3577,6 +3934,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3587,6 +3945,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3594,10 +3953,11 @@
     "comuna": "San Pedro",
     "region": "Metropolitana",
     "total_hexagons": 230,
-    "red_hexagons": 0,
-    "yellow_hexagons": 13,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 14,
+    "yellow_hexagons": 196,
+    "pct_superficie_roja": 6.1,
+    "pct_superficie_amarilla": 85.2,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "2203",
@@ -3607,6 +3967,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3617,6 +3978,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3624,20 +3986,22 @@
     "comuna": "San Rafael",
     "region": "Maule",
     "total_hexagons": 1,
-    "red_hexagons": 0,
+    "red_hexagons": 1,
     "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "7110",
     "comuna": "San Rafael",
     "region": "Maule",
     "total_hexagons": 107,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 38,
+    "yellow_hexagons": 69,
+    "pct_superficie_roja": 35.5,
+    "pct_superficie_amarilla": 64.5,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "8310",
@@ -3647,6 +4011,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3655,9 +4020,10 @@
     "region": "O'Higgins",
     "total_hexagons": 110,
     "red_hexagons": 0,
-    "yellow_hexagons": 5,
+    "yellow_hexagons": 34,
     "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_amarilla": 30.9,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "8311",
@@ -3667,6 +4033,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3674,10 +4041,11 @@
     "comuna": "Santa Cruz",
     "region": "O'Higgins",
     "total_hexagons": 77,
-    "red_hexagons": 0,
-    "yellow_hexagons": 3,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 29,
+    "yellow_hexagons": 48,
+    "pct_superficie_roja": 37.7,
+    "pct_superficie_amarilla": 62.3,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "8109",
@@ -3687,6 +4055,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3694,50 +4063,55 @@
     "comuna": "Santa Mar\u00eda",
     "region": "Valpara\u00edso",
     "total_hexagons": 7,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 1,
+    "yellow_hexagons": 6,
+    "pct_superficie_roja": 14.3,
+    "pct_superficie_amarilla": 85.7,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "13101",
     "comuna": "Santiago",
     "region": "Metropolitana",
     "total_hexagons": 1,
-    "red_hexagons": 0,
+    "red_hexagons": 1,
     "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "pct_superficie_roja": 100.0,
+    "pct_superficie_amarilla": 0.0,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "5606",
     "comuna": "Santo Domingo",
     "region": "Valpara\u00edso",
     "total_hexagons": 131,
-    "red_hexagons": 0,
-    "yellow_hexagons": 14,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 7,
+    "yellow_hexagons": 116,
+    "pct_superficie_roja": 5.3,
+    "pct_superficie_amarilla": 88.5,
+    "alerta_comunal": "ALERTA AMARILLA COMUNAL"
   },
   {
     "codcom": "13601",
     "comuna": "Talagante",
     "region": "Metropolitana",
     "total_hexagons": 68,
-    "red_hexagons": 0,
-    "yellow_hexagons": 4,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 55,
+    "yellow_hexagons": 13,
+    "pct_superficie_roja": 80.9,
+    "pct_superficie_amarilla": 19.1,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "7101",
     "comuna": "Talca",
     "region": "Maule",
     "total_hexagons": 196,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 70,
+    "yellow_hexagons": 125,
+    "pct_superficie_roja": 35.7,
+    "pct_superficie_amarilla": 63.8,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "8110",
@@ -3747,6 +4121,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3757,6 +4132,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3764,10 +4140,11 @@
     "comuna": "Teno",
     "region": "Maule",
     "total_hexagons": 133,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 68,
+    "yellow_hexagons": 65,
+    "pct_superficie_roja": 51.1,
+    "pct_superficie_amarilla": 48.9,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "9117",
@@ -3777,6 +4154,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3787,6 +4165,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3794,10 +4173,11 @@
     "comuna": "Tiltil",
     "region": "Metropolitana",
     "total_hexagons": 82,
-    "red_hexagons": 0,
-    "yellow_hexagons": 3,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 71,
+    "yellow_hexagons": 11,
+    "pct_superficie_roja": 86.6,
+    "pct_superficie_amarilla": 13.4,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "12303",
@@ -3807,6 +4187,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3817,6 +4198,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3827,6 +4209,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3837,6 +4220,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3847,6 +4231,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3857,6 +4242,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3867,6 +4253,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3877,6 +4264,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3887,6 +4275,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3897,6 +4286,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3907,6 +4297,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3917,6 +4308,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3927,6 +4319,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3934,20 +4327,22 @@
     "comuna": "Valpara\u00edso",
     "region": "Valpara\u00edso",
     "total_hexagons": 229,
-    "red_hexagons": 0,
-    "yellow_hexagons": 15,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 176,
+    "yellow_hexagons": 53,
+    "pct_superficie_roja": 76.9,
+    "pct_superficie_amarilla": 23.1,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "7309",
     "comuna": "Vichuqu\u00e9n",
     "region": "Maule",
     "total_hexagons": 130,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 44,
+    "yellow_hexagons": 85,
+    "pct_superficie_roja": 33.8,
+    "pct_superficie_amarilla": 65.4,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "9211",
@@ -3957,6 +4352,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3967,6 +4363,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3977,6 +4374,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3987,6 +4385,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -3994,10 +4393,11 @@
     "comuna": "Villa Alemana",
     "region": "Valpara\u00edso",
     "total_hexagons": 77,
-    "red_hexagons": 0,
-    "yellow_hexagons": 4,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 66,
+    "yellow_hexagons": 11,
+    "pct_superficie_roja": 85.7,
+    "pct_superficie_amarilla": 14.3,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "11302",
@@ -4007,6 +4407,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -4017,6 +4418,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -4024,20 +4426,22 @@
     "comuna": "Vitacura",
     "region": "Metropolitana",
     "total_hexagons": 9,
-    "red_hexagons": 0,
-    "yellow_hexagons": 0,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 7,
+    "yellow_hexagons": 2,
+    "pct_superficie_roja": 77.8,
+    "pct_superficie_amarilla": 22.2,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "5109",
     "comuna": "Vi\u00f1a del Mar",
     "region": "Valpara\u00edso",
     "total_hexagons": 106,
-    "red_hexagons": 0,
-    "yellow_hexagons": 8,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 80,
+    "yellow_hexagons": 26,
+    "pct_superficie_roja": 75.5,
+    "pct_superficie_amarilla": 24.5,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "7408",
@@ -4047,6 +4451,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -4057,6 +4462,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -4067,6 +4473,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -4077,6 +4484,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -4084,10 +4492,11 @@
     "comuna": "Zapallar",
     "region": "Valpara\u00edso",
     "total_hexagons": 43,
-    "red_hexagons": 0,
-    "yellow_hexagons": 4,
-    "pct_superficie_roja": 0.0,
-    "alerta_comunal": "NORMAL"
+    "red_hexagons": 19,
+    "yellow_hexagons": 23,
+    "pct_superficie_roja": 44.2,
+    "pct_superficie_amarilla": 53.5,
+    "alerta_comunal": "ALERTA ROJA COMUNAL"
   },
   {
     "codcom": "16303",
@@ -4097,6 +4506,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   },
   {
@@ -4107,6 +4517,7 @@
     "red_hexagons": 0,
     "yellow_hexagons": 0,
     "pct_superficie_roja": 0.0,
+    "pct_superficie_amarilla": 0.0,
     "alerta_comunal": "NORMAL"
   }
 ]

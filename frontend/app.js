@@ -221,12 +221,14 @@ async function loadInitialData() {
         paint: {
           "fill-color": [
             "case",
-            [">=", ["get", "pct_rojo"], 30], "rgba(217, 4, 41, 0.35)",
-            [">=", ["get", "pct_rojo"], 10], "rgba(255, 209, 102, 0.35)",
-            [">", ["get", "pct_rojo"], 0], "rgba(252, 191, 73, 0.20)",
+            ["==", ["get", "alerta"], "ALERTA ROJA COMUNAL"], "rgba(217, 4, 41, 0.40)",
+            ["==", ["get", "alerta"], "ALERTA AMARILLA COMUNAL"], "rgba(255, 209, 102, 0.45)",
+            ["==", ["get", "alerta"], "ALERTA TEMPRANA PREVENTIVA"], "rgba(252, 191, 73, 0.30)",
+            [">=", ["get", "pct_rojo"], 30], "rgba(217, 4, 41, 0.40)",
+            [">=", ["get", "pct_rojo"], 10], "rgba(255, 209, 102, 0.45)",
             COLORS.TRANSPARENT
           ],
-          "fill-opacity": 0.75
+          "fill-opacity": 0.80
         }
       });
 
@@ -238,13 +240,17 @@ async function loadInitialData() {
         paint: {
           "line-color": [
             "case",
+            ["==", ["get", "alerta"], "ALERTA ROJA COMUNAL"], COLORS.BORDER_RED,
+            ["==", ["get", "alerta"], "ALERTA AMARILLA COMUNAL"], COLORS.BORDER_YELLOW,
             [">=", ["get", "pct_rojo"], 30], COLORS.BORDER_RED,
             [">=", ["get", "pct_rojo"], 10], COLORS.BORDER_YELLOW,
             COLORS.BORDER_NORMAL
           ],
           "line-width": [
             "case",
-            [">=", ["get", "pct_rojo"], 10], 2.2,
+            ["==", ["get", "alerta"], "ALERTA ROJA COMUNAL"], 2.2,
+            ["==", ["get", "alerta"], "ALERTA AMARILLA COMUNAL"], 2.0,
+            [">=", ["get", "pct_rojo"], 10], 2.0,
             1.0
           ],
           "line-opacity": 0.95
@@ -894,8 +900,8 @@ function renderCommunesTable(communes) {
 
   sorted.slice(0, 35).forEach(com => {
     const tr = document.createElement("tr");
-    const isRed = (com.pct_superficie_roja || 0) >= 30;
-    const isYellow = (com.pct_superficie_roja || 0) >= 10 && !isRed;
+    const isRed = com.alerta_comunal === "ALERTA ROJA COMUNAL" || (com.pct_superficie_roja || 0) >= 30;
+    const isYellow = com.alerta_comunal === "ALERTA AMARILLA COMUNAL" || (!isRed && ((com.pct_superficie_roja || 0) >= 10 || (com.pct_superficie_amarilla || 0) >= 20));
     const badgeClass = isRed ? "rojo" : (isYellow ? "amarillo" : "verde");
     const badgeText = isRed ? "ROJA" : (isYellow ? "AMARILLA" : "NORMAL");
 

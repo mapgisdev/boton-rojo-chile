@@ -1,12 +1,12 @@
 {
   "date": "2017-01-20",
-  "event_name": "Tormenta de Fuego Las M\u00e1quinas (Extremo)",
+  "event_name": "Tormenta Las M\u00e1quinas (Maule - 211.000 ha)",
   "total_cells": 33237,
-  "red_cells_count": 8825,
-  "yellow_cells_count": 8892,
-  "red_alert_percentage": 26.55,
-  "pct_territorio_rojo": 26.55,
+  "red_cells_count": 14196,
+  "yellow_cells_count": 8234,
+  "red_alert_percentage": 42.71,
+  "pct_territorio_rojo": 42.71,
   "total_communes": 411,
-  "red_communes_count": 225,
-  "yellow_communes_count": 1
+  "red_communes_count": 229,
+  "yellow_communes_count": 32
 }

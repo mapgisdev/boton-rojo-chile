@@ -2,11 +2,11 @@
   "date": "2023-01-15",
   "event_name": "D\u00eda T\u00edpico de Verano (Actividad Moderada)",
   "total_cells": 33237,
-  "red_cells_count": 5162,
-  "yellow_cells_count": 10671,
-  "red_alert_percentage": 15.53,
-  "pct_territorio_rojo": 15.53,
+  "red_cells_count": 14079,
+  "yellow_cells_count": 11395,
+  "red_alert_percentage": 42.36,
+  "pct_territorio_rojo": 42.36,
   "total_communes": 411,
-  "red_communes_count": 109,
-  "yellow_communes_count": 104
+  "red_communes_count": 225,
+  "yellow_communes_count": 35
 }

@@ -1,12 +1,12 @@
 {
   "date": "2024-02-02",
-  "event_name": "Megaincendio Vi\u00f1a del Mar/Quilpu\u00e9 (Extremo Urbano)",
+  "event_name": "Megaincendio Vi\u00f1a del Mar/Quilpu\u00e9 (Valpara\u00edso)",
   "total_cells": 33237,
-  "red_cells_count": 3469,
-  "yellow_cells_count": 3567,
-  "red_alert_percentage": 10.44,
-  "pct_territorio_rojo": 10.44,
+  "red_cells_count": 8348,
+  "yellow_cells_count": 4734,
+  "red_alert_percentage": 25.12,
+  "pct_territorio_rojo": 25.12,
   "total_communes": 411,
-  "red_communes_count": 228,
-  "yellow_communes_count": 0
+  "red_communes_count": 182,
+  "yellow_communes_count": 23
 }
