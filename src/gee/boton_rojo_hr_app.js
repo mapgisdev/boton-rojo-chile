@@ -155,9 +155,11 @@ function cargarFecha(fechaStr) {
   // =========================================================================
   // 4. PINTAR COMUNAS POR NIVEL DE ALERTA (REDUCCIÓN ZONAL RÁPIDA CONGRUENTE CON EL RÁSTER)
   // =========================================================================
+  var alertTotal = botonRojoM1.or(alertaAmarilla);
   var alertImg = ee.Image.cat([
     botonRojoM1.unmask(0).rename("rojo"),
-    alertaAmarilla.unmask(0).rename("amarillo")
+    alertaAmarilla.unmask(0).rename("amarillo"),
+    alertTotal.unmask(0).rename("total")
   ]);
   
   var comunasConRiesgo = alertImg.reduceRegions({
@@ -170,7 +172,7 @@ function cargarFecha(fechaStr) {
   var comunasEstilizadas = comunasConRiesgo.map(function(feat) {
     var pctRojo = ee.Number(ee.Algorithms.If(feat.get("rojo"), feat.get("rojo"), 0)).multiply(100);
     var pctAmarillo = ee.Number(ee.Algorithms.If(feat.get("amarillo"), feat.get("amarillo"), 0)).multiply(100);
-    var pctTotal = pctRojo.add(pctAmarillo);
+    var pctTotal = ee.Number(ee.Algorithms.If(feat.get("total"), feat.get("total"), 0)).multiply(100);
     
     var isRed = pctRojo.gte(30.0);
     var isYellow = isRed.not().and(pctAmarillo.gte(25.0).or(pctRojo.gte(10.0)).or(pctTotal.gte(30.0)));
@@ -247,7 +249,8 @@ function cargarFecha(fechaStr) {
           ee.Filter.lt("rojo", 0.30),
           ee.Filter.or(
             ee.Filter.gte("amarillo", 0.25),
-            ee.Filter.gte("rojo", 0.10)
+            ee.Filter.gte("rojo", 0.10),
+            ee.Filter.gte("total", 0.30)
           )
         )
       );
@@ -268,7 +271,8 @@ function cargarFecha(fechaStr) {
         ee.Filter.lt("rojo", 0.30),
         ee.Filter.or(
           ee.Filter.gte("amarillo", 0.25),
-          ee.Filter.gte("rojo", 0.10)
+          ee.Filter.gte("rojo", 0.10),
+          ee.Filter.gte("total", 0.30)
         )
       )
     );
