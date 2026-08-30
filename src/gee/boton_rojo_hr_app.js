@@ -26,7 +26,7 @@ try {
 }
 
 Map.centerObject(ee.Geometry.Point([-72.0, -36.5]), 7);
-Map.setOptions("HYBRID");
+Map.setOptions("ROADMAP");
 
 // 2. Modelo de Elevación y Sombra SRTM 30m
 var srtm = ee.Image("USGS/SRTMGL1_003").clip(chile);
@@ -196,12 +196,12 @@ function cargarFecha(fechaStr) {
     });
   });
 
-  // A. Capa Principal: Comunas Pintadas en Botón Rojo y Alerta Amarilla
+  // A. Capa Principal: Comunas Pintadas en Botón Rojo y Alerta Amarilla (ÚNICA VISIBLE AL INICIO)
   Map.addLayer(comunasEstilizadas.style({styleProperty: "style"}), {}, "🏛️ Comunas en Botón Rojo (Pintadas)", true);
 
-  // B. Capas de Alerta de Alta Resolución (Píxeles Activos)
-  Map.addLayer(capaAmarillaVisible, {palette: ["#ffea00"]}, "🟡 Alerta Amarilla Preventiva (Píxeles)", true);
-  Map.addLayer(capaM1Visible, {palette: ["#d90429"]}, "🔴 Botón Rojo Calibrado M1 (Píxeles)", true);
+  // B. Capas de Alerta de Alta Resolución (Píxeles Activos en Menú Layers)
+  Map.addLayer(capaAmarillaVisible, {palette: ["#ffea00"]}, "🟡 Alerta Amarilla Preventiva (Píxeles)", false);
+  Map.addLayer(capaM1Visible, {palette: ["#d90429"]}, "🔴 Botón Rojo Calibrado M1 (Píxeles)", false);
 
   // C. Capas Meteorológicas Opcionales
   Map.addLayer(tempC, {min: 15, max: 38, palette: ["#005f73", "#94d2bd", "#ee9b00", "#ca6702", "#ae2012"]}, "🌡️ Temperatura 14-18h (°C)", false);
@@ -216,7 +216,7 @@ function cargarFecha(fechaStr) {
   if (firmsCol.size().getInfo() > 0) {
     var firmsT21 = firmsCol.select("T21").mosaic().clip(chile);
     var firmsMasked = firmsT21.updateMask(firmsT21.gte(305));
-    Map.addLayer(firmsMasked, {min: 310, max: 400, palette: ["#ffe600", "#ff5500", "#ff0055", "#7209b7"]}, "🛰️ Anomalías Térmicas NASA FIRMS", true);
+    Map.addLayer(firmsMasked, {min: 310, max: 400, palette: ["#ffe600", "#ff5500", "#ff0055", "#7209b7"]}, "🛰️ Anomalías Térmicas NASA FIRMS", false);
   }
 
   // E. Focos de Incendio CONAF
@@ -237,9 +237,9 @@ function cargarFecha(fechaStr) {
     var mega = incendiosDelDia.filter(ee.Filter.gte("area_ha", 1000));
     var large = incendiosDelDia.filter(ee.Filter.and(ee.Filter.gte("area_ha", 200), ee.Filter.lt("area_ha", 1000)));
 
-    Map.addLayer(incendiosDelDia.draw({color: "ffaa00", pointRadius: 3, strokeWidth: 1}), {}, "🔥 Todos los Focos de Incendio (CONAF)", true);
-    Map.addLayer(large.draw({color: "ff0000", pointRadius: 6, strokeWidth: 2}), {}, "🔴 Gran Incendio (≥ 200 ha)", true);
-    Map.addLayer(mega.draw({color: "7209b7", pointRadius: 9, strokeWidth: 2}), {}, "🟣 Megaincendio (≥ 1.000 ha)", true);
+    Map.addLayer(incendiosDelDia.draw({color: "ffaa00", pointRadius: 3, strokeWidth: 1}), {}, "🔥 Todos los Focos de Incendio (CONAF)", false);
+    Map.addLayer(large.draw({color: "ff0000", pointRadius: 6, strokeWidth: 2}), {}, "🔴 Gran Incendio (≥ 200 ha)", false);
+    Map.addLayer(mega.draw({color: "7209b7", pointRadius: 9, strokeWidth: 2}), {}, "🟣 Megaincendio (≥ 1.000 ha)", false);
 
     incendiosDelDia.size().evaluate(function(totalCount) {
       // Contar comunas en GEE
