@@ -1,12 +1,12 @@
 {
   "date": "2023-02-03",
-  "event_name": "Megaincendios Biob\u00edo/\u00d1uble/Araucan\u00eda (Extremo)",
+  "event_name": "Megaincendios Biob\u00edo/\u00d1uble/Araucan\u00eda",
   "total_cells": 33237,
-  "red_cells_count": 21746,
-  "yellow_cells_count": 7960,
-  "red_alert_percentage": 65.43,
-  "pct_territorio_rojo": 65.43,
-  "total_communes": 411,
-  "red_communes_count": 282,
-  "yellow_communes_count": 32
+  "red_cells_count": 16062,
+  "yellow_cells_count": 7763,
+  "red_alert_percentage": 48.33,
+  "pct_territorio_rojo": 48.33,
+  "total_communes": 346,
+  "red_communes_count": 106,
+  "yellow_communes_count": 114
 }

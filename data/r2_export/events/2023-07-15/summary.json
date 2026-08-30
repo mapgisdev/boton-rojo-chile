@@ -2,11 +2,11 @@
   "date": "2023-07-15",
   "event_name": "Invierno Austral (0 Alertas / 100% Verde)",
   "total_cells": 33237,
-  "red_cells_count": 0,
-  "yellow_cells_count": 0,
-  "red_alert_percentage": 0.0,
-  "pct_territorio_rojo": 0.0,
-  "total_communes": 411,
-  "red_communes_count": 0,
-  "yellow_communes_count": 0
+  "red_cells_count": 13,
+  "yellow_cells_count": 33,
+  "red_alert_percentage": 0.04,
+  "pct_territorio_rojo": 0.04,
+  "total_communes": 346,
+  "red_communes_count": 2,
+  "yellow_communes_count": 4
 }

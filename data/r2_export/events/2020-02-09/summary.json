@@ -2,11 +2,11 @@
   "date": "2020-02-09",
   "event_name": "Ola de Calor Focalizada La Araucan\u00eda",
   "total_cells": 33237,
-  "red_cells_count": 12366,
-  "yellow_cells_count": 6634,
-  "red_alert_percentage": 37.21,
-  "pct_territorio_rojo": 37.21,
-  "total_communes": 411,
-  "red_communes_count": 142,
-  "yellow_communes_count": 19
+  "red_cells_count": 10052,
+  "yellow_cells_count": 11316,
+  "red_alert_percentage": 30.24,
+  "pct_territorio_rojo": 30.24,
+  "total_communes": 346,
+  "red_communes_count": 97,
+  "yellow_communes_count": 99
 }

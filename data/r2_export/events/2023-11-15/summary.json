@@ -1,12 +1,12 @@
 {
   "date": "2023-11-15",
-  "event_name": "Primavera Central (Riesgo Preventivo)",
+  "event_name": "Primavera Central (Alerta Preventiva)",
   "total_cells": 33237,
-  "red_cells_count": 3849,
-  "yellow_cells_count": 4890,
-  "red_alert_percentage": 11.58,
-  "pct_territorio_rojo": 11.58,
-  "total_communes": 411,
-  "red_communes_count": 101,
-  "yellow_communes_count": 52
+  "red_cells_count": 3,
+  "yellow_cells_count": 172,
+  "red_alert_percentage": 0.01,
+  "pct_territorio_rojo": 0.01,
+  "total_communes": 346,
+  "red_communes_count": 0,
+  "yellow_communes_count": 8
 }

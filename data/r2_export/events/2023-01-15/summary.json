@@ -1,12 +1,12 @@
 {
   "date": "2023-01-15",
-  "event_name": "D\u00eda T\u00edpico de Verano (Actividad Moderada)",
+  "event_name": "D\u00eda T\u00edpico de Verano (Focos Dispersos)",
   "total_cells": 33237,
-  "red_cells_count": 14079,
-  "yellow_cells_count": 11395,
-  "red_alert_percentage": 42.36,
-  "pct_territorio_rojo": 42.36,
-  "total_communes": 411,
-  "red_communes_count": 225,
-  "yellow_communes_count": 35
+  "red_cells_count": 6082,
+  "yellow_cells_count": 17430,
+  "red_alert_percentage": 18.3,
+  "pct_territorio_rojo": 18.3,
+  "total_communes": 346,
+  "red_communes_count": 49,
+  "yellow_communes_count": 159
 }

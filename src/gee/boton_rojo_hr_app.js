@@ -153,11 +153,14 @@ function cargarFecha(fechaStr) {
   var dwVisible = dwRemapped.updateMask(dwRemapped.gt(0));
 
   // =========================================================================
-  // 4. PINTAR COMUNAS POR NIVEL DE ALERTA (REDUCCIÓN ZONAL RÁPIDA)
+  // 4. PINTAR COMUNAS POR NIVEL DE ALERTA (REDUCCIÓN ZONAL RÁPIDA CONGRUENTE CON EL RÁSTER)
   // =========================================================================
-  var alertScore = botonRojoM1.multiply(100).add(alertaAmarilla.multiply(40)).rename("score");
+  var alertImg = ee.Image.cat([
+    botonRojoM1.unmask(0).rename("rojo"),
+    alertaAmarilla.unmask(0).rename("amarillo")
+  ]);
   
-  var comunasConRiesgo = alertScore.reduceRegions({
+  var comunasConRiesgo = alertImg.reduceRegions({
     collection: coleccionComunas,
     reducer: ee.Reducer.mean(),
     scale: 2500,
@@ -165,20 +168,22 @@ function cargarFecha(fechaStr) {
   });
 
   var comunasEstilizadas = comunasConRiesgo.map(function(feat) {
-    var meanVal = ee.Number(feat.get("mean"));
-    var isNull = feat.get("mean") === null;
+    var pctRojo = ee.Number(ee.Algorithms.If(feat.get("rojo"), feat.get("rojo"), 0)).multiply(100);
+    var pctAmarillo = ee.Number(ee.Algorithms.If(feat.get("amarillo"), feat.get("amarillo"), 0)).multiply(100);
+    var pctTotal = pctRojo.add(pctAmarillo);
     
-    var colorBorde = ee.Algorithms.If(isNull, "64748b",
-                     ee.Algorithms.If(meanVal.gte(25), "9b2226",
-                     ee.Algorithms.If(meanVal.gte(8), "b45309",
-                     "64748b")));
+    var isRed = pctRojo.gte(30.0);
+    var isYellow = isRed.not().and(pctAmarillo.gte(25.0).or(pctRojo.gte(10.0)).or(pctTotal.gte(30.0)));
+    
+    var colorBorde = ee.Algorithms.If(isRed, "9b2226",
+                     ee.Algorithms.If(isYellow, "b45309",
+                     "64748b88"));
                      
-    var colorRelleno = ee.Algorithms.If(isNull, "00000000",
-                       ee.Algorithms.If(meanVal.gte(25), "d9042977", // Rojo semitransparente (Alerta Roja)
-                       ee.Algorithms.If(meanVal.gte(8), "ffea0066",  // Amarillo semitransparente (Alerta Amarilla)
-                       "00000000")));                              // Transparente (Normal)
+    var colorRelleno = ee.Algorithms.If(isRed, "d9042977", // Rojo semitransparente (Alerta Roja)
+                       ee.Algorithms.If(isYellow, "ffea0066",  // Amarillo semitransparente (Alerta Amarilla)
+                       "00000000"));                          // Transparente (Normal)
 
-    var grosor = ee.Algorithms.If(meanVal.gte(8), 2.0, 1.0);
+    var grosor = ee.Algorithms.If(isRed.or(isYellow), 2.0, 1.0);
 
     return feat.set({
       "style": {

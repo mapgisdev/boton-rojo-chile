@@ -2,11 +2,11 @@
   "date": "2017-01-20",
   "event_name": "Tormenta Las M\u00e1quinas (Maule - 211.000 ha)",
   "total_cells": 33237,
-  "red_cells_count": 14196,
-  "yellow_cells_count": 8234,
-  "red_alert_percentage": 42.71,
-  "pct_territorio_rojo": 42.71,
-  "total_communes": 411,
-  "red_communes_count": 229,
-  "yellow_communes_count": 32
+  "red_cells_count": 16105,
+  "yellow_cells_count": 5873,
+  "red_alert_percentage": 48.46,
+  "pct_territorio_rojo": 48.46,
+  "total_communes": 346,
+  "red_communes_count": 144,
+  "yellow_communes_count": 61
 }
