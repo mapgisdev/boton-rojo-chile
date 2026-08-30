@@ -5,11 +5,10 @@
  * Título: "Botón Rojo Chile - Versión 2026"
  *
  * Incluye:
- * - Capa de Límites Comunales de Chile (Asset: projects/boton-rojo-chile/assets/comunas_chile).
- * - Monitoreo Satelital en Vivo: NASA FIRMS (MODIS y VIIRS 375m NRT).
- * - Cobertura de Combustibles Dynamic World y ESA WorldCover 10m.
- * - Vista inicial: Pronóstico Hoy (Tiempo Real / GFS + FIRMS) y Catálogo Multiescenario.
- * - Leyendas dinámicas sincronizadas con el panel nativo de Layers y Scroll Vertical.
+ * - Comunas pintadas dinámicamente en Rojo (≥30%) y Amarillo (10-29%).
+ * - Capas de Botón Rojo Calibrado (M1) y Alerta Amarilla activas al inicio.
+ * - Monitoreo Satelital en Vivo: NASA FIRMS (VIIRS 375m NRT).
+ * - Focos de incendio de CONAF calibrados por severidad.
  *
  * Instrucciones: Copiar y pegar este script en https://code.earthengine.google.com/ y pulsar Run.
  */
@@ -26,7 +25,7 @@ try {
   coleccionComunas = chile;
 }
 
-Map.centerObject(ee.Geometry.Point([-71.8, -36.0]), 6);
+Map.centerObject(ee.Geometry.Point([-72.0, -36.5]), 7);
 Map.setOptions("HYBRID");
 
 // 2. Modelo de Elevación y Sombra SRTM 30m
@@ -81,7 +80,7 @@ function cargarFecha(fechaStr) {
 
   if (isHistorical) {
     startDate = ee.Date(fechaStr);
-    endDate = startDate.advance(2, "day"); // Ventana completa de emergencia
+    endDate = startDate.advance(2, "day");
     
     // Tarde en Chile (14:00 a 19:00 local = 17:00 a 22:00 UTC)
     var era5 = ee.ImageCollection("ECMWF/ERA5_LAND/HOURLY")
@@ -153,50 +152,67 @@ function cargarFecha(fechaStr) {
   var dwRemapped = dwMode.remap([1, 5, 2, 4, 3], [1, 2, 3, 4, 5], 0);
   var dwVisible = dwRemapped.updateMask(dwRemapped.gt(0));
 
-  // 4. AGREGAR CAPAS AL MAPA
+  // =========================================================================
+  // 4. PINTAR COMUNAS POR NIVEL DE ALERTA (REDUCCIÓN ZONAL RÁPIDA)
+  // =========================================================================
+  var alertScore = botonRojoM1.multiply(100).add(alertaAmarilla.multiply(40)).rename("score");
   
-  // A. Límites Comunales de Chile
-  var comunasStyle = coleccionComunas.style({
-    color: "ffffff",
-    fillColor: "00000000",
-    width: 1.2
+  var comunasConRiesgo = alertScore.reduceRegions({
+    collection: coleccionComunas,
+    reducer: ee.Reducer.mean(),
+    scale: 2500,
+    tileScale: 4
   });
-  Map.addLayer(comunasStyle, {}, "🏛️ Comunas en Botón Rojo (346)", true);
 
-  // B. Capas Meteorológicas (Inactivas al inicio)
+  var comunasEstilizadas = comunasConRiesgo.map(function(feat) {
+    var meanVal = ee.Number(feat.get("mean"));
+    var isNull = feat.get("mean") === null;
+    
+    var colorBorde = ee.Algorithms.If(isNull, "64748b",
+                     ee.Algorithms.If(meanVal.gte(25), "9b2226",
+                     ee.Algorithms.If(meanVal.gte(8), "b45309",
+                     "64748b")));
+                     
+    var colorRelleno = ee.Algorithms.If(isNull, "00000000",
+                       ee.Algorithms.If(meanVal.gte(25), "d9042977", // Rojo semitransparente (Alerta Roja)
+                       ee.Algorithms.If(meanVal.gte(8), "ffea0066",  // Amarillo semitransparente (Alerta Amarilla)
+                       "00000000")));                              // Transparente (Normal)
+
+    var grosor = ee.Algorithms.If(meanVal.gte(8), 2.0, 1.0);
+
+    return feat.set({
+      "style": {
+        color: colorBorde,
+        fillColor: colorRelleno,
+        width: grosor
+      }
+    });
+  });
+
+  // A. Capa Principal: Comunas Pintadas en Botón Rojo y Alerta Amarilla
+  Map.addLayer(comunasEstilizadas.style({styleProperty: "style"}), {}, "🏛️ Comunas en Botón Rojo (Pintadas)", true);
+
+  // B. Capas de Alerta de Alta Resolución (Píxeles Activos)
+  Map.addLayer(capaAmarillaVisible, {palette: ["#ffea00"]}, "🟡 Alerta Amarilla Preventiva (Píxeles)", true);
+  Map.addLayer(capaM1Visible, {palette: ["#d90429"]}, "🔴 Botón Rojo Calibrado M1 (Píxeles)", true);
+
+  // C. Capas Meteorológicas Opcionales
   Map.addLayer(tempC, {min: 15, max: 38, palette: ["#005f73", "#94d2bd", "#ee9b00", "#ca6702", "#ae2012"]}, "🌡️ Temperatura 14-18h (°C)", false);
   Map.addLayer(rhPct, {min: 10, max: 70, palette: ["#780000", "#c1121f", "#fdf0d5", "#669bbc", "#003049"]}, "💧 Humedad Relativa (%)", false);
   Map.addLayer(windKmh, {min: 5, max: 40, palette: ["#edf2f4", "#8d99ae", "#2b2d42", "#d90429"]}, "💨 Viento 10m (km/h)", false);
   Map.addLayer(hcfm.updateMask(fuelMask), {min: 2, max: 15, palette: ["#d90429", "#f77f00", "#fcbf49", "#eae2b7", "#2a9d8f"]}, "🌾 Humedad Combustible HCFM (%)", false);
   Map.addLayer(hs, {min: 0, max: 255}, "⛰️ Hillshade SRTM 30m", false);
-  
-  // C. Capas de Vegetación
-  Map.addLayer(fuelClassified, {
-    min: 1, max: 5,
-    palette: ["#1b4332", "#52b788", "#e9c46a", "#f4a261", "#48cae4"]
-  }, "🌲 Tipos de Vegetación (ESA 10m)", false);
+  Map.addLayer(dwVisible, {min: 1, max: 5, palette: ["#1b4332", "#52b788", "#e9c46a", "#f4a261", "#48cae4"]}, "🌲 Vegetación (Dynamic World 10m)", false);
 
-  Map.addLayer(dwVisible, {
-    min: 1, max: 5,
-    palette: ["#1b4332", "#52b788", "#e9c46a", "#f4a261", "#48cae4"]
-  }, "🛰️ Vegetación Dynamic World (10m)", false);
-
-  Map.addLayer(piContinua, {min: 25, max: 80, palette: ["#2b9348", "#80b918", "#d4d700", "#ffff3f", "#ffaa00", "#ff4800", "#d00000"]}, "🔥 Prob. Ignición Continua (0-100%)", false);
-  Map.addLayer(capaM0Visible, {palette: ["#ff9100"]}, "🟠 Botón Rojo Baseline (M0 CONAF)", false);
-
-  // D. CAPAS DE ALERTA ACTIVAS AL INICIO
-  Map.addLayer(capaAmarillaVisible, {palette: ["#ffea00"]}, "🟡 Alerta Amarilla Preventiva", false);
-  Map.addLayer(capaM1Visible, {palette: ["#d90429"]}, "🔴 Botón Rojo Calibrado (M1 BR-HR)", false);
-
-  // E. NASA FIRMS SATELITAL EN VIVO
+  // D. NASA FIRMS Satelital
   var firmsCol = ee.ImageCollection("FIRMS").filterBounds(chile).filterDate(startDate, endDate);
   if (firmsCol.size().getInfo() > 0) {
     var firmsT21 = firmsCol.select("T21").mosaic().clip(chile);
     var firmsMasked = firmsT21.updateMask(firmsT21.gte(305));
-    Map.addLayer(firmsMasked, {min: 310, max: 400, palette: ["#ffe600", "#ff5500", "#ff0055", "#7209b7"]}, "🛰️ Anomalías Térmicas NASA FIRMS (VIIRS/MODIS)", false);
+    Map.addLayer(firmsMasked, {min: 310, max: 400, palette: ["#ffe600", "#ff5500", "#ff0055", "#7209b7"]}, "🛰️ Anomalías Térmicas NASA FIRMS", true);
   }
 
-  // F. MAPA DE CALOR CONTINUO KERNEL Y FOCOS DE INCENDIO CONAF
+  // E. Focos de Incendio CONAF
   if (isHistorical) {
     var incendiosDelDia = coleccionIncendios.filter(ee.Filter.eq("date", fechaStr));
     
@@ -213,11 +229,10 @@ function cargarFecha(fechaStr) {
 
     var mega = incendiosDelDia.filter(ee.Filter.gte("area_ha", 1000));
     var large = incendiosDelDia.filter(ee.Filter.and(ee.Filter.gte("area_ha", 200), ee.Filter.lt("area_ha", 1000)));
-    var allFires = incendiosDelDia;
 
-    Map.addLayer(allFires.draw({color: "ffaa00", pointRadius: 3, strokeWidth: 1}), {}, "🔥 Todos los Focos de Incendio (CONAF)", false);
-    Map.addLayer(large.draw({color: "ff0000", pointRadius: 6, strokeWidth: 2}), {}, "🔴 Gran Incendio (≥ 200 ha)", false);
-    Map.addLayer(mega.draw({color: "7209b7", pointRadius: 8, strokeWidth: 2}), {}, "🟣 Megaincendio (≥ 1.000 ha)", false);
+    Map.addLayer(incendiosDelDia.draw({color: "ffaa00", pointRadius: 3, strokeWidth: 1}), {}, "🔥 Todos los Focos de Incendio (CONAF)", true);
+    Map.addLayer(large.draw({color: "ff0000", pointRadius: 6, strokeWidth: 2}), {}, "🔴 Gran Incendio (≥ 200 ha)", true);
+    Map.addLayer(mega.draw({color: "7209b7", pointRadius: 9, strokeWidth: 2}), {}, "🟣 Megaincendio (≥ 1.000 ha)", true);
 
     incendiosDelDia.size().evaluate(function(totalCount) {
       statusLabel.setValue("📅 " + fechaStr + " | 🔥 CONAF: " + totalCount + " focos");
@@ -244,14 +259,13 @@ function actualizarLeyendas() {
     var name = layer.getName();
 
     if (name.indexOf("Comunas") !== -1) {
-      legendContainer.add(ui.Label({value: "🏛️ Comunas en Botón Rojo:", style: {fontWeight: "bold", color: "#1d3557", fontSize: "11px"}}));
-      legendContainer.add(ui.Label({value: "Límites comunales oficiales de Chile (346 comunas).", style: {fontSize: "10px", color: "#555"}}));
+      legendContainer.add(ui.Label({value: "🏛️ Comunas en Alerta:", style: {fontWeight: "bold", color: "#1d3557", fontSize: "11px"}}));
+      legendContainer.add(ui.Label({value: "🔴 Roja: ≥ 30% superficie | 🟡 Amarilla: 10 a 29%", style: {fontSize: "10px", color: "#555"}}));
     } else if (name.indexOf("Botón Rojo Calibrado") !== -1) {
       legendContainer.add(ui.Label({value: "🔴 Botón Rojo Calibrado (M1):", style: {fontWeight: "bold", color: "#d90429", fontSize: "11px"}}));
       legendContainer.add(ui.Label({value: "Rojo. Probabilidad ignición ≥ 60%, sequedad extrema de combustible.", style: {fontSize: "10px", color: "#555"}}));
     } else if (name.indexOf("NASA FIRMS") !== -1) {
       legendContainer.add(ui.Label({value: "🛰️ Anomalías Térmicas Satelitales (NASA FIRMS):", style: {fontWeight: "bold", color: "#ff0055", fontSize: "11px"}}));
-      legendContainer.add(ui.Label({value: "Detecciones de calor en tiempo real por satélites VIIRS/MODIS.", style: {fontSize: "10px", color: "#555"}}));
     } else if (name.indexOf("Megaincendio") !== -1 || name.indexOf("Gran Incendio") !== -1) {
       legendContainer.add(ui.Label({value: "🟣 Grandes y Megaincendios (CONAF):", style: {fontWeight: "bold", color: "#7209b7", fontSize: "11px"}}));
     } else if (name.indexOf("Mapa de Calor") !== -1) {
