@@ -215,11 +215,9 @@ function cargarFecha(fechaStr) {
 
   // D. NASA FIRMS Satelital
   var firmsCol = ee.ImageCollection("FIRMS").filterBounds(chile).filterDate(startDate, endDate);
-  if (firmsCol.size().getInfo() > 0) {
-    var firmsT21 = firmsCol.select("T21").mosaic().clip(chile);
-    var firmsMasked = firmsT21.updateMask(firmsT21.gte(305));
-    Map.addLayer(firmsMasked, {min: 310, max: 400, palette: ["#ffe600", "#ff5500", "#ff0055", "#7209b7"]}, "🛰️ Anomalías Térmicas NASA FIRMS", false);
-  }
+  var firmsT21 = firmsCol.select("T21").mosaic().clip(chile);
+  var firmsMasked = firmsT21.updateMask(firmsT21.gte(305));
+  Map.addLayer(firmsMasked, {min: 310, max: 400, palette: ["#ffe600", "#ff5500", "#ff0055", "#7209b7"]}, "🛰️ Anomalías Térmicas NASA FIRMS", false);
 
   // E. Focos de Incendio CONAF
   if (isHistorical) {
