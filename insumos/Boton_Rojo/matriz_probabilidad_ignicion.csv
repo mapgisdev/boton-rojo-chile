@@ -1,0 +1,289 @@
+clave,clave_hcfm,hcfm_pct,sombreado,clase_temperatura,temperatura_c,probabilidad_ignicion_pct,activa_umbral_70
+2101,2000,<= 2,Expuesto,1,Menor a 0,84.4,True
+2102,2000,<= 2,Expuesto,2,0 - 5,86.7,True
+2103,2000,<= 2,Expuesto,3,5 - 10,89.1,True
+2104,2000,<= 2,Expuesto,4,10 - 15,91.6,True
+2105,2000,<= 2,Expuesto,5,15 - 20,94.2,True
+2106,2000,<= 2,Expuesto,6,20 - 25,96.9,True
+2107,2000,<= 2,Expuesto,7,25 - 30,99.7,True
+2108,2000,<= 2,Expuesto,8,30 - 35,100.0,True
+2109,2000,<= 2,Expuesto,9,Mayor a 35,100.0,True
+2201,2000,<= 2,Sombreado,1,Menor a 0,79.6,True
+2202,2000,<= 2,Sombreado,2,0 - 5,81.7,True
+2203,2000,<= 2,Sombreado,3,5 - 10,83.9,True
+2204,2000,<= 2,Sombreado,4,10 - 15,86.2,True
+2205,2000,<= 2,Sombreado,5,15 - 20,88.6,True
+2206,2000,<= 2,Sombreado,6,20 - 25,91.0,True
+2207,2000,<= 2,Sombreado,7,25 - 30,93.6,True
+2208,2000,<= 2,Sombreado,8,30 - 35,96.3,True
+2209,2000,<= 2,Sombreado,9,Mayor a 35,99.0,True
+3101,3000,2 - 3,Expuesto,1,Menor a 0,72.7,True
+3102,3000,2 - 3,Expuesto,2,0 - 5,74.9,True
+3103,3000,2 - 3,Expuesto,3,5 - 10,77.1,True
+3104,3000,2 - 3,Expuesto,4,10 - 15,79.4,True
+3105,3000,2 - 3,Expuesto,5,15 - 20,81.8,True
+3106,3000,2 - 3,Expuesto,6,20 - 25,84.2,True
+3107,3000,2 - 3,Expuesto,7,25 - 30,86.8,True
+3108,3000,2 - 3,Expuesto,8,30 - 35,89.5,True
+3109,3000,2 - 3,Expuesto,9,Mayor a 35,92.3,True
+3201,3000,2 - 3,Sombreado,1,Menor a 0,68.3,False
+3202,3000,2 - 3,Sombreado,2,0 - 5,70.3,True
+3203,3000,2 - 3,Sombreado,3,5 - 10,72.3,True
+3204,3000,2 - 3,Sombreado,4,10 - 15,74.4,True
+3205,3000,2 - 3,Sombreado,5,15 - 20,76.6,True
+3206,3000,2 - 3,Sombreado,6,20 - 25,78.8,True
+3207,3000,2 - 3,Sombreado,7,25 - 30,81.2,True
+3208,3000,2 - 3,Sombreado,8,30 - 35,83.7,True
+3209,3000,2 - 3,Sombreado,9,Mayor a 35,86.2,True
+4101,4000,3 - 4,Expuesto,1,Menor a 0,62.7,False
+4102,4000,3 - 4,Expuesto,2,0 - 5,64.6,False
+4103,4000,3 - 4,Expuesto,3,5 - 10,66.7,False
+4104,4000,3 - 4,Expuesto,4,10 - 15,68.8,False
+4105,4000,3 - 4,Expuesto,5,15 - 20,71.0,True
+4106,4000,3 - 4,Expuesto,6,20 - 25,73.3,True
+4107,4000,3 - 4,Expuesto,7,25 - 30,75.7,True
+4108,4000,3 - 4,Expuesto,8,30 - 35,78.2,True
+4109,4000,3 - 4,Expuesto,9,Mayor a 35,80.8,True
+4201,4000,3 - 4,Sombreado,1,Menor a 0,58.6,False
+4202,4000,3 - 4,Sombreado,2,0 - 5,60.4,False
+4203,4000,3 - 4,Sombreado,3,5 - 10,62.2,False
+4204,4000,3 - 4,Sombreado,4,10 - 15,64.2,False
+4205,4000,3 - 4,Sombreado,5,15 - 20,66.2,False
+4206,4000,3 - 4,Sombreado,6,20 - 25,68.3,False
+4207,4000,3 - 4,Sombreado,7,25 - 30,70.5,True
+4208,4000,3 - 4,Sombreado,8,30 - 35,72.8,True
+4209,4000,3 - 4,Sombreado,9,Mayor a 35,75.1,True
+5101,5000,4 - 5,Expuesto,1,Menor a 0,53.9,False
+5102,5000,4 - 5,Expuesto,2,0 - 5,55.7,False
+5103,5000,4 - 5,Expuesto,3,5 - 10,57.6,False
+5104,5000,4 - 5,Expuesto,4,10 - 15,59.6,False
+5105,5000,4 - 5,Expuesto,5,15 - 20,61.6,False
+5106,5000,4 - 5,Expuesto,6,20 - 25,63.7,False
+5107,5000,4 - 5,Expuesto,7,25 - 30,66.0,False
+5108,5000,4 - 5,Expuesto,8,30 - 35,68.3,False
+5109,5000,4 - 5,Expuesto,9,Mayor a 35,70.7,True
+5201,5000,4 - 5,Sombreado,1,Menor a 0,50.2,False
+5202,5000,4 - 5,Sombreado,2,0 - 5,51.9,False
+5203,5000,4 - 5,Sombreado,3,5 - 10,53.6,False
+5204,5000,4 - 5,Sombreado,4,10 - 15,55.3,False
+5205,5000,4 - 5,Sombreado,5,15 - 20,57.2,False
+5206,5000,4 - 5,Sombreado,6,20 - 25,59.1,False
+5207,5000,4 - 5,Sombreado,7,25 - 30,61.1,False
+5208,5000,4 - 5,Sombreado,8,30 - 35,63.3,False
+5209,5000,4 - 5,Sombreado,9,Mayor a 35,65.5,False
+6101,6000,5 - 6,Expuesto,1,Menor a 0,46.4,False
+6102,6000,5 - 6,Expuesto,2,0 - 5,48.0,False
+6103,6000,5 - 6,Expuesto,3,5 - 10,49.7,False
+6104,6000,5 - 6,Expuesto,4,10 - 15,51.5,False
+6105,6000,5 - 6,Expuesto,5,15 - 20,53.4,False
+6106,6000,5 - 6,Expuesto,6,20 - 25,55.4,False
+6107,6000,5 - 6,Expuesto,7,25 - 30,57.4,False
+6108,6000,5 - 6,Expuesto,8,30 - 35,59.6,False
+6109,6000,5 - 6,Expuesto,9,Mayor a 35,61.8,False
+6201,6000,5 - 6,Sombreado,1,Menor a 0,43.0,False
+6202,6000,5 - 6,Sombreado,2,0 - 5,44.5,False
+6203,6000,5 - 6,Sombreado,3,5 - 10,46.0,False
+6204,6000,5 - 6,Sombreado,4,10 - 15,47.7,False
+6205,6000,5 - 6,Sombreado,5,15 - 20,49.4,False
+6206,6000,5 - 6,Sombreado,6,20 - 25,51.1,False
+6207,6000,5 - 6,Sombreado,7,25 - 30,53.0,False
+6208,6000,5 - 6,Sombreado,8,30 - 35,54.9,False
+6209,6000,5 - 6,Sombreado,9,Mayor a 35,57.0,False
+7101,7000,6 - 7,Expuesto,1,Menor a 0,39.8,False
+7102,7000,6 - 7,Expuesto,2,0 - 5,41.3,False
+7103,7000,6 - 7,Expuesto,3,5 - 10,42.9,False
+7104,7000,6 - 7,Expuesto,4,10 - 15,44.5,False
+7105,7000,6 - 7,Expuesto,5,15 - 20,46.3,False
+7106,7000,6 - 7,Expuesto,6,20 - 25,48.1,False
+7107,7000,6 - 7,Expuesto,7,25 - 30,50.0,False
+7108,7000,6 - 7,Expuesto,8,30 - 35,51.9,False
+7109,7000,6 - 7,Expuesto,9,Mayor a 35,54.0,False
+7201,7000,6 - 7,Sombreado,1,Menor a 0,36.7,False
+7202,7000,6 - 7,Sombreado,2,0 - 5,38.0,False
+7203,7000,6 - 7,Sombreado,3,5 - 10,39.5,False
+7204,7000,6 - 7,Sombreado,4,10 - 15,41.0,False
+7205,7000,6 - 7,Sombreado,5,15 - 20,42.5,False
+7206,7000,6 - 7,Sombreado,6,20 - 25,44.2,False
+7207,7000,6 - 7,Sombreado,7,25 - 30,45.9,False
+7208,7000,6 - 7,Sombreado,8,30 - 35,47.7,False
+7209,7000,6 - 7,Sombreado,9,Mayor a 35,49.5,False
+8101,8000,7 - 8,Expuesto,1,Menor a 0,34.1,False
+8102,8000,7 - 8,Expuesto,2,0 - 5,35.4,False
+8103,8000,7 - 8,Expuesto,3,5 - 10,36.9,False
+8104,8000,7 - 8,Expuesto,4,10 - 15,38.4,False
+8105,8000,7 - 8,Expuesto,5,15 - 20,40.0,False
+8106,8000,7 - 8,Expuesto,6,20 - 25,41.6,False
+8107,8000,7 - 8,Expuesto,7,25 - 30,43.4,False
+8108,8000,7 - 8,Expuesto,8,30 - 35,45.2,False
+8109,8000,7 - 8,Expuesto,9,Mayor a 35,47.1,False
+8201,8000,7 - 8,Sombreado,1,Menor a 0,31.2,False
+8202,8000,7 - 8,Sombreado,2,0 - 5,32.5,False
+8203,8000,7 - 8,Sombreado,3,5 - 10,33.8,False
+8204,8000,7 - 8,Sombreado,4,10 - 15,35.1,False
+8205,8000,7 - 8,Sombreado,5,15 - 20,36.6,False
+8206,8000,7 - 8,Sombreado,6,20 - 25,38.1,False
+8207,8000,7 - 8,Sombreado,7,25 - 30,39.6,False
+8208,8000,7 - 8,Sombreado,8,30 - 35,41.3,False
+8209,8000,7 - 8,Sombreado,9,Mayor a 35,43.0,False
+9101,9000,8 - 9,Expuesto,1,Menor a 0,29.1,False
+9102,9000,8 - 9,Expuesto,2,0 - 5,30.3,False
+9103,9000,8 - 9,Expuesto,3,5 - 10,31.7,False
+9104,9000,8 - 9,Expuesto,4,10 - 15,33.0,False
+9105,9000,8 - 9,Expuesto,5,15 - 20,34.5,False
+9106,9000,8 - 9,Expuesto,6,20 - 25,36.0,False
+9107,9000,8 - 9,Expuesto,7,25 - 30,37.6,False
+9108,9000,8 - 9,Expuesto,8,30 - 35,39.3,False
+9109,9000,8 - 9,Expuesto,9,Mayor a 35,41.0,False
+9201,9000,8 - 9,Sombreado,1,Menor a 0,26.5,False
+9202,9000,8 - 9,Sombreado,2,0 - 5,27.6,False
+9203,9000,8 - 9,Sombreado,3,5 - 10,28.8,False
+9204,9000,8 - 9,Sombreado,4,10 - 15,30.0,False
+9205,9000,8 - 9,Sombreado,5,15 - 20,31.4,False
+9206,9000,8 - 9,Sombreado,6,20 - 25,32.7,False
+9207,9000,8 - 9,Sombreado,7,25 - 30,34.2,False
+9208,9000,8 - 9,Sombreado,8,30 - 35,35.7,False
+9209,9000,8 - 9,Sombreado,9,Mayor a 35,37.2,False
+10101,10000,9 - 10,Expuesto,1,Menor a 0,24.7,False
+10102,10000,9 - 10,Expuesto,2,0 - 5,25.9,False
+10103,10000,9 - 10,Expuesto,3,5 - 10,27.1,False
+10104,10000,9 - 10,Expuesto,4,10 - 15,28.3,False
+10105,10000,9 - 10,Expuesto,5,15 - 20,29.7,False
+10106,10000,9 - 10,Expuesto,6,20 - 25,31.0,False
+10107,10000,9 - 10,Expuesto,7,25 - 30,32.5,False
+10108,10000,9 - 10,Expuesto,8,30 - 35,34.0,False
+10109,10000,9 - 10,Expuesto,9,Mayor a 35,35.7,False
+10201,10000,9 - 10,Sombreado,1,Menor a 0,22.4,False
+10202,10000,9 - 10,Sombreado,2,0 - 5,23.4,False
+10203,10000,9 - 10,Sombreado,3,5 - 10,24.5,False
+10204,10000,9 - 10,Sombreado,4,10 - 15,25.6,False
+10205,10000,9 - 10,Sombreado,5,15 - 20,26.8,False
+10206,10000,9 - 10,Sombreado,6,20 - 25,28.0,False
+10207,10000,9 - 10,Sombreado,7,25 - 30,29.4,False
+10208,10000,9 - 10,Sombreado,8,30 - 35,30.7,False
+10209,10000,9 - 10,Sombreado,9,Mayor a 35,32.2,False
+11101,11000,10 - 11,Expuesto,1,Menor a 0,21.0,False
+11102,11000,10 - 11,Expuesto,2,0 - 5,22.0,False
+11103,11000,10 - 11,Expuesto,3,5 - 10,23.1,False
+11104,11000,10 - 11,Expuesto,4,10 - 15,24.2,False
+11105,11000,10 - 11,Expuesto,5,15 - 20,25.4,False
+11106,11000,10 - 11,Expuesto,6,20 - 25,26.7,False
+11107,11000,10 - 11,Expuesto,7,25 - 30,28.0,False
+11108,11000,10 - 11,Expuesto,8,30 - 35,29.4,False
+11109,11000,10 - 11,Expuesto,9,Mayor a 35,30.9,False
+11201,11000,10 - 11,Sombreado,1,Menor a 0,18.8,False
+11202,11000,10 - 11,Sombreado,2,0 - 5,19.8,False
+11203,11000,10 - 11,Sombreado,3,5 - 10,20.7,False
+11204,11000,10 - 11,Sombreado,4,10 - 15,21.8,False
+11205,11000,10 - 11,Sombreado,5,15 - 20,22.8,False
+11206,11000,10 - 11,Sombreado,6,20 - 25,24.0,False
+11207,11000,10 - 11,Sombreado,7,25 - 30,25.1,False
+11208,11000,10 - 11,Sombreado,8,30 - 35,26.4,False
+11209,11000,10 - 11,Sombreado,9,Mayor a 35,27.7,False
+12101,12000,11 - 12,Expuesto,1,Menor a 0,17.7,False
+12102,12000,11 - 12,Expuesto,2,0 - 5,18.6,False
+12103,12000,11 - 12,Expuesto,3,5 - 10,19.6,False
+12104,12000,11 - 12,Expuesto,4,10 - 15,20.6,False
+12105,12000,11 - 12,Expuesto,5,15 - 20,21.7,False
+12106,12000,11 - 12,Expuesto,6,20 - 25,22.9,False
+12107,12000,11 - 12,Expuesto,7,25 - 30,24.1,False
+12108,12000,11 - 12,Expuesto,8,30 - 35,25.4,False
+12109,12000,11 - 12,Expuesto,9,Mayor a 35,26.7,False
+12201,12000,11 - 12,Sombreado,1,Menor a 0,15.8,False
+12202,12000,11 - 12,Sombreado,2,0 - 5,16.6,False
+12203,12000,11 - 12,Sombreado,3,5 - 10,17.5,False
+12204,12000,11 - 12,Sombreado,4,10 - 15,18.4,False
+12205,12000,11 - 12,Sombreado,5,15 - 20,19.4,False
+12206,12000,11 - 12,Sombreado,6,20 - 25,20.4,False
+12207,12000,11 - 12,Sombreado,7,25 - 30,21.5,False
+12208,12000,11 - 12,Sombreado,8,30 - 35,22.6,False
+12209,12000,11 - 12,Sombreado,9,Mayor a 35,23.8,False
+13101,13000,12 - 13,Expuesto,1,Menor a 0,14.8,False
+13102,13000,12 - 13,Expuesto,2,0 - 5,15.7,False
+13103,13000,12 - 13,Expuesto,3,5 - 10,16.5,False
+13104,13000,12 - 13,Expuesto,4,10 - 15,17.5,False
+13105,13000,12 - 13,Expuesto,5,15 - 20,18.5,False
+13106,13000,12 - 13,Expuesto,6,20 - 25,19.5,False
+13107,13000,12 - 13,Expuesto,7,25 - 30,20.6,False
+13108,13000,12 - 13,Expuesto,8,30 - 35,21.8,False
+13109,13000,12 - 13,Expuesto,9,Mayor a 35,23.0,False
+13201,13000,12 - 13,Sombreado,1,Menor a 0,13.1,False
+13202,13000,12 - 13,Sombreado,2,0 - 5,13.9,False
+13203,13000,12 - 13,Sombreado,3,5 - 10,14.6,False
+13204,13000,12 - 13,Sombreado,4,10 - 15,15.5,False
+13205,13000,12 - 13,Sombreado,5,15 - 20,16.3,False
+13206,13000,12 - 13,Sombreado,6,20 - 25,17.3,False
+13207,13000,12 - 13,Sombreado,7,25 - 30,18.2,False
+13208,13000,12 - 13,Sombreado,8,30 - 35,19.3,False
+13209,13000,12 - 13,Sombreado,9,Mayor a 35,20.3,False
+14101,14000,13 - 14,Expuesto,1,Menor a 0,12.4,False
+14102,14000,13 - 14,Expuesto,2,0 - 5,13.1,False
+14103,14000,13 - 14,Expuesto,3,5 - 10,13.9,False
+14104,14000,13 - 14,Expuesto,4,10 - 15,14.7,False
+14105,14000,13 - 14,Expuesto,5,15 - 20,15.6,False
+14106,14000,13 - 14,Expuesto,6,20 - 25,16.6,False
+14107,14000,13 - 14,Expuesto,7,25 - 30,17.5,False
+14108,14000,13 - 14,Expuesto,8,30 - 35,18.6,False
+14109,14000,13 - 14,Expuesto,9,Mayor a 35,19.7,False
+14201,14000,13 - 14,Sombreado,1,Menor a 0,10.9,False
+14202,14000,13 - 14,Sombreado,2,0 - 5,11.5,False
+14203,14000,13 - 14,Sombreado,3,5 - 10,12.2,False
+14204,14000,13 - 14,Sombreado,4,10 - 15,12.9,False
+14205,14000,13 - 14,Sombreado,5,15 - 20,13.7,False
+14206,14000,13 - 14,Sombreado,6,20 - 25,14.5,False
+14207,14000,13 - 14,Sombreado,7,25 - 30,15.4,False
+14208,14000,13 - 14,Sombreado,8,30 - 35,16.3,False
+14209,14000,13 - 14,Sombreado,9,Mayor a 35,17.3,False
+15101,15000,14 - 15,Expuesto,1,Menor a 0,10.2,False
+15102,15000,14 - 15,Expuesto,2,0 - 5,10.9,False
+15103,15000,14 - 15,Expuesto,3,5 - 10,11.6,False
+15104,15000,14 - 15,Expuesto,4,10 - 15,12.4,False
+15105,15000,14 - 15,Expuesto,5,15 - 20,13.1,False
+15106,15000,14 - 15,Expuesto,6,20 - 25,14.0,False
+15107,15000,14 - 15,Expuesto,7,25 - 30,14.9,False
+15108,15000,14 - 15,Expuesto,8,30 - 35,15.8,False
+15109,15000,14 - 15,Expuesto,9,Mayor a 35,16.8,False
+15201,15000,14 - 15,Sombreado,1,Menor a 0,8.9,False
+15202,15000,14 - 15,Sombreado,2,0 - 5,9.5,False
+15203,15000,14 - 15,Sombreado,3,5 - 10,10.1,False
+15204,15000,14 - 15,Sombreado,4,10 - 15,10.8,False
+15205,15000,14 - 15,Sombreado,5,15 - 20,11.4,False
+15206,15000,14 - 15,Sombreado,6,20 - 25,12.2,False
+15207,15000,14 - 15,Sombreado,7,25 - 30,13.0,False
+15208,15000,14 - 15,Sombreado,8,30 - 35,13.8,False
+15209,15000,14 - 15,Sombreado,9,Mayor a 35,14.7,False
+16101,16000,15 - 16,Expuesto,1,Menor a 0,8.4,False
+16102,16000,15 - 16,Expuesto,2,0 - 5,9.0,False
+16103,16000,15 - 16,Expuesto,3,5 - 10,9.6,False
+16104,16000,15 - 16,Expuesto,4,10 - 15,10.3,False
+16105,16000,15 - 16,Expuesto,5,15 - 20,11.0,False
+16106,16000,15 - 16,Expuesto,6,20 - 25,11.7,False
+16107,16000,15 - 16,Expuesto,7,25 - 30,12.6,False
+16108,16000,15 - 16,Expuesto,8,30 - 35,13.4,False
+16109,16000,15 - 16,Expuesto,9,Mayor a 35,14.3,False
+16201,16000,15 - 16,Sombreado,1,Menor a 0,7.3,False
+16202,16000,15 - 16,Sombreado,2,0 - 5,7.8,False
+16203,16000,15 - 16,Sombreado,3,5 - 10,8.3,False
+16204,16000,15 - 16,Sombreado,4,10 - 15,8.9,False
+16205,16000,15 - 16,Sombreado,5,15 - 20,9.5,False
+16206,16000,15 - 16,Sombreado,6,20 - 25,10.1,False
+16207,16000,15 - 16,Sombreado,7,25 - 30,10.8,False
+16208,16000,15 - 16,Sombreado,8,30 - 35,11.6,False
+16209,16000,15 - 16,Sombreado,9,Mayor a 35,12.4,False
+17101,17000,> 16,Expuesto,1,Menor a 0,6.9,False
+17102,17000,> 16,Expuesto,2,0 - 5,7.4,False
+17103,17000,> 16,Expuesto,3,5 - 10,7.9,False
+17104,17000,> 16,Expuesto,4,10 - 15,8.5,False
+17105,17000,> 16,Expuesto,5,15 - 20,9.1,False
+17106,17000,> 16,Expuesto,6,20 - 25,9.8,False
+17107,17000,> 16,Expuesto,7,25 - 30,10.5,False
+17108,17000,> 16,Expuesto,8,30 - 35,11.3,False
+17109,17000,> 16,Expuesto,9,Mayor a 35,12.1,False
+17201,17000,> 16,Sombreado,1,Menor a 0,5.9,False
+17202,17000,> 16,Sombreado,2,0 - 5,6.3,False
+17203,17000,> 16,Sombreado,3,5 - 10,6.8,False
+17204,17000,> 16,Sombreado,4,10 - 15,7.3,False
+17205,17000,> 16,Sombreado,5,15 - 20,7.8,False
+17206,17000,> 16,Sombreado,6,20 - 25,8.4,False
+17207,17000,> 16,Sombreado,7,25 - 30,9.0,False
+17208,17000,> 16,Sombreado,8,30 - 35,9.7,False
+17209,17000,> 16,Sombreado,9,Mayor a 35,10.4,False

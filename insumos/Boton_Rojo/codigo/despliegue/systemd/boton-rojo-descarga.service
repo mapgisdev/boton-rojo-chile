@@ -1,0 +1,22 @@
+[Unit]
+Description=Botón Rojo — descarga del pronóstico GFS
+Documentation=https://github.com/blaylockbk/Herbie
+PartOf=boton-rojo.target
+
+[Service]
+Type=oneshot
+User=botonrojo
+WorkingDirectory=/opt/boton-rojo
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/boton-rojo/.venv/bin/python -m botonrojo.descarga --destino /datos/gfs
+# La descarga es lo único que depende de la red: reintentar antes de rendirse.
+Restart=on-failure
+RestartSec=300
+StartLimitBurst=3
+TimeoutStartSec=1800
+# Endurecimiento
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/datos

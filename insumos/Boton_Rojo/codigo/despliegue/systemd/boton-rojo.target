@@ -1,0 +1,6 @@
+# Agrupa las tres etapas. El encadenamiento real lo dan Requires= y After=
+# en cada unidad: si la descarga falla, el cálculo no corre y la publicación
+# tampoco. Todo queda registrado en journalctl -u 'boton-rojo-*'.
+[Unit]
+Description=Botón Rojo — cadena de proceso
+Wants=boton-rojo-descarga.service boton-rojo-calculo.service boton-rojo-publicacion.service

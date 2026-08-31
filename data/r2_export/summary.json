@@ -1,1 +1,14 @@
-{"date": "2026-08-30", "status": "NORMAL_WINTER_SEASON", "total_cells": 33237, "red_cells_count": 0, "yellow_cells_count": 12, "red_alert_percentage": 0.0, "pct_territorio_rojo": 0.0, "total_communes": 318, "red_communes_count": 0, "yellow_communes_count": 2, "warning": "Temporada de Invierno: Humedad de combustible alta (> 14%) y bajas temperaturas. Riesgo general bajo."}
+{
+  "run_id": "BRHR_20260831_LATEST",
+  "date": "2026-08-31",
+  "event_name": "Pronostico Diario en Tiempo Real",
+  "meteorological_source": "NOAA/GFS0P25",
+  "forecast_valid_time": "2026-08-31 14:00-18:59 Local Chile",
+  "methodology_version": "BRHR-2026.1-CANONICAL",
+  "generated_at": "2026-08-31T12:55:03.540590+00:00",
+  "total_communes": 346,
+  "red_communes_count": 0,
+  "yellow_communes_count": 0,
+  "total_fuel_h3_cells": 33237,
+  "pct_superficie_combustible_en_riesgo": 0.0
+}

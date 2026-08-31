@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Botón Rojo Abierto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --ground:#F2F4F1; --surface:#FFFFFF; --surface-2:#E9EDE8;
+  --ink:#101A14; --ink-muted:#55635A; --rule:#D3DBD2;
+  --pine:#1B4B39; --pine-soft:#DCE8E1;
+  --ember:#B2331C; --ember-soft:#F7E3DD;
+  --amber:#7E5A06; --amber-soft:#F3E9CE;
+  --shadow:0 1px 2px rgba(16,26,20,.06), 0 8px 24px rgba(16,26,20,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0D1411; --surface:#151F1A; --surface-2:#1C2922;
+    --ink:#E6EDE7; --ink-muted:#98A99E; --rule:#293730;
+    --pine:#7FC4A2; --pine-soft:#183025;
+    --ember:#F2836A; --ember-soft:#331E18;
+    --amber:#E0B65C; --amber-soft:#302710;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.28);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0D1411; --surface:#151F1A; --surface-2:#1C2922;
+  --ink:#E6EDE7; --ink-muted:#98A99E; --rule:#293730;
+  --pine:#7FC4A2; --pine-soft:#183025;
+  --ember:#F2836A; --ember-soft:#331E18;
+  --amber:#E0B65C; --amber-soft:#302710;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.28);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:15.5px; line-height:1.62; margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1160px; margin:0 auto; padding:56px 28px 96px;
+  display:flex; flex-direction:column; gap:56px}
+.prose{max-width:70ch}
+p{margin:0 0 .9em}
+p:last-child{margin-bottom:0}
+a{color:var(--pine); text-decoration:underline; text-underline-offset:2px;
+  text-decoration-thickness:1px; text-decoration-color:color-mix(in srgb,var(--pine) 40%,transparent)}
+a:hover{text-decoration-color:var(--pine)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--pine); outline-offset:3px; border-radius:3px}
+
+/* ---------- cabecera ---------- */
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--ink-muted); margin:0 0 18px;
+}
+h1{
+  font-family:Archivo,"IBM Plex Sans",sans-serif;
+  font-variation-settings:"wdth" 118,"wght" 700;
+  font-size:clamp(2.5rem,6vw,4.15rem); line-height:.98; letter-spacing:-.024em;
+  margin:0 0 20px; text-wrap:balance; color:var(--ink);
+}
+.lede{font-size:19px; line-height:1.55; color:var(--ink-muted); max-width:60ch; margin:0}
+.lede strong{color:var(--ink); font-weight:600}
+
+/* ---------- secciones ---------- */
+section{display:flex; flex-direction:column; gap:22px}
+h2{
+  font-family:Archivo,"IBM Plex Sans",sans-serif;
+  font-variation-settings:"wdth" 112,"wght" 650;
+  font-size:26px; line-height:1.15; letter-spacing:-.015em; margin:0;
+  padding-bottom:12px; border-bottom:2px solid var(--pine); color:var(--ink);
+  display:flex; align-items:baseline; gap:14px; text-wrap:balance;
+}
+h2 .num{
+  font-family:"IBM Plex Mono",monospace; font-size:13px; font-variation-settings:normal;
+  color:var(--pine); letter-spacing:.06em; flex:none;
+}
+h3{
+  font-family:"IBM Plex Sans",sans-serif; font-size:13px; font-weight:600;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-muted);
+  margin:22px 0 0;
+}
+
+/* ---------- llamado ---------- */
+.callout{
+  background:var(--ember-soft); border-left:3px solid var(--ember);
+  border-radius:0 10px 10px 0; padding:22px 26px;
+  display:flex; flex-direction:column; gap:10px;
+}
+.callout .tag{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ember); font-weight:500;
+}
+.callout p{max-width:72ch}
+
+/* ---------- figura ---------- */
+figure{margin:0; display:flex; flex-direction:column; gap:14px}
+.fig-scroll{overflow-x:auto; padding-bottom:4px}
+figure svg{display:block; width:100%; min-width:820px; height:auto;
+  font-family:"IBM Plex Sans",sans-serif}
+figcaption{font-size:13.5px; color:var(--ink-muted); max-width:76ch}
+.dg-box{fill:var(--surface); stroke:var(--rule); stroke-width:1.5}
+.dg-box--old{stroke-dasharray:5 4}
+.dg-box--new{stroke:var(--pine)}
+.dg-box--out{stroke:var(--ember); stroke-width:2; fill:var(--ember-soft)}
+.dg-box--in{fill:var(--surface-2); stroke:var(--rule)}
+.dg-t{fill:var(--ink); font-size:13px; font-weight:600}
+.dg-s{fill:var(--ink-muted); font-size:11.5px}
+.dg-lane{fill:var(--ink-muted); font-size:11px; letter-spacing:.12em}
+.dg-arrow{stroke:var(--ink-muted); stroke-width:1.5; fill:none}
+.dg-head{fill:var(--ink-muted)}
+.dg-al{fill:var(--ink-muted); font-size:10.5px; font-style:italic}
+.dg-note{fill:var(--ember); font-size:11.5px}
+.dg-note-dot{fill:var(--ember)}
+.dg-note2-dot{fill:var(--pine)}
+.dg-note2{fill:var(--pine); font-size:11.5px}
+
+/* ---------- tablas ---------- */
+.tw{overflow-x:auto; border:1px solid var(--rule); border-radius:10px;
+  background:var(--surface); box-shadow:var(--shadow)}
+table{border-collapse:collapse; width:100%; min-width:660px; font-size:14px}
+caption{
+  text-align:left; padding:14px 18px 0; font-size:13px; color:var(--ink-muted);
+}
+th,td{padding:11px 16px; text-align:left; vertical-align:top;
+  border-bottom:1px solid var(--rule)}
+thead th{
+  background:var(--surface-2); font-size:11.5px; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--ink-muted);
+  white-space:nowrap; position:sticky; top:0;
+}
+tbody tr:last-child td{border-bottom:none}
+td.mono,th.mono{font-family:"IBM Plex Mono",monospace; font-size:12.5px;
+  font-variant-numeric:tabular-nums; white-space:nowrap; color:var(--ink-muted)}
+td.name{font-weight:600; white-space:nowrap}
+td.name a{color:var(--ink)}
+tbody tr.lead td.name{color:var(--pine)}
+tbody tr.lead td.name a{color:var(--pine)}
+
+.pill{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:11px;
+  letter-spacing:.04em; padding:2px 8px; border-radius:999px; white-space:nowrap;
+  border:1px solid transparent}
+.pill--ok{background:var(--pine-soft); color:var(--pine); border-color:color-mix(in srgb,var(--pine) 30%,transparent)}
+.pill--warn{background:var(--amber-soft); color:var(--amber); border-color:color-mix(in srgb,var(--amber) 32%,transparent)}
+.pill--stop{background:var(--ember-soft); color:var(--ember); border-color:color-mix(in srgb,var(--ember) 32%,transparent)}
+
+/* ---------- métricas ---------- */
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(178px,1fr)); gap:14px}
+.stat{background:var(--surface); border:1px solid var(--rule); border-radius:10px;
+  padding:18px 20px; display:flex; flex-direction:column; gap:5px; box-shadow:var(--shadow)}
+.stat .k{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-muted)}
+.stat .v{font-family:Archivo,sans-serif; font-variation-settings:"wdth" 108,"wght" 640;
+  font-size:27px; line-height:1.1; letter-spacing:-.01em; font-variant-numeric:tabular-nums}
+.stat .n{font-size:12.5px; color:var(--ink-muted); line-height:1.45}
+
+/* ---------- pasos ---------- */
+.steps{display:flex; flex-direction:column; gap:0; counter-reset:paso}
+.step{display:grid; grid-template-columns:64px 1fr; gap:20px;
+  padding:22px 0; border-top:1px solid var(--rule)}
+.step:first-child{border-top:none; padding-top:4px}
+.step .idx{
+  font-family:Archivo,sans-serif; font-variation-settings:"wdth" 110,"wght" 700;
+  font-size:34px; line-height:1; color:var(--pine); font-variant-numeric:tabular-nums;
+}
+.step h4{margin:0 0 6px; font-size:17px; font-weight:600; letter-spacing:-.01em}
+.step .when{font-family:"IBM Plex Mono",monospace; font-size:11.5px;
+  color:var(--ink-muted); letter-spacing:.05em; display:block; margin-top:8px}
+.step p{max-width:74ch; color:var(--ink-muted)}
+.step p strong{color:var(--ink); font-weight:600}
+
+/* ---------- pie ---------- */
+footer{border-top:1px solid var(--rule); padding-top:26px; font-size:13.5px;
+  color:var(--ink-muted); max-width:82ch}
+footer p{margin-bottom:.7em}
+code{font-family:"IBM Plex Mono",monospace; font-size:.88em;
+  background:var(--surface-2); padding:1px 5px; border-radius:4px}
+@media (max-width:640px){
+  .wrap{padding:36px 18px 64px; gap:44px}
+  .step{grid-template-columns:44px 1fr; gap:14px}
+  .step .idx{font-size:26px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Unidad de Información y Análisis · CONAF · agosto 2026</p>
+  <h1>Botón&nbsp;Rojo Abierto</h1>
+  <p class="lede">Arquitectura de referencia para calcular y publicar el índice diario
+  con software libre, sin Google Earth Engine ni ArcGIS Online.
+  <strong>Cabe entero en un servidor de 32&nbsp;GB</strong> y el cómputo nacional a 2&nbsp;km
+  toma menos de cinco minutos por corrida.</p>
+</header>
+
+<div class="callout">
+  <span class="tag">Lo que cambió el marco de la decisión</span>
+  <p>Desde el <strong>27 de abril de 2026</strong> Earth Engine aplica cuotas mensuales de
+  cómputo al uso no comercial: 150 EECU-hora en el nivel Community, 1.000 en Contributor y
+  100.000 en Partner. Y la guía de transición a uso comercial de Google señala que los
+  usuarios de gobierno que empleen Earth Engine con <em>fines operacionales</em> deben usar
+  una cuenta comercial de pago, cuyos planes parten en USD 500 mensuales.</p>
+  <p>Un índice de peligro que se publica a diario y funda alertas de SENAPRED es, por
+  definición, uso operacional de gobierno. Antes de discutir arquitectura conviene hacer dos
+  cosas que no cuestan nada: <strong>medir el consumo real en EECU-hora</strong> con el
+  Profiler del Code Editor, y <strong>postular al nivel Partner</strong>, que Google menciona
+  explícitamente para grupos de investigación de gobierno. Si el consumo cabe ahí, la urgencia
+  desaparece y la migración se vuelve una decisión de soberanía y auditabilidad, no de costo.</p>
+</div>
+
+<figure>
+  <div class="fig-scroll">
+  <svg viewBox="0 0 1090 560" role="img"
+       aria-label="Diagrama comparativo: los mismos cuatro insumos abiertos alimentan dos rutas de cálculo y publicación —la actual sobre Google Earth Engine y ArcGIS Online, y una alternativa en software libre— que producen el mismo listado de comunas en condición de Botón Rojo.">
+    <defs>
+      <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5"
+              markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dg-head" d="M 0 0 L 10 5 L 0 10 z"/>
+      </marker>
+    </defs>
+
+    <!-- insumos -->
+    <rect class="dg-box dg-box--in" x="16" y="150" width="178" height="260" rx="9"/>
+    <text class="dg-t" x="105" y="184" text-anchor="middle">Insumos abiertos</text>
+    <text class="dg-s" x="105" y="222" text-anchor="middle">GFS 0,25° · NOAA</text>
+    <text class="dg-s" x="105" y="256" text-anchor="middle">SRTM 90 m</text>
+    <text class="dg-s" x="105" y="290" text-anchor="middle">WorldCover 2021</text>
+    <text class="dg-s" x="105" y="324" text-anchor="middle">DPA comunal 2023</text>
+    <text class="dg-s" x="105" y="366" text-anchor="middle">gratuitos, sin</text>
+    <text class="dg-s" x="105" y="384" text-anchor="middle">convenio</text>
+
+    <!-- carril actual -->
+    <text class="dg-lane" x="236" y="104">HOY · PLATAFORMAS PROPIETARIAS</text>
+    <rect class="dg-box dg-box--old" x="236" y="120" width="180" height="95" rx="9"/>
+    <text class="dg-t" x="326" y="156" text-anchor="middle">Google Earth Engine</text>
+    <text class="dg-s" x="326" y="180" text-anchor="middle">cálculo en la nube</text>
+    <rect class="dg-box dg-box--old" x="476" y="120" width="180" height="95" rx="9"/>
+    <text class="dg-t" x="566" y="156" text-anchor="middle">ArcGIS Online</text>
+    <text class="dg-s" x="566" y="180" text-anchor="middle">Feature Services</text>
+    <rect class="dg-box dg-box--old" x="716" y="120" width="180" height="95" rx="9"/>
+    <text class="dg-t" x="806" y="156" text-anchor="middle">Dashboard · StoryMap</text>
+    <text class="dg-s" x="806" y="180" text-anchor="middle">visor público</text>
+
+    <!-- carril abierto -->
+    <text class="dg-lane" x="236" y="336">ALTERNATIVA EN SOFTWARE LIBRE</text>
+    <rect class="dg-box dg-box--new" x="236" y="350" width="180" height="110" rx="9"/>
+    <text class="dg-t" x="326" y="382" text-anchor="middle">Cálculo propio</text>
+    <text class="dg-s" x="326" y="406" text-anchor="middle">Herbie · cfgrib · xarray</text>
+    <text class="dg-s" x="326" y="426" text-anchor="middle">xclim · NFDRS4 / GEFF</text>
+    <text class="dg-s" x="326" y="446" text-anchor="middle">exactextract</text>
+    <rect class="dg-box dg-box--new" x="476" y="350" width="180" height="110" rx="9"/>
+    <text class="dg-t" x="566" y="382" text-anchor="middle">Almacenamiento</text>
+    <text class="dg-s" x="566" y="406" text-anchor="middle">COG + catálogo STAC</text>
+    <text class="dg-s" x="566" y="426" text-anchor="middle">PostgreSQL + PostGIS</text>
+    <text class="dg-s" x="566" y="446" text-anchor="middle">pgstac</text>
+    <rect class="dg-box dg-box--new" x="716" y="350" width="180" height="110" rx="9"/>
+    <text class="dg-t" x="806" y="382" text-anchor="middle">Publicación</text>
+    <text class="dg-s" x="806" y="406" text-anchor="middle">TiTiler · pygeoapi</text>
+    <text class="dg-s" x="806" y="426" text-anchor="middle">Martin · PMTiles</text>
+    <text class="dg-s" x="806" y="446" text-anchor="middle">MapLibre · Panel</text>
+
+    <!-- salida -->
+    <rect class="dg-box dg-box--out" x="941" y="225" width="134" height="130" rx="9"/>
+    <text class="dg-t" x="1008" y="258" text-anchor="middle">Comunas en</text>
+    <text class="dg-t" x="1008" y="276" text-anchor="middle">Botón Rojo</text>
+    <text class="dg-s" x="1008" y="302" text-anchor="middle">5 días</text>
+    <text class="dg-s" x="1008" y="320" text-anchor="middle">14:00–18:59</text>
+    <text class="dg-s" x="1008" y="338" text-anchor="middle">PI ≥ 70 · V ≥ 20</text>
+
+    <!-- flechas -->
+    <path class="dg-arrow" marker-end="url(#ar)" d="M 196 234 L 230 176"/>
+    <path class="dg-arrow" marker-end="url(#ar)" d="M 196 326 L 230 396"/>
+    <path class="dg-arrow" marker-end="url(#ar)" d="M 418 167 L 472 167"/>
+    <text class="dg-al" x="445" y="158" text-anchor="middle">publica</text>
+    <path class="dg-arrow" marker-end="url(#ar)" d="M 658 167 L 712 167"/>
+    <text class="dg-al" x="685" y="158" text-anchor="middle">sirve</text>
+    <path class="dg-arrow" marker-end="url(#ar)" d="M 898 172 L 937 248"/>
+    <path class="dg-arrow" marker-end="url(#ar)" d="M 418 405 L 472 405"/>
+    <text class="dg-al" x="445" y="396" text-anchor="middle">COG diario</text>
+    <path class="dg-arrow" marker-end="url(#ar)" d="M 658 405 L 712 405"/>
+    <text class="dg-al" x="685" y="396" text-anchor="middle">OGC API</text>
+    <path class="dg-arrow" marker-end="url(#ar)" d="M 898 400 L 937 332"/>
+
+    <!-- anotaciones -->
+    <circle cx="242" cy="243" r="3.5" class="dg-note-dot"/>
+    <text class="dg-note" x="254" y="247">abr-2026 · el uso operacional de gobierno exige cuenta comercial de Earth Engine</text>
+    <circle cx="242" cy="497" r="3.5" class="dg-note2-dot"/>
+    <text class="dg-note2" x="254" y="501">un servidor de 8 núcleos y 32 GB · orquestado con systemd timers y Podman</text>
+  </svg>
+  </div>
+  <figcaption>Los cuatro insumos son los mismos en ambas rutas y todos son abiertos: lo que
+  se sustituye no son los datos sino el motor de cálculo y la plataforma de publicación. La
+  ruta abierta añade además algo que hoy no existe —servicios OGC normalizados— que permite
+  que la IDE de Chile y SENAPRED consuman el producto sin intermediarios.</figcaption>
+</figure>
+
+<section>
+  <h2><span class="num">01</span>Equivalencias, pieza por pieza</h2>
+  <div class="prose">
+    <p>La migración no es un salto: cada función que hoy cumple una plataforma propietaria
+    tiene un reemplazo libre concreto y probado. La columna de la derecha es la que importa,
+    porque explica qué se gana o se pierde en cada canje.</p>
+  </div>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Función</th><th>Hoy en CONAF</th><th>Equivalente libre</th><th>Qué cambia</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Cómputo raster</td><td>Google Earth Engine</td><td class="name">xarray + dask</td><td>El cálculo nacional a 2 km son minutos de CPU. No requiere nube distribuida.</td></tr>
+      <tr><td class="name">Índices de peligro</td><td>fórmulas propias en GEE</td><td class="name">xclim · NFDRS4 · GEFF</td><td>El sistema canadiense ya viene implementado y validado; no hay que reprogramarlo.</td></tr>
+      <tr><td class="name">Estadística zonal</td><td><code>reduceRegions</code></td><td class="name">exactextract</td><td>Usa la fracción exacta de celda por comuna, no el conteo de píxeles. Más preciso.</td></tr>
+      <tr><td class="name">Sombreado</td><td><code>ee.Terrain.hillshade</code></td><td class="name">GDAL DEMProcessing</td><td>Mismos parámetros de azimut y altura solar. Resultado equivalente.</td></tr>
+      <tr><td class="name">Catálogo de datos</td><td>colecciones de Earth Engine</td><td class="name">STAC (pgstac + odc-stac)</td><td>Se pierde la armonización que GEE regala; se gana un catálogo propio y auditable.</td></tr>
+      <tr><td class="name">Publicación de capas</td><td>ArcGIS Feature Service</td><td class="name">TiTiler · Martin · PMTiles</td><td>Teselado dinámico sobre COG, sin pregenerar pirámides ni consumir créditos.</td></tr>
+      <tr><td class="name">Servicios normalizados</td><td>—</td><td class="name">pygeoapi</td><td>OGC API Features, Coverages y Processes. Es la pieza que hoy falta para interoperar.</td></tr>
+      <tr><td class="name">Visor público</td><td>ArcGIS StoryMap</td><td class="name">MapLibre GL JS</td><td>Control total del diseño; el costo es que hay que construirlo y mantenerlo.</td></tr>
+      <tr><td class="name">Tablero</td><td>ArcGIS Dashboards</td><td class="name">Panel (HoloViz)</td><td>Se conecta directo al mismo cubo xarray del cálculo, sin exportar nada.</td></tr>
+      <tr><td class="name">Vigilancia operacional</td><td>—</td><td class="name">Grafana</td><td>Alerta si el ciclo GFS no llegó o la corrida falló. Hoy eso se descubre a mano.</td></tr>
+      <tr><td class="name">Orquestación</td><td>manual y por scripts</td><td class="name">systemd timers → Airflow 3</td><td>Empezar simple. Airflow solo cuando el flujo se ramifique o lo opere más de una persona.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">02</span>El stack, capa por capa</h2>
+  <div class="prose">
+    <p>Todas las versiones y fechas se verificaron contra registros primarios —PyPI, npm,
+    crates.io y las páginas de releases— entre el 26 y el 27 de agosto de 2026. Las filas
+    destacadas en verde son la primera opción de cada capa.</p>
+  </div>
+
+  <h3>Ingesta meteorológica</h3>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Herramienta</th><th class="mono">Versión</th><th class="mono">Licencia</th><th>Rol</th></tr></thead>
+    <tbody>
+      <tr class="lead"><td class="name"><a href="https://github.com/blaylockbk/Herbie">Herbie</a></td><td class="mono">2026.3.0</td><td class="mono">MIT</td><td>Localiza y descarga por rango de bytes solo las variables necesarias de GFS desde NOMADS y los espejos NODD.</td></tr>
+      <tr><td class="name"><a href="https://github.com/ecmwf/eccodes">ecCodes</a></td><td class="mono">2.48.0</td><td class="mono">Apache-2.0</td><td>Decodificación GRIB1/GRIB2. Base de todo lo demás.</td></tr>
+      <tr class="lead"><td class="name"><a href="https://github.com/ecmwf/cfgrib">cfgrib</a></td><td class="mono">0.9.15.1</td><td class="mono">Apache-2.0</td><td>Motor <code>engine="cfgrib"</code>: convierte el GRIB en un cubo xarray etiquetado.</td></tr>
+      <tr><td class="name"><a href="https://github.com/NOAA-EMC/wgrib2">wgrib2</a></td><td class="mono">3.8.0</td><td class="mono">dominio público</td><td>Inventario, recorte al recuadro de Chile e interpolación a la malla nacional.</td></tr>
+      <tr class="lead"><td class="name"><a href="https://github.com/pydata/xarray">xarray</a></td><td class="mono">2026.7.0</td><td class="mono">Apache-2.0</td><td>Estructura de datos central del cálculo diario.</td></tr>
+      <tr><td class="name"><a href="https://github.com/ecmwf/ecmwf-opendata">ecmwf-opendata</a></td><td class="mono">0.3.34</td><td class="mono">Apache-2.0</td><td>Segunda fuente independiente de NOAA: IFS y AIFS a 0,25° sin credenciales. Redundancia real.</td></tr>
+      <tr><td class="name"><a href="https://github.com/zarr-developers/zarr-python">zarr-python</a></td><td class="mono">3.3.0</td><td class="mono">MIT</td><td>Serie histórica fragmentada, para consulta puntual rápida por comuna.</td></tr>
+      <tr><td class="name"><a href="https://github.com/zarr-developers/VirtualiZarr">VirtualiZarr</a></td><td class="mono">2.7.3</td><td class="mono">Apache-2.0</td><td>Opcional: leer GRIB remotos como si fueran Zarr, sin reescribirlos. Sucede a kerchunk.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Cálculo del índice</h3>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Herramienta</th><th class="mono">Versión</th><th class="mono">Licencia</th><th>Rol</th></tr></thead>
+    <tbody>
+      <tr class="lead"><td class="name"><a href="https://github.com/Ouranosinc/xclim">xclim</a></td><td class="mono">0.62.0</td><td class="mono">Apache-2.0</td><td>Índices de incendio ya implementados sobre xarray: FFMC, DMC, DC, ISI, BUI, FWI, más KBDI, Griffiths y McArthur. Mantenido por Ouranos, con publicación revisada por pares.</td></tr>
+      <tr class="lead"><td class="name"><a href="https://github.com/firelab/NFDRS4">NFDRS4</a></td><td class="mono">sin releases</td><td class="mono">dominio público</td><td>El equivalente abierto más directo de lo que CONAF publica: modelo Nelson de humedad del combustible muerto e Ignition Component. C++ con enlaces Python por SWIG. Fijar un commit concreto.</td></tr>
+      <tr><td class="name"><a href="https://github.com/ecmwf-projects/geff">GEFF</a></td><td class="mono">Fortran-95</td><td class="mono">Apache-2.0</td><td>Unifica NFDRS, FWI y McArthur en un solo marco. Es el motor que alimenta EFFIS. La salida limpia si el dominio público estadounidense genera reparos jurídicos.</td></tr>
+      <tr><td class="name"><a href="https://github.com/gagreene/cffdrs">cffdrs</a> (Greene)</td><td class="mono">MIT</td><td class="mono">MIT</td><td>FWI sobre arreglos NumPy con procesamiento por bloques. La opción práctica si se quiere FWI raster en Python puro.</td></tr>
+      <tr class="lead"><td class="name"><a href="https://github.com/isciences/exactextract">exactextract</a></td><td class="mono">0.3.0</td><td class="mono">Apache-2.0</td><td>Estadística zonal con fracción exacta de celda por comuna, región y área protegida. Binding Python maduro.</td></tr>
+      <tr><td class="name"><a href="https://github.com/OSGeo/gdal">GDAL / OGR</a></td><td class="mono">3.13.3</td><td class="mono">MIT</td><td>Reproyección, remuestreo, hillshade, pendiente, aspecto y escritura COG.</td></tr>
+      <tr><td class="name"><a href="https://github.com/corteva/rioxarray">rioxarray</a></td><td class="mono">0.23.0</td><td class="mono">Apache-2.0</td><td>Mantiene CRS y transformación afín dentro del cubo; recorte por geometría.</td></tr>
+      <tr><td class="name"><a href="https://github.com/numba/numba">numba</a></td><td class="mono">0.67.0</td><td class="mono">BSD-2</td><td>Acelera los acumuladores con recursión día a día, que xarray no vectoriza bien.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Almacenamiento y catálogo</h3>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Herramienta</th><th class="mono">Versión</th><th class="mono">Licencia</th><th>Rol</th></tr></thead>
+    <tbody>
+      <tr class="lead"><td class="name"><a href="https://www.postgresql.org">PostgreSQL</a></td><td class="mono">18.6</td><td class="mono">PostgreSQL</td><td>Serie por unidad territorial, catálogo y particionado nativo. Soporte hasta 2030.</td></tr>
+      <tr class="lead"><td class="name"><a href="https://postgis.net">PostGIS</a></td><td class="mono">3.6.2</td><td class="mono">GPL-2.0+</td><td>Geometría, índice espacial y <code>ST_AsMVT</code> para teselas vectoriales.</td></tr>
+      <tr><td class="name"><a href="https://github.com/stac-utils/pgstac">pgstac</a></td><td class="mono">0.9.12</td><td class="mono">MIT</td><td>Esquema particionado para búsqueda espacio-temporal STAC.</td></tr>
+      <tr><td class="name"><a href="https://github.com/stac-utils/stac-fastapi">stac-fastapi</a></td><td class="mono">6.5.0</td><td class="mono">MIT</td><td>API STAC conforme a OGC API - Features.</td></tr>
+      <tr><td class="name"><a href="https://github.com/cogeotiff/rio-cogeo">rio-cogeo</a></td><td class="mono">7.0.2</td><td class="mono">BSD-3</td><td>Creación y validación de Cloud Optimized GeoTIFF.</td></tr>
+      <tr><td class="name"><a href="https://garagehq.deuxfleurs.fr">Garage</a></td><td class="mono">2.3.0</td><td class="mono">AGPL-3.0</td><td>Solo si hace falta S3 real: binario único, 1 GB de RAM, nodo único soportado. Reemplaza a MinIO.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Publicación y servicios OGC</h3>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Herramienta</th><th class="mono">Versión</th><th class="mono">Licencia</th><th>Rol</th></tr></thead>
+    <tbody>
+      <tr class="lead"><td class="name"><a href="https://github.com/developmentseed/titiler">TiTiler</a> <span class="mono">titiler.core</span></td><td class="mono">2.2.1</td><td class="mono">MIT</td><td>Teselado dinámico de COG con rampas de color y reescalado, sin pregenerar pirámides.</td></tr>
+      <tr class="lead"><td class="name"><a href="https://pygeoapi.io">pygeoapi</a></td><td class="mono">0.24.0</td><td class="mono">MIT</td><td>OGC API Features, Coverages, Processes, Records y EDR. La pieza que abre la interoperabilidad con la IDE de Chile.</td></tr>
+      <tr><td class="name"><a href="https://github.com/stac-utils/titiler-pgstac">titiler-pgstac</a></td><td class="mono">3.1.0</td><td class="mono">MIT</td><td>Mosaicos definidos por una búsqueda STAC: «la tesela del índice del día D».</td></tr>
+      <tr><td class="name"><a href="https://github.com/maplibre/martin">Martin</a></td><td class="mono">1.14.0</td><td class="mono">MIT / Apache</td><td>Teselas vectoriales desde PostGIS, PMTiles y MBTiles. Sustituye a pg_tileserv.</td></tr>
+      <tr><td class="name"><a href="https://github.com/protomaps/PMTiles">PMTiles</a></td><td class="mono">4.5.0</td><td class="mono">BSD-3</td><td>Pirámide completa en un solo archivo servido por HTTP con rangos. Sin servidor de teselas.</td></tr>
+      <tr><td class="name"><a href="https://mapserver.org">MapServer</a></td><td class="mono">8.6.5</td><td class="mono">MIT</td><td>WMS/WFS clásico y liviano, configurado por un mapfile versionable.</td></tr>
+      <tr><td class="name"><a href="https://geoserver.org">GeoServer</a></td><td class="mono">3.0.1</td><td class="mono">GPL-2.0</td><td>Solo si la IDE exige WMS/WFS/WCS con interfaz gráfica. Exige disciplina de parcheo.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Visor, tablero y orquestación</h3>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Herramienta</th><th class="mono">Versión</th><th class="mono">Licencia</th><th>Rol</th></tr></thead>
+    <tbody>
+      <tr class="lead"><td class="name"><a href="https://github.com/maplibre/maplibre-gl-js">MapLibre GL JS</a></td><td class="mono">6.6.0</td><td class="mono">BSD-3</td><td>Motor WebGL del visor público, sobre PMTiles y TiTiler.</td></tr>
+      <tr><td class="name"><a href="https://github.com/openlayers/openlayers">OpenLayers</a></td><td class="mono">10.10.0</td><td class="mono">BSD-2</td><td>Si el visor debe consumir WMS y WFS de la IDE tal como están publicados.</td></tr>
+      <tr class="lead"><td class="name"><a href="https://github.com/holoviz/panel">Panel</a> (HoloViz)</td><td class="mono">1.9.4</td><td class="mono">BSD-3</td><td>Tablero analítico con el menor roce posible sobre un stack xarray.</td></tr>
+      <tr><td class="name"><a href="https://github.com/grafana/grafana">Grafana</a></td><td class="mono">12.3.3</td><td class="mono">AGPL-3.0</td><td>Vigilancia operacional y alertas: ¿llegó el ciclo 06Z?, ¿corrió el cálculo?</td></tr>
+      <tr class="lead"><td class="name"><a href="https://systemd.io">systemd timers</a></td><td class="mono">—</td><td class="mono">LGPL-2.1+</td><td>El punto de partida honesto: cinco unidades encadenadas con <code>Requires=</code> y registro en journalctl.</td></tr>
+      <tr class="lead"><td class="name"><a href="https://podman.io">Podman</a></td><td class="mono">—</td><td class="mono">Apache-2.0</td><td>Empaquetado reproducible sin demonio ni root; genera las propias unidades systemd.</td></tr>
+      <tr><td class="name"><a href="https://airflow.apache.org">Apache Airflow</a></td><td class="mono">3.3.1</td><td class="mono">Apache-2.0</td><td>Fase dos: cuando haya más de una docena de tareas ramificadas o lo opere más de una persona.</td></tr>
+      <tr><td class="name"><a href="https://github.com/PrefectHQ/prefect">Prefect</a> · <a href="https://github.com/dagster-io/dagster">Dagster</a></td><td class="mono">3.8.4 · 1.13.19</td><td class="mono">Apache-2.0</td><td>Alternativas válidas. Prefect es Python puro; Dagster orquesta por activos, con mayor curva.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">03</span>Software específico de peligro y comportamiento del fuego</h2>
+  <div class="prose">
+    <p>Aquí está el hallazgo más relevante para CONAF, y no viene de Estados Unidos ni de
+    Europa: <strong>fire2a</strong>, el grupo de la Universidad de Chile y la Universidad
+    Adolfo Ibáñez, mantiene un simulador de propagación libre que implementa el sistema
+    chileno KITRAL, tiene publicación de 2026 en <em>Environmental Modelling &amp; Software</em>
+    y ofrece un complemento de QGIS operable por línea de comandos. Y toma como entrada
+    exactamente una grilla de probabilidad de ignición: el producto que CONAF ya genera.
+    El acople es directo.</p>
+  </div>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Herramienta</th><th class="mono">Licencia</th><th>Sirve para</th><th>Observación</th></tr></thead>
+    <tbody>
+      <tr class="lead"><td class="name"><a href="https://github.com/fire2a/C2F-W">C2F-W</a> · <a href="https://github.com/fire2a/C2FK">C2FK</a></td><td class="mono">GPL-3.0</td><td>Simular propagación</td><td>Cell2Fire con los sistemas Kitral, Scott &amp; Burgan y FBP canadiense. Binarios, contenedor Docker y complemento QGIS. Capacidad instalada en Chile.</td></tr>
+      <tr><td class="name"><a href="https://github.com/fire2a/fire-analytics-qgis-processing-toolbox-plugin">Fire Analytics Toolbox</a></td><td class="mono">AGPL-3.0</td><td>Operar desde QGIS</td><td>Ejecutable sin interfaz vía <code>qgis_process</code>, lo que lo vuelve automatizable. <strong>Ojo con la AGPL</strong> si se expone como servicio web: obliga a publicar las modificaciones.</td></tr>
+      <tr><td class="name"><a href="https://github.com/pyregence/pyretechnics">pyretechnics</a></td><td class="mono">EPL-2.0</td><td>Propagación en Python</td><td>El más activo de su categoría. Implementa ELMFIRE, FARSITE, GridFire y BehavePlus con entradas y salidas NumPy: encaja directo en un stack xarray.</td></tr>
+      <tr><td class="name"><a href="https://github.com/j-tenny/pyrothermel">pyrothermel</a></td><td class="mono">MIT</td><td>Comportamiento del fuego</td><td>Enlaces Python de la biblioteca <em>behave</em> del Fire Lab de Missoula. API todavía inestable según su propio autor.</td></tr>
+      <tr><td class="name"><a href="https://github.com/lautenberger/elmfire">ELMFIRE</a> · <a href="https://github.com/forefireAPI/forefire">ForeFire</a></td><td class="mono">EPL-2.0 · GPL-3.0</td><td>Propagación avanzada</td><td>ELMFIRE opera en pronóstico real en Estados Unidos. ForeFire es el único con acoplamiento fuego-atmósfera real, sobre MesoNH.</td></tr>
+      <tr class="lead"><td class="name"><a href="https://firms.modaps.eosdis.nasa.gov/api/area/">NASA FIRMS</a> (VIIRS)</td><td class="mono">datos abiertos</td><td>Validar el índice</td><td>Focos a 375 m, latencia de unas tres horas. Es la vía estándar para medir si los incendios ocurren donde el índice dijo. Un envoltorio propio de cincuenta líneas basta.</td></tr>
+      <tr><td class="name"><a href="https://fuelmvpd.github.io/">Modelo VPD de Lleida</a></td><td class="mono">publicado</td><td>Humedad del combustible</td><td>Mapas diarios de humedad del combustible fino muerto usando solo temperatura máxima y humedad relativa. Base física, mínima demanda de datos: lo más transferible a Chile.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">04</span>Trampas verificadas</h2>
+  <div class="prose">
+    <p>Buena parte de las guías de arquitectura que circulan recomiendan herramientas que ya
+    no conviene adoptar. Estas se revisaron una por una contra sus repositorios y registros
+    de paquetes esta semana.</p>
+  </div>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Herramienta</th><th>Estado</th><th>Qué pasó</th><th>Qué usar</th></tr></thead>
+    <tbody>
+      <tr><td class="name">MinIO</td><td><span class="pill pill--stop">archivado</span></td><td>Repositorio en solo lectura desde el 25 de abril de 2026; el README declara que ya no se mantiene. En 2025 habían quitado la administración de la consola comunitaria.</td><td>Garage, SeaweedFS, o servir los COG desde disco.</td></tr>
+      <tr><td class="name">Apache Airflow 2</td><td><span class="pill pill--stop">fin de vida</span></td><td>EOL el 22 de abril de 2026. Sin parches de seguridad.</td><td>Instalar Airflow 3 directamente.</td></tr>
+      <tr><td class="name">stactools</td><td><span class="pill pill--stop">sin mantenedor</span></td><td>Aviso explícito en el repositorio. Última versión de noviembre de 2023.</td><td>pystac cubre la necesidad.</td></tr>
+      <tr><td class="name">pg_tileserv · pg_featureserv</td><td><span class="pill pill--warn">estancado</span></td><td>Más de dieciocho meses sin release; Crunchy Data fue absorbida por Snowflake en junio de 2025.</td><td>Martin y pygeoapi.</td></tr>
+      <tr><td class="name">TimescaleDB</td><td><span class="pill pill--warn">licencia</span></td><td>Solo el núcleo es Apache-2.0. Compresión, retención y agregados continuos están bajo Timescale License: source-available, no OSI.</td><td>Las particiones nativas de PostgreSQL 18 bastan.</td></tr>
+      <tr><td class="name">metapaquete <code>titiler</code></td><td><span class="pill pill--warn">legado</span></td><td>Quedó congelado en PyPI. Confundirlo instala una versión de hace años.</td><td><code>titiler.core</code> y <code>titiler.application</code>.</td></tr>
+      <tr><td class="name">xarray-spatial</td><td><span class="pill pill--warn">congelado</span></td><td>Declara congelamiento de funcionalidades y una política de contribución inusual.</td><td>GDAL DEMProcessing y exactextract.</td></tr>
+      <tr><td class="name">Leaflet</td><td><span class="pill pill--warn">estancado</span></td><td>Sin versión estable desde mayo de 2023; la 2.0 sigue en alfa.</td><td>MapLibre GL JS u OpenLayers.</td></tr>
+      <tr><td class="name">kerchunk</td><td><span class="pill pill--warn">superado</span></td><td>El propio equipo de Zarr recomienda migrar.</td><td>VirtualiZarr, con Icechunk si hace falta versionado.</td></tr>
+      <tr><td class="name">Cell2Fire original</td><td><span class="pill pill--warn">superado</span></td><td>Último release de julio de 2021; el propio README redirige al fork mantenido.</td><td>C2F-W o C2FK, de fire2a.</td></tr>
+      <tr><td class="name">FireDanger · «pyfwi»</td><td><span class="pill pill--stop">no usar</span></td><td>El autor de FireDanger declara en el README que no está listo para uso. «pyfwi» en PyPI es inversión de onda completa sísmica, nada que ver con incendios.</td><td>xclim o cffdrs.</td></tr>
+      <tr><td class="name">Planetary Computer Hub</td><td><span class="pill pill--stop">retirado</span></td><td>El cómputo gratuito se retiró en junio de 2024 y los datos de usuario se borraron en septiembre. Los datos y la API STAC siguen abiertos.</td><td>Usarlo como fuente STAC, nunca como base operacional.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">05</span>Cuánta máquina hace falta</h2>
+  <div class="prose">
+    <p>Este es el número que suele desarmar la objeción. Con Chile continental en una malla de
+    2 km son alrededor de <strong>1,5 millones de celdas</strong>; la ventana del Botón Rojo son
+    veinticinco pasos horarios por corrida —cinco días por cinco horas—. Todo eso cabe holgado
+    en una sola máquina, y el tiempo de reloj lo domina la descarga, no el cálculo.</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><span class="k">CPU</span><span class="v">8</span><span class="n">núcleos x86-64 con AVX2. Cuatro bastan para el cálculo; ocho permiten correr los servicios en paralelo.</span></div>
+    <div class="stat"><span class="k">Memoria</span><span class="v">32 GB</span><span class="n">El pico real del cálculo es de 2 a 4 GB. El resto es PostgreSQL, servicios y caché de GDAL.</span></div>
+    <div class="stat"><span class="k">Disco</span><span class="v">1 TB</span><span class="n">NVMe. Dos TB si se quiere margen a cinco años con la serie horaria completa.</span></div>
+    <div class="stat"><span class="k">Cómputo puro</span><span class="v">&lt; 5 min</span><span class="n">Índices, reclasificación y estadística zonal sobre las 346 comunas.</span></div>
+    <div class="stat"><span class="k">Reloj de pared</span><span class="v">15–30 min</span><span class="n">Por corrida, dominado por la descarga del GRIB. Exige 100 Mbps simétricos.</span></div>
+    <div class="stat"><span class="k">Archivo anual</span><span class="v">15–145 GB</span><span class="n">Quince si se guardan solo los productos diarios agregados; ciento cuarenta y cinco con los rásters horarios completos.</span></div>
+  </div>
+  <div class="prose">
+    <p>Escalar a 1 km multiplica por cuatro las celdas y el disco, y el cómputo sigue bajo los
+    veinte minutos. Para alta disponibilidad, un segundo servidor idéntico en espera pasiva,
+    con replicación en flujo de PostgreSQL, es más barato y mucho más comprensible que un
+    clúster: duplica el presupuesto de hardware, no el de operación.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">06</span>Ruta de migración</h2>
+  <div class="prose">
+    <p>El orden importa más que las herramientas. Cada etapa deja al sistema en un estado
+    funcional, y ninguna obliga a apagar lo que hoy opera. Nada de esto debería intentarse
+    entre noviembre y marzo.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="idx">1</div>
+      <div>
+        <h4>Desacoplar el cálculo del acceso al dato</h4>
+        <p>Reescribir la fórmula del índice en Python puro sobre xarray, apoyándose en xclim
+        para los índices ya implementados y en NFDRS4 o GEFF para la probabilidad de ignición
+        y el modelo Nelson. <strong>Earth Engine sigue siendo la fuente de datos.</strong>
+        Es el paso de mayor valor y menor riesgo: a partir de aquí la lógica del índice ya no
+        depende de ninguna plataforma.</p>
+        <span class="when">2–3 semanas · fuera de temporada</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="idx">2</div>
+      <div>
+        <h4>Correr en paralelo una temporada completa</h4>
+        <p>El cálculo propio y el oficial, lado a lado, comparando comuna a comuna y día a
+        día. Solo se corta cuando la diferencia sea explicable y aceptable. En paralelo, y sin
+        costo alguno, medir el consumo en EECU-hora y postular al nivel Partner de Earth
+        Engine: si se obtiene, esta migración deja de ser urgente y pasa a ser estratégica.</p>
+        <span class="when">una temporada · noviembre a marzo</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="idx">3</div>
+      <div>
+        <h4>Levantar la publicación soberana en paralelo</h4>
+        <p>COG diarios, catálogo STAC, TiTiler para teselas y <strong>pygeoapi para los
+        servicios OGC</strong>, manteniendo ArcGIS Online como está. Esta etapa no reemplaza
+        nada: agrega lo que hoy falta, que es una vía normalizada para que la IDE de Chile y
+        SENAPRED consuman el producto sin depender de un tablero embebido.</p>
+        <span class="when">4–6 semanas · en paralelo a la etapa 2</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="idx">4</div>
+      <div>
+        <h4>Cortar, con respaldo</h4>
+        <p>Recién entonces el cálculo propio pasa a ser la fuente oficial, con ArcGIS Online
+        degradado a espejo de respaldo durante al menos una temporada más. Y con la validación
+        contra focos VIIRS ya en marcha —probabilidad de detección y tasa de falsas alarmas—,
+        que hoy no existe para el Botón Rojo y que por sí sola justificaría el proyecto.</p>
+        <span class="when">tras una temporada de operación estable</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Verificación.</strong> Versiones, fechas y licencias se contrastaron contra
+  registros primarios —API de PyPI, registro npm, crates.io y páginas de releases— el 26 y 27
+  de agosto de 2026. Las condiciones de Earth Engine provienen de la documentación de Google
+  sobre niveles no comerciales y transición a uso comercial; conviene que las áreas jurídica
+  y de GEPRIF las verifiquen antes de citarlas en un acto administrativo.</p>
+  <p><strong>Advertencia de licencias.</strong> Tres casos exigen revisión jurídica antes de
+  integrarse: la AGPL-3.0 del complemento de QGIS de fire2a y de Grafana obliga a publicar las
+  modificaciones si el componente se expone como servicio web; el dominio público
+  estadounidense de NFDRS4 y de <em>behave</em> no es una licencia OSI y su estatus fuera de
+  Estados Unidos es ambiguo —GEFF, bajo Apache-2.0, es la salida limpia—; y NFDRS4 y
+  <em>behave</em> no publican releases versionadas, de modo que la reproducibilidad exige fijar
+  un commit concreto.</p>
+  <p>Documento de trabajo de la Unidad de Información y Análisis. No constituye una decisión
+  institucional ni compromete a la Gerencia de Protección contra Incendios Forestales.</p>
+</footer>
+
+</div>
+</body>
+</html>

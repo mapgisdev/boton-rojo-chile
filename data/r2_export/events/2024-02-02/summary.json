@@ -1,12 +1,16 @@
 {
+  "run_id": "BRHR_20240202_CANONICAL",
   "date": "2024-02-02",
   "event_name": "Megaincendio Vi\u00f1a del Mar/Quilpu\u00e9",
-  "total_cells": 33237,
-  "red_cells_count": 8810,
-  "yellow_cells_count": 8133,
-  "red_alert_percentage": 26.51,
-  "pct_territorio_rojo": 26.51,
+  "meteorological_source": "ECMWF/ERA5_LAND/HOURLY",
+  "evaluation_window_utc": "17:00-21:00 UTC (14:00-18:00 Local Chile)",
+  "methodology_version": "BRHR-2026.1-CANONICAL",
+  "generated_at": "2026-08-31T12:49:36.260296+00:00",
   "total_communes": 346,
-  "red_communes_count": 97,
-  "yellow_communes_count": 77
+  "red_communes_count": 105,
+  "yellow_communes_count": 74,
+  "total_fuel_h3_cells": 33237,
+  "red_cells_count": 9408,
+  "yellow_cells_count": 8162,
+  "pct_superficie_combustible_en_riesgo": 28.31
 }

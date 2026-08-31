@@ -1,12 +1,16 @@
 {
+  "run_id": "BRHR_20230115_CANONICAL",
   "date": "2023-01-15",
   "event_name": "D\u00eda T\u00edpico de Verano (Focos Dispersos)",
-  "total_cells": 33237,
-  "red_cells_count": 6082,
-  "yellow_cells_count": 17430,
-  "red_alert_percentage": 18.3,
-  "pct_territorio_rojo": 18.3,
+  "meteorological_source": "ECMWF/ERA5_LAND/HOURLY",
+  "evaluation_window_utc": "17:00-21:00 UTC (14:00-18:00 Local Chile)",
+  "methodology_version": "BRHR-2026.1-CANONICAL",
+  "generated_at": "2026-08-31T12:50:25.492386+00:00",
   "total_communes": 346,
-  "red_communes_count": 49,
-  "yellow_communes_count": 159
+  "red_communes_count": 57,
+  "yellow_communes_count": 154,
+  "total_fuel_h3_cells": 33237,
+  "red_cells_count": 6921,
+  "yellow_cells_count": 17087,
+  "pct_superficie_combustible_en_riesgo": 20.82
 }

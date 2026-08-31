@@ -1,0 +1,14 @@
+# Réplica del Botón Rojo de CONAF — dependencias
+requests>=2.31
+numpy>=1.26
+pandas>=2.1
+openpyxl>=3.1
+scipy>=1.11
+
+# Solo para pipeline.py (réplica raster fuera de Earth Engine)
+xarray>=2024.1
+cfgrib>=0.9.10
+rasterio>=1.3
+geopandas>=0.14
+shapely>=2.0
+pyarrow>=15.0

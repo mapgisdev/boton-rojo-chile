@@ -1,0 +1,129 @@
+# pygeoapi — servicios OGC normalizados del Botón Rojo
+#
+# Esta es la pieza que hoy no existe. Publica el producto como OGC API - Features
+# y OGC API - Coverages, que es la forma en que la IDE de Chile, SENAPRED y
+# cualquier cliente SIG pueden consumirlo sin depender de un tablero embebido
+# ni de credenciales de una plataforma comercial.
+#
+# Comprobación tras levantar la pila:
+#   curl -s localhost:8083/collections | jq '.collections[].id'
+#   curl -s 'localhost:8083/collections/boton_rojo/items?region=Maule&limit=5'
+
+server:
+  bind: {host: 0.0.0.0, port: 80}
+  url: ${BR_URL_PUBLICA:-http://localhost:8083}
+  mimetype: application/json; charset=UTF-8
+  encoding: utf-8
+  language: es-CL
+  gzip: true
+  limits: {default_items: 100, max_items: 5000}
+  map:
+    url: https://tile.openstreetmap.org/{z}/{x}/{y}.png
+    attribution: '&copy; OpenStreetMap'
+  cors: true
+
+logging:
+  level: INFO
+
+metadata:
+  identification:
+    title:
+      es: Botón Rojo — servicios de datos
+      en: Red Button fire danger — data services
+    description:
+      es: >-
+        Índice diario de peligro de incendios forestales. Una comuna queda en
+        condición de Botón Rojo cuando, en el pronóstico para la ventana
+        14:00-18:59 hora local, algún punto de su superficie combustible presenta
+        simultáneamente probabilidad de ignición igual o superior a 70 % y
+        velocidad del viento igual o superior a 20 km/h. Proyección a cinco días.
+    keywords:
+      es: [incendios forestales, peligro, probabilidad de ignición, Chile, CONAF]
+    keywords_type: theme
+    terms_of_service: https://www.conaf.cl/
+    url: https://www.conaf.cl/incendios/
+  license:
+    name: Datos de uso público; debe citarse a CONAF como fuente
+    url: https://www.conaf.cl/
+  provider:
+    name: CONAF — Unidad de Información y Análisis
+    url: https://www.conaf.cl/
+  contact:
+    name: Unidad de Información y Análisis
+    email: dei.geprif@conaf.cl
+    role: pointOfContact
+
+resources:
+
+  boton_rojo:
+    type: collection
+    title:
+      es: Comunas en condición de Botón Rojo
+    description:
+      es: >-
+        Una fila por comuna, día de pronóstico y número de horas de la ventana de
+        tarde en que se cumple la condición. La superficie se expresa en hectáreas
+        y la proporción se calcula sobre la superficie combustible de la comuna,
+        no sobre su superficie total.
+    keywords:
+      es: [botón rojo, comuna, peligro]
+    extents:
+      spatial: {bbox: [-75.7, -56.0, -66.4, -17.5], crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84}
+      temporal: {begin: 2026-01-01T00:00:00Z, end: null}
+    links:
+      - type: text/html
+        rel: canonical
+        title: Situación actual y pronóstico de incendios — CONAF
+        href: https://www.conaf.cl/incendios/situacion-actual-y-pronostico-de-incendios/
+        hreflang: es-CL
+    providers:
+      - type: feature
+        name: PostgreSQL
+        data:
+          host: bd
+          port: 5432
+          dbname: botonrojo
+          user: ${BR_DB_USER}
+          password: ${BR_DB_PASS}
+          search_path: [public]
+        id_field: com_id
+        time_field: fecha
+        table: boton_rojo_vigente
+        geom_field: geom
+
+  probabilidad_ignicion:
+    type: collection
+    title:
+      es: Probabilidad de ignición — pronóstico diario
+    description:
+      es: >-
+        Cobertura raster de probabilidad de ignición en porcentaje, sobre
+        superficie combustible, para el día de pronóstico solicitado.
+    keywords:
+      es: [probabilidad de ignición, raster]
+    extents:
+      spatial: {bbox: [-75.7, -56.0, -66.4, -17.5], crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84}
+    providers:
+      - type: coverage
+        name: rasterio
+        data: /datos/cog/ultimo/d0_PI.tif
+        options: {DATA_ENCODING: COMPLEX_PACKING}
+        format: {name: GTiff, mimetype: application/x-geotiff}
+
+  humedad_combustible:
+    type: collection
+    title:
+      es: Humedad del combustible fino muerto — pronóstico diario
+    description:
+      es: >-
+        Cobertura raster de humedad del combustible fino muerto en porcentaje,
+        derivada de la temperatura y la humedad relativa pronosticadas.
+    keywords:
+      es: [humedad del combustible, raster]
+    extents:
+      spatial: {bbox: [-75.7, -56.0, -66.4, -17.5], crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84}
+    providers:
+      - type: coverage
+        name: rasterio
+        data: /datos/cog/ultimo/d0_HC.tif
+        format: {name: GTiff, mimetype: application/x-geotiff}

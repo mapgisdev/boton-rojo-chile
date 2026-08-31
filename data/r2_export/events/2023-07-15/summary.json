@@ -1,12 +1,16 @@
 {
+  "run_id": "BRHR_20230715_CANONICAL",
   "date": "2023-07-15",
   "event_name": "Invierno Austral (0 Alertas / 100% Verde)",
-  "total_cells": 33237,
-  "red_cells_count": 13,
-  "yellow_cells_count": 33,
-  "red_alert_percentage": 0.04,
-  "pct_territorio_rojo": 0.04,
+  "meteorological_source": "ECMWF/ERA5_LAND/HOURLY",
+  "evaluation_window_utc": "17:00-21:00 UTC (14:00-18:00 Local Chile)",
+  "methodology_version": "BRHR-2026.1-CANONICAL",
+  "generated_at": "2026-08-31T12:51:33.395196+00:00",
   "total_communes": 346,
   "red_communes_count": 2,
-  "yellow_communes_count": 4
+  "yellow_communes_count": 5,
+  "total_fuel_h3_cells": 33237,
+  "red_cells_count": 8,
+  "yellow_cells_count": 67,
+  "pct_superficie_combustible_en_riesgo": 0.02
 }

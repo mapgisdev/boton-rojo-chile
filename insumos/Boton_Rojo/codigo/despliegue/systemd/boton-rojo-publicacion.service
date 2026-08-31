@@ -1,0 +1,21 @@
+[Unit]
+Description=Botón Rojo — COG, catálogo STAC y carga en PostGIS
+PartOf=boton-rojo.target
+Requires=boton-rojo-calculo.service
+After=boton-rojo-calculo.service
+
+[Service]
+Type=oneshot
+User=botonrojo
+WorkingDirectory=/opt/boton-rojo
+EnvironmentFile=/etc/boton-rojo/entorno
+ExecStart=/opt/boton-rojo/.venv/bin/python -m botonrojo.publicar \
+    --productos /datos/productos --cog /datos/cog
+# Purga de GRIB con más de 15 días: el archivo útil son los productos, no la materia prima.
+ExecStartPost=/usr/bin/find /datos/gfs -type f -name '*.grib2' -mtime +15 -delete
+TimeoutStartSec=1200
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/datos

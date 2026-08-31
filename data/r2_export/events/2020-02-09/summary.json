@@ -1,12 +1,16 @@
 {
+  "run_id": "BRHR_20200209_CANONICAL",
   "date": "2020-02-09",
   "event_name": "Ola de Calor Focalizada La Araucan\u00eda",
-  "total_cells": 33237,
-  "red_cells_count": 10052,
-  "yellow_cells_count": 11316,
-  "red_alert_percentage": 30.24,
-  "pct_territorio_rojo": 30.24,
+  "meteorological_source": "ECMWF/ERA5_LAND/HOURLY",
+  "evaluation_window_utc": "17:00-21:00 UTC (14:00-18:00 Local Chile)",
+  "methodology_version": "BRHR-2026.1-CANONICAL",
+  "generated_at": "2026-08-31T12:50:50.733686+00:00",
   "total_communes": 346,
-  "red_communes_count": 97,
-  "yellow_communes_count": 99
+  "red_communes_count": 101,
+  "yellow_communes_count": 102,
+  "total_fuel_h3_cells": 33237,
+  "red_cells_count": 10520,
+  "yellow_cells_count": 11458,
+  "pct_superficie_combustible_en_riesgo": 31.65
 }

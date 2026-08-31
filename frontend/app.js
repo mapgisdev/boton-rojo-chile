@@ -221,11 +221,11 @@ async function loadInitialData() {
         paint: {
           "fill-color": [
             "case",
-            ["==", ["get", "alerta"], "ALERTA ROJA COMUNAL"], "rgba(217, 4, 41, 0.40)",
-            ["==", ["get", "alerta"], "ALERTA AMARILLA COMUNAL"], "rgba(255, 209, 102, 0.45)",
-            ["==", ["get", "alerta"], "ALERTA TEMPRANA PREVENTIVA"], "rgba(252, 191, 73, 0.30)",
-            [">=", ["get", "pct_rojo"], 30], "rgba(217, 4, 41, 0.40)",
-            [">=", ["get", "pct_rojo"], 10], "rgba(255, 209, 102, 0.45)",
+            ["==", ["coalesce", ["get", "alerta"], ""], "ALERTA ROJA COMUNAL"], "rgba(217, 4, 41, 0.40)",
+            ["==", ["coalesce", ["get", "alerta"], ""], "ALERTA AMARILLA COMUNAL"], "rgba(255, 209, 102, 0.45)",
+            ["==", ["coalesce", ["get", "alerta"], ""], "ALERTA TEMPRANA PREVENTIVA"], "rgba(252, 191, 73, 0.30)",
+            [">=", ["coalesce", ["get", "pct_rojo"], 0], 30], "rgba(217, 4, 41, 0.40)",
+            [">=", ["coalesce", ["get", "pct_rojo"], 0], 10], "rgba(255, 209, 102, 0.45)",
             COLORS.TRANSPARENT
           ],
           "fill-opacity": 0.80
@@ -240,20 +240,20 @@ async function loadInitialData() {
         paint: {
           "line-color": [
             "case",
-            ["==", ["get", "alerta"], "ALERTA ROJA COMUNAL"], COLORS.BORDER_RED,
-            ["==", ["get", "alerta"], "ALERTA AMARILLA COMUNAL"], COLORS.BORDER_YELLOW,
-            [">=", ["get", "pct_rojo"], 30], COLORS.BORDER_RED,
-            [">=", ["get", "pct_rojo"], 10], COLORS.BORDER_YELLOW,
+            ["==", ["coalesce", ["get", "alerta"], ""], "ALERTA ROJA COMUNAL"], COLORS.BORDER_RED,
+            ["==", ["coalesce", ["get", "alerta"], ""], "ALERTA AMARILLA COMUNAL"], COLORS.BORDER_YELLOW,
+            [">=", ["coalesce", ["get", "pct_rojo"], 0], 30], COLORS.BORDER_RED,
+            [">=", ["coalesce", ["get", "pct_rojo"], 0], 10], COLORS.BORDER_YELLOW,
             COLORS.BORDER_NORMAL
           ],
           "line-width": [
             "case",
-            ["==", ["get", "alerta"], "ALERTA ROJA COMUNAL"], 2.2,
-            ["==", ["get", "alerta"], "ALERTA AMARILLA COMUNAL"], 2.0,
-            [">=", ["get", "pct_rojo"], 10], 2.0,
+            ["==", ["coalesce", ["get", "alerta"], ""], "ALERTA ROJA COMUNAL"], 2.2,
+            ["==", ["coalesce", ["get", "alerta"], ""], "ALERTA AMARILLA COMUNAL"], 2.0,
+            [">=", ["coalesce", ["get", "pct_rojo"], 0], 10], 2.0,
             1.0
           ],
-          "line-opacity": 0.95
+          "line-opacity": 0.85
         }
       });
     }
@@ -504,33 +504,28 @@ async function loadForecastData(dateStr) {
       rawCommunes = await safeFetchJSON([`${basePath}/communes.json`]);
       h3GeoJSON = await safeFetchJSON([`${basePath}/h3_res7.geojson`]);
       centroidsGeoJSON = await safeFetchJSON([`${basePath}/h3_centroids.json`]);
-    } else if (firesData.length > 0 && isSummerFireSeason(dateStr)) {
-      // SINTETIZADOR DINÁMICO: Si es temporada de incendios y hay focos activos, calcular alertas para esa fecha
-      const dynamicResult = synthesizeDateForecast(dateStr, firesData);
-      summary = dynamicResult.summary;
-      rawCommunes = dynamicResult.communes;
-      h3GeoJSON = dynamicResult.h3Mesh;
-      centroidsGeoJSON = dynamicResult.centroids;
     } else {
-      // Caso base / invierno / pronóstico normal
+      // Pronóstico Hoy en Tiempo Real (Base)
       summary = await safeFetchJSON([
+        "./data/r2_export/summary.json",
         "/data/r2_export/summary.json",
-        "/data/r2_export/br_hr_summary_latest.json",
-        `${API_BASE}/api/v1/forecast/latest/summary`
-      ]) || { red_alert_percentage: 0, total_cells: 33237, red_communes_count: 0, yellow_communes_count: 0 };
+        "data/r2_export/summary.json"
+      ]) || { red_alert_percentage: 0, total_communes: 346, red_communes_count: 0, yellow_communes_count: 0 };
 
       rawCommunes = await safeFetchJSON([
+        "./data/r2_export/communes.json",
         "/data/r2_export/communes.json",
-        "/data/r2_export/br_hr_communes_latest.json",
-        `${API_BASE}/api/v1/forecast/latest/communes`
+        "data/r2_export/communes.json"
       ]);
       h3GeoJSON = await safeFetchJSON([
+        "./data/r2_export/h3_res7.geojson",
         "/data/r2_export/h3_res7.geojson",
-        "/data/r2_export/h3_chile_r7_mesh.geojson"
+        "data/r2_export/h3_res7.geojson"
       ]);
       centroidsGeoJSON = await safeFetchJSON([
+        "./data/r2_export/h3_centroids.json",
         "/data/r2_export/h3_centroids.json",
-        "/data/r2_export/h3_chile_r8_centroids.json"
+        "data/r2_export/h3_centroids.json"
       ]);
     }
 
@@ -559,11 +554,12 @@ async function loadForecastData(dateStr) {
       map.getSource("fires-points").setData(firesGeoJSON);
     }
 
-    // Actualizar Puntos Satelitales NASA FIRMS
+    // Actualizar Puntos Satelitales NASA FIRMS (Con filtro de soberanía)
     const firmsGeoJSON = await safeFetchJSON([
       `${basePath}/firms.json`,
-      `${API_BASE}/api/v1/firms/active-points?days=1`,
-      "/data/r2_export/firms_latest.json"
+      "./data/r2_export/firms_latest.json",
+      "/data/r2_export/firms_latest.json",
+      "data/r2_export/firms_latest.json"
     ]);
     if (firmsGeoJSON && map.getSource("firms-points")) {
       map.getSource("firms-points").setData(firmsGeoJSON);
@@ -605,95 +601,6 @@ async function loadForecastData(dateStr) {
     console.error("Error al actualizar fecha:", e);
     updateStatus(`Fecha cargada: ${dateStr}`);
   }
-}
-
-// 3.1. Función de Síntesis Dinámica para Cualquier Fecha de Temporada de Incendios
-function synthesizeDateForecast(dateStr, firesData) {
-  const comFires = {};
-  const regFires = new Set();
-
-  firesData.forEach(f => {
-    const cName = (f.comuna || "").toLowerCase().trim();
-    if (cName) comFires[cName] = (comFires[cName] || 0) + 1;
-    if (f.region) regFires.add(f.region.toLowerCase().trim());
-  });
-
-  // Sintetizar comunas
-  const communes = [];
-  let redComCount = 0;
-  let yellowComCount = 0;
-
-  if (communesGeoJSON && communesGeoJSON.features) {
-    communesGeoJSON.features.forEach(feat => {
-      const cName = (feat.properties.comuna || feat.properties.Comuna || "").trim();
-      const cleanName = cName.toLowerCase();
-      const region = feat.properties.region || feat.properties.Region || "Chile";
-      const cleanReg = region.toLowerCase();
-
-      const numFires = comFires[cleanName] || 0;
-      let pctRojo = 0.0;
-      let alerta = "NORMAL";
-
-      if (numFires >= 2) {
-        pctRojo = Math.min(95.0, 35.0 + numFires * 12.0);
-        alerta = "ALERTA ROJA COMUNAL";
-        redComCount++;
-      } else if (numFires === 1) {
-        pctRojo = 22.0;
-        alerta = "ALERTA AMARILLA COMUNAL";
-        yellowComCount++;
-      } else if (regFires.has(cleanReg)) {
-        pctRojo = 12.0;
-        alerta = "ALERTA AMARILLA COMUNAL";
-        yellowComCount++;
-      }
-
-      communes.push({
-        codcom: String(feat.properties.cod_comuna || feat.properties.codcom || ""),
-        comuna: cName,
-        region: region,
-        total_hexagons: 45,
-        red_hexagons: Math.round((pctRojo / 100.0) * 45),
-        yellow_hexagons: alerta.includes("AMARILLA") ? 8 : 0,
-        pct_superficie_roja: pctRojo,
-        alerta_comunal: alerta
-      });
-    });
-  }
-
-  // Sintetizar Centroides de Calor de Alerta basados en los focos
-  const centroids = {
-    type: "FeatureCollection",
-    features: firesData.map((f, i) => ({
-      type: "Feature",
-      geometry: { type: "Point", coordinates: [f.lon, f.lat] },
-      properties: {
-        h3_id: `dyn_${i}`,
-        weight: f.area_ha >= 100 ? 1.8 : 1.0,
-        horas_br: f.area_ha >= 100 ? 4 : 2,
-        p_ign: 0.82,
-        alerta: f.area_ha >= 100 ? "ROJO" : "AMARILLO"
-      }
-    }))
-  };
-
-  const summary = {
-    date: dateStr,
-    total_cells: 33237,
-    red_cells_count: redComCount * 14,
-    yellow_cells_count: yellowComCount * 8,
-    red_alert_percentage: Number(((redComCount / Math.max(1, communes.length)) * 100).toFixed(1)),
-    total_communes: communes.length,
-    red_communes_count: redComCount,
-    yellow_communes_count: yellowComCount
-  };
-
-  return {
-    summary,
-    communes,
-    h3Mesh: { type: "FeatureCollection", features: [] },
-    centroids
-  };
 }
 
 // 4. Vincular Alertas a Comunas con Normalización de Acentos y Códigos CUT
@@ -899,7 +806,9 @@ function updateKPIs(summary, communes) {
     layerLabel.innerHTML = `<strong>🏛️ Comunas en Botón Rojo (${totalAlerted})</strong>`;
   }
 
-  if (summary && summary.red_alert_percentage !== undefined) {
+  if (summary && summary.pct_superficie_combustible_en_riesgo !== undefined) {
+    document.getElementById("kpi-risk-pct").innerText = `${summary.pct_superficie_combustible_en_riesgo} %`;
+  } else if (summary && summary.red_alert_percentage !== undefined) {
     document.getElementById("kpi-risk-pct").innerText = `${summary.red_alert_percentage} %`;
   } else if (summary && summary.pct_territorio_rojo !== undefined) {
     document.getElementById("kpi-risk-pct").innerText = `${summary.pct_territorio_rojo} %`;
@@ -912,7 +821,8 @@ function renderCommunesTable(communes) {
 
   const sorted = [...communes].sort((a, b) => (b.pct_superficie_roja || 0) - (a.pct_superficie_roja || 0));
 
-  sorted.slice(0, 35).forEach(com => {
+  // Filtrar comunas en alerta primero, o todas si se busca
+  sorted.forEach(com => {
     const tr = document.createElement("tr");
     const isRed = com.alerta_comunal === "ALERTA ROJA COMUNAL" || (com.pct_superficie_roja || 0) >= 30;
     const isYellow = com.alerta_comunal === "ALERTA AMARILLA COMUNAL" || (!isRed && ((com.pct_superficie_roja || 0) >= 10 || (com.pct_superficie_amarilla || 0) >= 20));

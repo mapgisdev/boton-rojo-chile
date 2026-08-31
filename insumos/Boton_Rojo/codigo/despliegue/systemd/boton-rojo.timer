@@ -1,0 +1,16 @@
+# Dispara la cadena completa dos veces al día, después de que los ciclos GFS
+# 06Z y 18Z están disponibles en NOMADS (latencia típica de 4 a 5 horas).
+# Horas en hora local de Chile: systemd maneja el cambio de horario de verano.
+[Unit]
+Description=Botón Rojo — corrida diaria del índice
+Documentation=file:///opt/boton-rojo/README.md
+
+[Timer]
+OnCalendar=*-*-* 09:20 America/Santiago
+OnCalendar=*-*-* 21:20 America/Santiago
+Persistent=true
+RandomizedDelaySec=180
+Unit=boton-rojo.target
+
+[Install]
+WantedBy=timers.target

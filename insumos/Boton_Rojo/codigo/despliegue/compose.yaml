@@ -1,0 +1,139 @@
+# Botón Rojo — pila de publicación en software libre
+#
+# Compatible con `podman-compose` y con `docker compose`. Diseñada para un único
+# servidor: 8 núcleos, 32 GB de RAM y 1 TB NVMe bastan para el cálculo nacional a 2 km.
+#
+#   podman-compose -f compose.yaml up -d
+#
+# AVISO SOBRE LAS ETIQUETAS DE IMAGEN
+# Las etiquetas están fijadas a propósito, pero deben verificarse contra el registro
+# antes de desplegar: los proyectos publican a distinto ritmo y una etiqueta que no
+# existe falla en silencio con `latest`. Nunca usar `latest` en producción.
+#
+# El cálculo NO corre aquí: lo ejecutan las unidades systemd de ./systemd/ sobre el
+# anfitrión, y esta pila solo publica lo que aquel deja en ${DATOS}.
+
+name: boton-rojo
+
+x-comun: &comun
+  restart: unless-stopped
+  logging:
+    driver: json-file
+    options: {max-size: "10m", max-file: "5"}
+
+services:
+
+  # --- Base de datos: PostGIS + esquema pgstac ------------------------------
+  bd:
+    <<: *comun
+    image: docker.io/postgis/postgis:17-3.5
+    container_name: br-bd
+    environment:
+      POSTGRES_DB: botonrojo
+      POSTGRES_USER: ${BR_DB_USER:-botonrojo}
+      POSTGRES_PASSWORD: ${BR_DB_PASS:?definir BR_DB_PASS en .env}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - bd:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d:ro,Z
+    ports: ["127.0.0.1:5432:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${BR_DB_USER:-botonrojo} -d botonrojo"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    shm_size: 512m
+
+  # --- Catálogo STAC: qué producto existe para qué día ----------------------
+  stac:
+    <<: *comun
+    image: ghcr.io/stac-utils/stac-fastapi-pgstac:6.3.1
+    container_name: br-stac
+    depends_on: {bd: {condition: service_healthy}}
+    environment:
+      POSTGRES_USER: ${BR_DB_USER:-botonrojo}
+      POSTGRES_PASS: ${BR_DB_PASS}
+      POSTGRES_DBNAME: botonrojo
+      POSTGRES_HOST_READER: bd
+      POSTGRES_HOST_WRITER: bd
+      POSTGRES_PORT: 5432
+      APP_HOST: 0.0.0.0
+      APP_PORT: 8080
+    ports: ["127.0.0.1:8081:8080"]
+
+  # --- Teselado dinámico de los COG diarios --------------------------------
+  titiler:
+    <<: *comun
+    image: ghcr.io/developmentseed/titiler:2.2.1
+    container_name: br-titiler
+    environment:
+      # Solo lectura local; sin esto TiTiler aceptaría URLs arbitrarias.
+      GDAL_DISABLE_READDIR_ON_OPEN: EMPTY_DIR
+      GDAL_CACHEMAX: "512"
+      VSI_CACHE: "TRUE"
+      CPL_VSIL_CURL_ALLOWED_EXTENSIONS: ".tif,.TIF,.tiff"
+      TITILER_API_CORS_ORIGINS: ${BR_ORIGENES:-*}
+    volumes:
+      - ${BR_DATOS:-./datos}:/datos:ro,Z
+    ports: ["127.0.0.1:8082:8000"]
+
+  # --- Servicios OGC normalizados: la pieza que hoy falta -------------------
+  # OGC API Features y Coverages. Es lo que permite que la IDE de Chile y
+  # SENAPRED consuman el producto sin depender de un tablero embebido.
+  pygeoapi:
+    <<: *comun
+    image: ghcr.io/geopython/pygeoapi:0.24.0
+    container_name: br-pygeoapi
+    depends_on: {bd: {condition: service_healthy}}
+    environment:
+      PYGEOAPI_CONFIG: /pygeoapi/local.config.yml
+      PYGEOAPI_OPENAPI: /pygeoapi/local.openapi.yml
+    volumes:
+      - ./pygeoapi/local.config.yml:/pygeoapi/local.config.yml:ro,Z
+      - ${BR_DATOS:-./datos}:/datos:ro,Z
+    ports: ["127.0.0.1:8083:80"]
+
+  # --- Teselas vectoriales de las comunas activadas -------------------------
+  martin:
+    <<: *comun
+    image: ghcr.io/maplibre/martin:v1.14.0
+    container_name: br-martin
+    depends_on: {bd: {condition: service_healthy}}
+    command: ["--listen-addresses", "0.0.0.0:3000"]
+    environment:
+      DATABASE_URL: postgresql://${BR_DB_USER:-botonrojo}:${BR_DB_PASS}@bd:5432/botonrojo
+    ports: ["127.0.0.1:8084:3000"]
+
+  # --- Vigilancia operacional ----------------------------------------------
+  # Responde la pregunta que hoy se contesta a mano: ¿llegó el ciclo GFS?
+  # ¿corrió el cálculo? ¿se publicó? Alerta por correo si alguna falla.
+  grafana:
+    <<: *comun
+    image: docker.io/grafana/grafana-oss:12.3.3
+    container_name: br-grafana
+    depends_on: {bd: {condition: service_healthy}}
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${BR_GRAFANA_PASS:?definir BR_GRAFANA_PASS en .env}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_SERVER_ROOT_URL: ${BR_URL_PUBLICA:-http://localhost:8085}
+    volumes:
+      - grafana:/var/lib/grafana
+    ports: ["127.0.0.1:8085:3000"]
+
+  # --- Visor público estático ----------------------------------------------
+  # MapLibre GL JS sobre las teselas de TiTiler y Martin. Nginx sirve el HTML.
+  visor:
+    <<: *comun
+    image: docker.io/nginx:1.29-alpine
+    container_name: br-visor
+    volumes:
+      - ./visor:/usr/share/nginx/html:ro,Z
+    ports: ["127.0.0.1:8080:80"]
+
+volumes:
+  bd:
+  grafana:
+
+# Todos los puertos se publican solo en 127.0.0.1: la exposición a internet debe
+# hacerse con un proxy inverso propio (nginx o Caddy) que resuelva TLS,
+# limitación de tasa y encabezados de seguridad. No exponer estos puertos directo.
