@@ -14,7 +14,8 @@ let allFiresGeoJSON = null;
 let communeH3Lookup = {};
 let selectedCommuneFilter = null;
 let activeEventDate = "LATEST";
-let currentModelMode = "BR_HR"; // "BR_HR" | "M0" | "BOTH"
+let currentModelMode = "BR_HR";
+let activeH3Resolution = 7; // 7 (~500ha) | 8 (~70ha) // "BR_HR" | "M0" | "BOTH"
 
 // Registro Canónico de Comunas en Alerta Roja Oficial según Metodología M0 CONAF (Línea Base)
 const M0_CANONICAL_RED_COMMUNES = {
@@ -232,6 +233,51 @@ async function loadInitialData() {
       layout: { "visibility": "none" },
       filter: ["==", ["get", "alerta"], "ROJO"],
       paint: { "line-color": "#9b2226", "line-width": 1.2 }
+    });
+
+    // 2B. HEXÁGONOS H3 RES 8 (ALTA RESOLUCIÓN Y MAYOR DETALLE TERRITORIAL)
+    map.addLayer({
+      id: "h3-res8-fill-yellow",
+      type: "circle",
+      source: "h3-res8-centroids",
+      layout: { "visibility": "none" },
+      filter: ["==", ["get", "alerta"], "AMARILLO"],
+      paint: {
+        "circle-radius": [
+          "interpolate", ["linear"], ["zoom"],
+          6, 2.2,
+          8, 4.5,
+          10, 8.0,
+          12, 14.0,
+          14, 25.0
+        ],
+        "circle-color": COLORS.AMARILLO,
+        "circle-stroke-color": "#b45309",
+        "circle-stroke-width": 1.0,
+        "circle-opacity": 0.85
+      }
+    });
+
+    map.addLayer({
+      id: "h3-res8-fill-red",
+      type: "circle",
+      source: "h3-res8-centroids",
+      layout: { "visibility": "none" },
+      filter: ["==", ["get", "alerta"], "ROJO"],
+      paint: {
+        "circle-radius": [
+          "interpolate", ["linear"], ["zoom"],
+          6, 2.8,
+          8, 5.5,
+          10, 9.5,
+          12, 16.0,
+          14, 28.0
+        ],
+        "circle-color": COLORS.ROJO,
+        "circle-stroke-color": "#9b2226",
+        "circle-stroke-width": 1.2,
+        "circle-opacity": 0.90
+      }
     });
 
     // 3A. COMUNAS CON ALERTA BR-HR CALIBRADAS (ROJA / AMARILLA)
@@ -663,6 +709,7 @@ async function loadForecastData(dateStr) {
     const dateLabel = dateStr === 'LATEST' ? 'Pronóstico Hoy' : dateStr;
     updateStatus(`📅 ${dateLabel}  |  🔥 CONAF: ${conafCount.toLocaleString()} focos  |  🛰️ FIRMS: ${firmsCount.toLocaleString()} satelitales`);
 
+    updateH3LayersVisibility();
     // Sincronizar visibilidad según el modo de modelo actual
     aplicarModoModelo(currentModelMode);
 
@@ -982,6 +1029,32 @@ function renderCommunesTable(communes) {
 }
 
 // 8. Interacciones y Clics
+function updateH3LayersVisibility() {
+  const chkRed = document.getElementById("layer-h3-red");
+  const chkYellow = document.getElementById("layer-h3-yellow");
+
+  const showRed = chkRed ? chkRed.checked : false;
+  const showYellow = chkYellow ? chkYellow.checked : false;
+
+  if (activeH3Resolution === 7) {
+    if (map.getLayer("h3-res8-fill-red")) map.setLayoutProperty("h3-res8-fill-red", "visibility", "none");
+    if (map.getLayer("h3-res8-fill-yellow")) map.setLayoutProperty("h3-res8-fill-yellow", "visibility", "none");
+
+    if (map.getLayer("h3-res7-fill-red")) map.setLayoutProperty("h3-res7-fill-red", "visibility", showRed ? "visible" : "none");
+    if (map.getLayer("h3-res7-lines-red")) map.setLayoutProperty("h3-res7-lines-red", "visibility", showRed ? "visible" : "none");
+    if (map.getLayer("h3-res7-fill-yellow")) map.setLayoutProperty("h3-res7-fill-yellow", "visibility", showYellow ? "visible" : "none");
+    if (map.getLayer("h3-res7-lines-yellow")) map.setLayoutProperty("h3-res7-lines-yellow", "visibility", showYellow ? "visible" : "none");
+  } else {
+    if (map.getLayer("h3-res7-fill-red")) map.setLayoutProperty("h3-res7-fill-red", "visibility", "none");
+    if (map.getLayer("h3-res7-lines-red")) map.setLayoutProperty("h3-res7-lines-red", "visibility", "none");
+    if (map.getLayer("h3-res7-fill-yellow")) map.setLayoutProperty("h3-res7-fill-yellow", "visibility", "none");
+    if (map.getLayer("h3-res7-lines-yellow")) map.setLayoutProperty("h3-res7-lines-yellow", "visibility", "none");
+
+    if (map.getLayer("h3-res8-fill-red")) map.setLayoutProperty("h3-res8-fill-red", "visibility", showRed ? "visible" : "none");
+    if (map.getLayer("h3-res8-fill-yellow")) map.setLayoutProperty("h3-res8-fill-yellow", "visibility", showYellow ? "visible" : "none");
+  }
+}
+
 function setupMapInteractions() {
   const handleCommuneClick = (e) => {
     if (!e.features || e.features.length === 0) return;
@@ -1006,14 +1079,20 @@ function setupMapInteractions() {
   map.on("click", "comunas-fill", handleCommuneClick);
   map.on("click", "comunas-m0-fill", handleCommuneClick);
 
-  map.on("click", "h3-res7-fill-red", (e) => handleHexClick(e, "BOTÓN ROJO", "rojo"));
-  map.on("click", "h3-res7-fill-yellow", (e) => handleHexClick(e, "ALERTA AMARILLA", "amarillo"));
+  map.on("click", "h3-res7-fill-red", (e) => handleHexClick(e, "BOTÓN ROJO", "rojo", 7));
+  map.on("click", "h3-res7-fill-yellow", (e) => handleHexClick(e, "ALERTA AMARILLA", "amarillo", 7));
+  map.on("click", "h3-res8-fill-red", (e) => handleHexClick(e, "BOTÓN ROJO", "rojo", 8));
+  map.on("click", "h3-res8-fill-yellow", (e) => handleHexClick(e, "ALERTA AMARILLA", "amarillo", 8));
 
-  function handleHexClick(e, alertaLabel, badgeClass) {
+  function handleHexClick(e, alertaLabel, badgeClass, res = 7) {
     if (!e.features || e.features.length === 0) return;
     const props = e.features[0].properties;
-    showInspector(`📍 Sector H3 (Res 7, ~500 ha)`, `
+    const title = res === 8
+      ? `🔬 Sector H3 Alta Resolución (Res 8, ~70 ha)`
+      : `📍 Sector H3 Intermedio (Res 7, ~500 ha)`;
+    showInspector(title, `
       <p><strong>ID Hexágono:</strong> <code>${props.h3_id}</code></p>
+      <p><strong>Resolución H3:</strong> Nivel ${res} (${res === 8 ? '~70 ha' : '~500 ha'})</p>
       <p><strong>Nivel de Alerta:</strong> <span class="badge-alert ${badgeClass}">${alertaLabel}</span></p>
       <p><strong>Horas Botón Rojo:</strong> ${props.horas_br || 0} hrs continuas</p>
       <p><strong>Probabilidad Ignición Promedio:</strong> ${((props.p_ign || 0) * 100).toFixed(1)}%</p>
@@ -1068,6 +1147,10 @@ function setupMapInteractions() {
   map.on("mouseleave", "h3-res7-fill-red", () => map.getCanvas().style.cursor = "");
   map.on("mouseenter", "h3-res7-fill-yellow", () => map.getCanvas().style.cursor = "pointer");
   map.on("mouseleave", "h3-res7-fill-yellow", () => map.getCanvas().style.cursor = "");
+  map.on("mouseenter", "h3-res8-fill-red", () => map.getCanvas().style.cursor = "pointer");
+  map.on("mouseleave", "h3-res8-fill-red", () => map.getCanvas().style.cursor = "");
+  map.on("mouseenter", "h3-res8-fill-yellow", () => map.getCanvas().style.cursor = "pointer");
+  map.on("mouseleave", "h3-res8-fill-yellow", () => map.getCanvas().style.cursor = "");
   map.on("mouseenter", "fires-all-circles", () => map.getCanvas().style.cursor = "pointer");
   map.on("mouseleave", "fires-all-circles", () => map.getCanvas().style.cursor = "");
   map.on("mouseenter", "fires-circles", () => map.getCanvas().style.cursor = "pointer");
@@ -1151,18 +1234,36 @@ function setupEventListeners() {
     });
   }
 
-  // 3. Hexágonos Res 7 Rojos
-  document.getElementById("layer-h3-red").addEventListener("change", (e) => {
-    const vis = e.target.checked ? "visible" : "none";
-    if (map.getLayer("h3-res7-fill-red")) map.setLayoutProperty("h3-res7-fill-red", "visibility", vis);
-    if (map.getLayer("h3-res7-lines-red")) map.setLayoutProperty("h3-res7-lines-red", "visibility", vis);
+  // Botones de Selección de Nivel H3 (Res 7 vs Res 8)
+  const btnRes7 = document.getElementById("btn-h3-res7");
+  const btnRes8 = document.getElementById("btn-h3-res8");
+
+  if (btnRes7) {
+    btnRes7.addEventListener("click", () => {
+      activeH3Resolution = 7;
+      btnRes7.classList.add("active");
+      if (btnRes8) btnRes8.classList.remove("active");
+      updateH3LayersVisibility();
+    });
+  }
+
+  if (btnRes8) {
+    btnRes8.addEventListener("click", () => {
+      activeH3Resolution = 8;
+      btnRes8.classList.add("active");
+      if (btnRes7) btnRes7.classList.remove("active");
+      updateH3LayersVisibility();
+    });
+  }
+
+  // 3. Hexágonos Rojos (Actualiza según la resolución activa)
+  document.getElementById("layer-h3-red").addEventListener("change", () => {
+    updateH3LayersVisibility();
   });
 
-  // 4. Hexágonos Res 7 Amarillos
-  document.getElementById("layer-h3-yellow").addEventListener("change", (e) => {
-    const vis = e.target.checked ? "visible" : "none";
-    if (map.getLayer("h3-res7-fill-yellow")) map.setLayoutProperty("h3-res7-fill-yellow", "visibility", vis);
-    if (map.getLayer("h3-res7-lines-yellow")) map.setLayoutProperty("h3-res7-lines-yellow", "visibility", vis);
+  // 4. Hexágonos Amarillos (Actualiza según la resolución activa)
+  document.getElementById("layer-h3-yellow").addEventListener("change", () => {
+    updateH3LayersVisibility();
   });
 
   // 5. Mapa de Calor de Alerta Botón Rojo

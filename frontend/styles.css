@@ -299,6 +299,41 @@ body {
   letter-spacing: 0.5px;
 }
 
+.h3-res-selector-group {
+  display: flex;
+  gap: 4px;
+  background-color: #f1f5f9;
+  padding: 3px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.btn-res {
+  flex: 1;
+  padding: 5px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-res:hover {
+  color: #0f172a;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-res.active {
+  background-color: #ffffff;
+  color: #d90429;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
 .color-dot {
   width: 10px;
   height: 10px;
