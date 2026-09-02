@@ -326,18 +326,17 @@ function procesarYRenderizar(tempC, rhPct, windKmh, labelText, startDate, endDat
   var comunasM0 = reducedM0.map(function(feat) {
     var pct = ee.Number(ee.Algorithms.If(feat.get("mean"), feat.get("mean"), 0)).multiply(100);
     var isRed = pct.gte(30.0);
-    var isYellow = isRed.not().and(pct.gte(10.0));
 
-    var colorBorde = ee.Algorithms.If(isRed, "9b2226", ee.Algorithms.If(isYellow, "b45309", "64748b66"));
-    var colorRelleno = ee.Algorithms.If(isRed, "d9042988", ee.Algorithms.If(isYellow, "ffea0066", "00000000"));
+    var colorBorde = ee.Algorithms.If(isRed, "9b2226", "64748b44");
+    var colorRelleno = ee.Algorithms.If(isRed, "d9042988", "00000000");
 
     return feat.set({
-      "style": { color: colorBorde, fillColor: colorRelleno, width: ee.Algorithms.If(isRed.or(isYellow), 2.0, 0.8) }
+      "style": { color: colorBorde, fillColor: colorRelleno, width: ee.Algorithms.If(isRed, 2.0, 0.6) }
     });
   });
 
   // Capas Panel Izquierdo (M0)
-  leftMap.addLayer(comunasM0.style({styleProperty: "style"}), {}, "🏛️ Comunas Clasificadas M0 (≥30%)", true);
+  leftMap.addLayer(comunasM0.style({styleProperty: "style"}), {}, "🏛️ Comunas con Botón Rojo M0 (≥30% Combustible)", true);
   leftMap.addLayer(m0Padded, {palette: ["#800f2f"]}, "🔴 Píxeles Botón Rojo Original M0 (PI≥70 & V≥20)", false);
   leftMap.addLayer(piM0.updateMask(fuelMask), {min: 0, max: 100, palette: ["#249900", "#fbff00", "#ff6600", "#f01811"]}, "🔥 Probabilidad Ignición Matriz M0", false);
   leftMap.addLayer(hcfmM0.updateMask(fuelMask), {min: 2, max: 15, palette: ["#d90429", "#f77f00", "#fcbf49", "#eae2b7", "#2a9d8f"]}, "🌾 HCFM M0 (%)", false);
