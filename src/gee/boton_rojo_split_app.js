@@ -384,20 +384,24 @@ function procesarYRenderizar(tempC, rhPct, windKmh, labelText, startDate, endDat
   // =========================================================================
   // C. CAPAS DE VALIDACIÓN: ASSET DE INCENDIOS CONAF (SERVIDOR GEE)
   // =========================================================================
-  var conafFC = isHistorical ? coleccionIncendios.filter(ee.Filter.eq("date", dateFilterStr)) : ee.FeatureCollection([]);
+  var conafFC = isHistorical ? coleccionIncendios.filter(ee.Filter.eq("date", dateFilterStr)).map(function(feat) {
+    var lon = ee.Number(feat.get("lon"));
+    var lat = ee.Number(feat.get("lat"));
+    return feat.setGeometry(ee.Geometry.Point([lon, lat]));
+  }) : ee.FeatureCollection([]);
 
   var allFiresStyled = conafFC.map(function(feat) {
-    return feat.set("style", {color: "ff8c00", fillColor: "ff8c0088", pointSize: 2.5, width: 1});
+    return feat.set("style", {color: "ff8c00", fillColor: "ff8c00aa", pointSize: 3, width: 1});
   });
 
   var majorFires = conafFC.filter(ee.Filter.gte("area_ha", 200));
   var majorFiresStyled = majorFires.map(function(feat) {
     var ha = ee.Number(feat.get("area_ha"));
-    var sz = ha.gte(1000).multiply(4.5).add(ha.lt(1000).multiply(3.5));
-    return feat.set("style", {color: "7209b7", fillColor: "9d0208aa", pointSize: sz, width: 1});
+    var sz = ha.gte(1000).multiply(6).add(ha.lt(1000).multiply(4.5));
+    return feat.set("style", {color: "7209b7", fillColor: "d90429cc", pointSize: sz, width: 1.5});
   });
 
-  // Agregar incendios desactivados por defecto (false) para no saturar la vista inicial
+  // Agregar incendios en ambos mapas (desactivados por defecto para limpieza)
   leftMap.addLayer(allFiresStyled.style({styleProperty: "style"}), {}, "🔥 Focos de Incendios Registrados (CONAF)", false);
   leftMap.addLayer(majorFiresStyled.style({styleProperty: "style"}), {}, "🟣 Megaincendios y Grandes Incendios (≥200 ha)", false);
 
