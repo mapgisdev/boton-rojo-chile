@@ -334,22 +334,22 @@ function cargarEscenario(fechaStr, isHistorical) {
   }));
 
   var allFiresStyled = conafFC.map(function(feat) {
-    return feat.set("style", {color: "ff8c00", pointSize: 4, width: 1});
+    return feat.set("style", {color: "ff8c00", fillColor: "ff8c0088", pointSize: 2, width: 1});
   });
 
   var majorFires = conafFC.filter(ee.Filter.gte("area_ha", 200));
   var majorFiresStyled = majorFires.map(function(feat) {
     var ha = ee.Number(feat.get("area_ha"));
-    var sz = ha.gte(1000).multiply(12).add(ha.lt(1000).multiply(8));
-    return feat.set("style", {color: "7209b7", fillColor: "9d0208cc", pointSize: sz, width: 2});
+    var sz = ha.gte(1000).multiply(5).add(ha.lt(1000).multiply(3.5));
+    return feat.set("style", {color: "7209b7", fillColor: "9d0208aa", pointSize: sz, width: 1});
   });
 
-  // Agregar incendios en ambos mapas para validación visual directa
-  leftMap.addLayer(allFiresStyled.style({styleProperty: "style"}), {}, "🔥 Focos de Incendios Registrados (CONAF)", true);
-  leftMap.addLayer(majorFiresStyled.style({styleProperty: "style"}), {}, "🟣 Megaincendios y Grandes Incendios (≥200 ha)", true);
+  // Agregar incendios desactivados por defecto (false) para no saturar la vista inicial
+  leftMap.addLayer(allFiresStyled.style({styleProperty: "style"}), {}, "🔥 Focos de Incendios Registrados (CONAF)", false);
+  leftMap.addLayer(majorFiresStyled.style({styleProperty: "style"}), {}, "🟣 Megaincendios y Grandes Incendios (≥200 ha)", false);
 
-  rightMap.addLayer(allFiresStyled.style({styleProperty: "style"}), {}, "🔥 Focos de Incendios Registrados (CONAF)", true);
-  rightMap.addLayer(majorFiresStyled.style({styleProperty: "style"}), {}, "🟣 Megaincendios y Grandes Incendios (≥200 ha)", true);
+  rightMap.addLayer(allFiresStyled.style({styleProperty: "style"}), {}, "🔥 Focos de Incendios Registrados (CONAF)", false);
+  rightMap.addLayer(majorFiresStyled.style({styleProperty: "style"}), {}, "🟣 Megaincendios y Grandes Incendios (≥200 ha)", false);
 
   // Detecciones Satelitales NASA FIRMS
   var firmsCol = ee.ImageCollection("FIRMS").filterBounds(chile).filterDate(startDate, endDate);
