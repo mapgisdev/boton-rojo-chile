@@ -107,9 +107,60 @@ body {
   font-weight: 800;
 }
 
+.card-m0 .kpi-value { color: #f43f5e; font-weight: 800; }
 .card-red .kpi-value { color: #ff4d6d; }
 .card-yellow .kpi-value { color: var(--alert-yellow); }
 .card-blue .kpi-value { color: #38bdf8; }
+
+/* Selector de Metodología */
+.methodology-selector {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-left: 4px solid #d90429;
+}
+
+.model-toggle-group {
+  display: flex;
+  gap: 4px;
+  background-color: #e2e8f0;
+  padding: 3px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.btn-model {
+  flex: 1;
+  padding: 6px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: #475569;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-model:hover {
+  color: #0f172a;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-model.active {
+  background-color: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.model-desc-badge {
+  font-size: 10.5px;
+  line-height: 1.35;
+  color: #475569;
+  background-color: #ffffff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
 
 /* Contenedor Principal */
 .app-main {
@@ -218,8 +269,16 @@ body {
 }
 
 .highlight-layer {
-  background-color: #f0fdf4;
-  border: 1px solid #bbf7d0;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-bottom: 6px;
+}
+
+.highlight-layer-m0 {
+  background-color: #fff1f2;
+  border: 1px solid #ffe4e6;
   border-radius: 6px;
   padding: 6px 10px;
   margin-bottom: 8px;
@@ -288,9 +347,26 @@ body {
   margin-top: 2px;
 }
 
+.legend-box.com-m0 { background-color: rgba(128, 15, 47, 0.70); border: 1.5px solid #4a0419; }
 .legend-box.com-red { background-color: rgba(217, 4, 41, 0.65); border: 1px solid #9b2226; }
 .legend-box.com-yellow { background-color: rgba(255, 209, 102, 0.75); border: 1px solid #b45309; }
 .legend-box.com-green { background-color: #ffffff; border: 1px solid #94a3b8; }
+
+.badge-m0-red {
+  display: inline-block;
+  background-color: #ffe4e6;
+  color: #9f1239;
+  font-weight: 800;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  border: 1px solid #fecdd3;
+}
+
+.badge-m0-none {
+  color: #94a3b8;
+  font-size: 11px;
+}
 
 /* Tabla Comunas */
 .section-header-flex {

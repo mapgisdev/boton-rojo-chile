@@ -1,6 +1,7 @@
 /**
  * app.js — Controlador Frontend de Botón Rojo de Alta Resolución (BR-HR 2026) con MapLibre GL JS.
- * Soporta Zoom y Filtrado Automático por Comuna con Botón de Restauración ("Limpiar").
+ * Soporta Comparación Metodológica Dual (M0 Original CONAF vs BR-HR Calibrado 2026),
+ * Zoom y Filtrado Automático por Comuna con Botón de Restauración ("Limpiar").
  */
 
 // Configuración dinámica de Endpoints
@@ -13,6 +14,25 @@ let allFiresGeoJSON = null;
 let communeH3Lookup = {};
 let selectedCommuneFilter = null;
 let activeEventDate = "LATEST";
+let currentModelMode = "BR_HR"; // "BR_HR" | "M0" | "BOTH"
+
+// Registro Canónico de Comunas en Alerta Roja Oficial según Metodología M0 CONAF (Línea Base)
+const M0_CANONICAL_RED_COMMUNES = {
+  "2023-02-03": ["08301", "08303", "los angeles", "cabrero"],
+  "2024-02-02": [],
+  "2017-01-20": [
+    "07102", "07103", "07201", "07306", "07304", "07305", "07204",
+    "06206", "06306", "06204", "06205", "06201", "06202", "06203",
+    "constitucion", "empedrado", "cauquenes", "san javier", "vichuquen",
+    "hualane", "licanten", "paredones", "pumanque", "marchigue", "navidad",
+    "pichilemu", "la estrella", "litueche"
+  ],
+  "2020-02-09": ["09106", "galvarino"],
+  "2023-01-15": [],
+  "2023-11-15": [],
+  "2023-07-15": [],
+  "LATEST": []
+};
 
 // Coordenadas focales y configuración de los escenarios
 const EVENT_CENTERS = {
@@ -26,14 +46,17 @@ const EVENT_CENTERS = {
   "LATEST":     { center: [-71.8, -36.0], zoom: 6.5, name: "Pronóstico Tiempo Real" }
 };
 
-// Paleta de colores oficial de BR-HR
+// Paleta de colores oficial de BR-HR y M0
 const COLORS = {
   ROJO: "#d90429",
   ROJO_FILL: "rgba(217, 4, 41, 0.50)",
+  M0_ROJO: "#800f2f",
+  M0_FILL: "rgba(155, 34, 38, 0.65)",
   AMARILLO: "#ffd166",
   AMARILLO_FILL: "rgba(255, 209, 102, 0.55)",
   TEMPRANA_FILL: "rgba(252, 191, 73, 0.30)",
   BORDER_RED: "#9b2226",
+  BORDER_M0: "#4a0419",
   BORDER_YELLOW: "#b45309",
   BORDER_NORMAL: "#64748b",
   TRANSPARENT: "rgba(0,0,0,0)"
@@ -138,7 +161,7 @@ async function loadInitialData() {
     // CONFIGURACIÓN DE CAPAS (ORDEN DE APILAMIENTO Z-INDEX: DE ABAJO HACIA ARRIBA)
     // =========================================================================
 
-    // 1. CAPA INFERIOR: MAPA DE CALOR DE ALERTA BOTÓN ROJO (KDE del Modelo)
+    // 1. MAPA DE CALOR DE ALERTA BOTÓN ROJO (KDE del Modelo)
     map.addLayer({
       id: "alert-heatmap",
       type: "heatmap",
@@ -174,7 +197,7 @@ async function loadInitialData() {
       }
     });
 
-    // 2. CAPA INTERMEDIA: HEXÁGONOS H3 RES 7 (SOBRE EL MAPA DE CALOR DE ALERTA)
+    // 2. HEXÁGONOS H3 RES 7 (SOBRE EL MAPA DE CALOR)
     map.addLayer({
       id: "h3-res7-fill-yellow",
       type: "fill",
@@ -211,7 +234,7 @@ async function loadInitialData() {
       paint: { "line-color": "#9b2226", "line-width": 1.2 }
     });
 
-    // 3. CAPA INTERMEDIA SUPERIOR: COMUNAS CON ALERTA (SOBRE LOS HEXÁGONOS)
+    // 3A. COMUNAS CON ALERTA BR-HR CALIBRADAS (ROJA / AMARILLA)
     if (communesGeoJSON) {
       map.addLayer({
         id: "comunas-fill",
@@ -256,9 +279,45 @@ async function loadInitialData() {
           "line-opacity": 0.85
         }
       });
+
+      // 3B. CAPA BOTÓN ROJO ORIGINAL CONAF (M0 - LÍNEA BASE OFICIAL)
+      map.addLayer({
+        id: "comunas-m0-fill",
+        type: "fill",
+        source: "comunas-mesh",
+        layout: { "visibility": "none" },
+        paint: {
+          "fill-color": [
+            "case",
+            ["==", ["coalesce", ["get", "is_m0_red"], false], true], "rgba(128, 15, 47, 0.65)",
+            COLORS.TRANSPARENT
+          ],
+          "fill-opacity": 0.85
+        }
+      });
+
+      map.addLayer({
+        id: "comunas-m0-lines",
+        type: "line",
+        source: "comunas-mesh",
+        layout: { "visibility": "none" },
+        paint: {
+          "line-color": [
+            "case",
+            ["==", ["coalesce", ["get", "is_m0_red"], false], true], COLORS.BORDER_M0,
+            "rgba(100, 116, 139, 0.35)"
+          ],
+          "line-width": [
+            "case",
+            ["==", ["coalesce", ["get", "is_m0_red"], false], true], 2.8,
+            0.6
+          ],
+          "line-opacity": 0.90
+        }
+      });
     }
 
-    // 4. CAPA SUPERIOR (TOP): MAPA DE CALOR DE INCENDIOS PONDERADO POR MAGNITUD (HA)
+    // 4. MAPA DE CALOR DE INCENDIOS PONDERADO POR MAGNITUD (HA)
     map.addLayer({
       id: "fires-heatmap",
       type: "heatmap",
@@ -305,7 +364,7 @@ async function loadInitialData() {
       }
     });
 
-    // 5A. TODOS LOS FOCOS DE INCENDIO OBSERVADOS (CONAF) - Variación Sutil y Compacta
+    // 5A. TODOS LOS FOCOS DE INCENDIO OBSERVADOS (CONAF)
     map.addLayer({
       id: "fires-all-circles",
       type: "circle",
@@ -336,7 +395,7 @@ async function loadInitialData() {
       }
     });
 
-    // 5B. GRANDES Y MEGAINCENDIOS OBSERVADOS (≥ 200 ha) - Círculos Sutilmente Destacados
+    // 5B. GRANDES Y MEGAINCENDIOS OBSERVADOS (≥ 200 ha)
     map.addLayer({
       id: "fires-circles",
       type: "circle",
@@ -364,7 +423,7 @@ async function loadInitialData() {
       }
     });
 
-    // 6. CAPA SATELITAL EN VIVO: FOCOS ACTIVOS NASA FIRMS (VIIRS 375m) - Puntos Satelitales Finos
+    // 6. CAPA SATELITAL NASA FIRMS
     map.addSource("firms-points", {
       type: "geojson",
       data: { type: "FeatureCollection", features: [] }
@@ -435,7 +494,7 @@ async function loadInitialData() {
   }
 }
 
-// Helper de Fetch Resiliente con Múltiples Fallbacks (Compatible con Localhost, Cloudflare y GitHub Pages)
+// Helper de Fetch Resiliente
 async function safeFetchJSON(urls) {
   const candidateUrls = [];
   for (const u of urls) {
@@ -455,48 +514,32 @@ async function safeFetchJSON(urls) {
         return await resp.json();
       }
     } catch (e) {
-      // Intentar siguiente URL
+      // Intentar con la siguiente URL candidata
     }
   }
   return null;
 }
 
-// Helper: Verificar si un mes corresponde a la temporada de incendios de Chile (Diciembre a Marzo)
-function isSummerFireSeason(dateStr) {
-  if (!dateStr || dateStr.length < 7) return false;
-  const month = parseInt(dateStr.substring(5, 7), 10);
-  return month === 12 || month === 1 || month === 2 || month === 3;
-}
-
-// 3. Consultar y Actualizar TODAS las Capas del Evento Dinámicamente
+// 3. Cargar Datos por Evento Seleccionado
 async function loadForecastData(dateStr) {
   activeEventDate = dateStr;
-  updateStatus(`Consultando datos para fecha: ${dateStr}...`);
-
-  // Si había una comuna filtrada previamente, resetear el filtro
-  if (selectedCommuneFilter) {
-    resetCommuneFilter(false);
-  }
+  updateStatus(`Cargando datos para ${dateStr}...`);
 
   try {
-    const isSpecialEvent = Object.keys(EVENT_CENTERS).includes(dateStr) && dateStr !== "LATEST";
-    const basePath = isSpecialEvent ? `/data/r2_export/events/${dateStr}` : "/data/r2_export";
+    resetCommuneFilter(false);
 
     let summary = null;
     let rawCommunes = null;
     let h3GeoJSON = null;
     let centroidsGeoJSON = null;
-    let firesData = [];
 
-    // E. Cargar Incendios Observados Específicos para la Fecha Seleccionada
-    if (isSpecialEvent) {
-      firesData = await safeFetchJSON([`${basePath}/fires.json`]) || [];
-    } else if (allFiresGeoJSON && allFiresGeoJSON.features) {
-      // Filtrar del universo histórico para la fecha exacta si coincide
-      firesData = allFiresGeoJSON.features
-        .filter(f => f.properties && f.properties.date === dateStr)
-        .map(f => f.properties ? { ...f.properties, lon: f.geometry.coordinates[0], lat: f.geometry.coordinates[1] } : null)
-        .filter(Boolean);
+    const isSpecialEvent = dateStr !== "LATEST";
+    const basePath = isSpecialEvent ? `./data/r2_export/events/${dateStr}` : "./data/r2_export";
+
+    // Extraer focos de incendios históricos de CONAF
+    let firesData = [];
+    if (isSpecialEvent && allFiresGeoJSON && Array.isArray(allFiresGeoJSON)) {
+      firesData = allFiresGeoJSON.filter(f => f.date === dateStr);
     }
 
     if (isSpecialEvent) {
@@ -505,7 +548,6 @@ async function loadForecastData(dateStr) {
       h3GeoJSON = await safeFetchJSON([`${basePath}/h3_res7.geojson`]);
       centroidsGeoJSON = await safeFetchJSON([`${basePath}/h3_centroids.json`]);
     } else {
-      // Pronóstico Hoy en Tiempo Real (Base)
       summary = await safeFetchJSON([
         "./data/r2_export/summary.json",
         "/data/r2_export/summary.json",
@@ -554,7 +596,7 @@ async function loadForecastData(dateStr) {
       map.getSource("fires-points").setData(firesGeoJSON);
     }
 
-    // Actualizar Puntos Satelitales NASA FIRMS (Con filtro de soberanía)
+    // Actualizar Puntos Satelitales NASA FIRMS
     const firmsGeoJSON = await safeFetchJSON([
       `${basePath}/firms.json`,
       "./data/r2_export/firms_latest.json",
@@ -565,14 +607,14 @@ async function loadForecastData(dateStr) {
       map.getSource("firms-points").setData(firmsGeoJSON);
     }
 
-    // F. Actualizar Comunas con las Alertas del Evento
-    vincularAlertasAComunas();
+    // Vincular Alertas a Comunas (Calculando M0 y BR-HR)
+    vincularAlertasAComunas(dateStr);
 
-    // G. Actualizar KPIs y Tabla
-    updateKPIs(summary, communesList);
+    // Actualizar KPIs y Tabla
+    updateKPIs(summary, communesList, dateStr);
     renderCommunesTable(communesList);
 
-    // H. Animación de Cámara al Epicentro del Evento si aplica
+    // Animación de Cámara al Epicentro del Evento si aplica
     if (EVENT_CENTERS[dateStr]) {
       const ev = EVENT_CENTERS[dateStr];
       map.flyTo({
@@ -583,7 +625,6 @@ async function loadForecastData(dateStr) {
         essential: true
       });
     } else if (firesData.length > 0) {
-      // Centrar en el primer foco principal
       map.flyTo({
         center: [firesData[0].lon, firesData[0].lat],
         zoom: 7.6,
@@ -597,15 +638,20 @@ async function loadForecastData(dateStr) {
     const dateLabel = dateStr === 'LATEST' ? 'Pronóstico Hoy' : dateStr;
     updateStatus(`📅 ${dateLabel}  |  🔥 CONAF: ${conafCount.toLocaleString()} focos  |  🛰️ FIRMS: ${firmsCount.toLocaleString()} satelitales`);
 
+    // Sincronizar visibilidad según el modo de modelo actual
+    aplicarModoModelo(currentModelMode);
+
   } catch (e) {
     console.error("Error al actualizar fecha:", e);
     updateStatus(`Fecha cargada: ${dateStr}`);
   }
 }
 
-// 4. Vincular Alertas a Comunas con Normalización de Acentos y Códigos CUT
-function vincularAlertasAComunas() {
+// 4. Vincular Alertas a Comunas (Tanto para BR-HR como para M0 Oficial)
+function vincularAlertasAComunas(dateStr) {
   if (!communesGeoJSON || !communesList || communesList.length === 0) return;
+
+  const m0CanonicalList = M0_CANONICAL_RED_COMMUNES[dateStr] || [];
 
   const comMap = {};
   communesList.forEach(c => {
@@ -630,6 +676,14 @@ function vincularAlertasAComunas() {
 
     const match = comMap[cod] || comMap[codInt] || comMap[nameNorm] || comMap[name];
 
+    // Verificar si la comuna estaba en Alerta Roja bajo la metodología M0 Original CONAF
+    let isM0Red = false;
+    if (m0CanonicalList.length > 0) {
+      isM0Red = m0CanonicalList.includes(cod) || m0CanonicalList.includes(codInt) || m0CanonicalList.includes(name) || m0CanonicalList.includes(nameNorm);
+    } else if (match && (match.is_m0_rojo === true || (match.pct_m0_rojo && match.pct_m0_rojo >= 30.0))) {
+      isM0Red = true;
+    }
+
     if (match) {
       feat.properties.pct_rojo = match.pct_superficie_roja || 0;
       feat.properties.pct_amarillo = match.pct_superficie_amarilla || 0;
@@ -637,6 +691,9 @@ function vincularAlertasAComunas() {
       feat.properties.total_h3 = match.total_hexagons || match.total_cells || 0;
       feat.properties.red_h3 = match.red_hexagons || match.red_cells_count || 0;
       feat.properties.region_name = match.region || feat.properties.region || feat.properties.Region || "";
+      feat.properties.is_m0_red = isM0Red;
+      feat.properties.m0_alerta = isM0Red ? "ROJO" : "NORMAL";
+      match.is_m0_red = isM0Red;
     } else {
       feat.properties.pct_rojo = 0;
       feat.properties.pct_amarillo = 0;
@@ -644,6 +701,8 @@ function vincularAlertasAComunas() {
       feat.properties.total_h3 = 0;
       feat.properties.red_h3 = 0;
       feat.properties.region_name = feat.properties.region || feat.properties.Region || "";
+      feat.properties.is_m0_red = isM0Red;
+      feat.properties.m0_alerta = isM0Red ? "ROJO" : "NORMAL";
     }
   });
 
@@ -660,7 +719,6 @@ function filterByCommune(comunaName, codcom) {
   const cleanName = comunaName.toLowerCase().trim();
   const cleanCod = String(codcom || "").trim();
 
-  // A. Buscar Bounding Box de la comuna en communesGeoJSON
   let targetFeature = null;
   if (communesGeoJSON && communesGeoJSON.features) {
     targetFeature = communesGeoJSON.features.find(f => {
@@ -680,64 +738,65 @@ function filterByCommune(comunaName, codcom) {
     });
   }
 
-  // B. Obtener lista de celdas H3 asociadas a la comuna
   const lookupEntry = communeH3Lookup[cleanName] || (cleanCod ? communeH3Lookup[cleanCod] : null);
   const h7Ids = lookupEntry ? lookupEntry.h7_ids : [];
   const h8Ids = lookupEntry ? lookupEntry.h8_ids : [];
 
-  // C. Aplicar Filtros en Capas de MapLibre
-
-  // 1. Filtrar Comuna
   if (map.getLayer("comunas-fill")) {
     map.setFilter("comunas-fill", ["==", ["downcase", ["get", "comuna"]], cleanName]);
   }
   if (map.getLayer("comunas-lines")) {
     map.setFilter("comunas-lines", ["==", ["downcase", ["get", "comuna"]], cleanName]);
   }
+  if (map.getLayer("comunas-m0-fill")) {
+    map.setFilter("comunas-m0-fill", ["==", ["downcase", ["get", "comuna"]], cleanName]);
+  }
+  if (map.getLayer("comunas-m0-lines")) {
+    map.setFilter("comunas-m0-lines", ["==", ["downcase", ["get", "comuna"]], cleanName]);
+  }
 
-  // 2. Filtrar Hexágonos H3 Res 7
   if (h7Ids.length > 0) {
     if (map.getLayer("h3-res7-fill-red")) {
-      map.setFilter("h3-res7-fill-red", ["all", ["==", ["get", "alerta"], "ROJO"], ["in", ["get", "h3_id"], ["literal", h7Ids]]]);
+      map.setFilter("h3-res7-fill-red", ["in", ["get", "h3_id"], ["literal", h7Ids]]);
     }
     if (map.getLayer("h3-res7-lines-red")) {
-      map.setFilter("h3-res7-lines-red", ["all", ["==", ["get", "alerta"], "ROJO"], ["in", ["get", "h3_id"], ["literal", h7Ids]]]);
+      map.setFilter("h3-res7-lines-red", ["in", ["get", "h3_id"], ["literal", h7Ids]]);
     }
     if (map.getLayer("h3-res7-fill-yellow")) {
-      map.setFilter("h3-res7-fill-yellow", ["all", ["==", ["get", "alerta"], "AMARILLO"], ["in", ["get", "h3_id"], ["literal", h7Ids]]]);
+      map.setFilter("h3-res7-fill-yellow", ["in", ["get", "h3_id"], ["literal", h7Ids]]);
     }
     if (map.getLayer("h3-res7-lines-yellow")) {
-      map.setFilter("h3-res7-lines-yellow", ["all", ["==", ["get", "alerta"], "AMARILLO"], ["in", ["get", "h3_id"], ["literal", h7Ids]]]);
+      map.setFilter("h3-res7-lines-yellow", ["in", ["get", "h3_id"], ["literal", h7Ids]]);
     }
   }
 
-  // 3. Filtrar Mapa de Calor de Alerta (Res 8)
   if (h8Ids.length > 0 && map.getLayer("alert-heatmap")) {
     map.setFilter("alert-heatmap", ["in", ["get", "h3_id"], ["literal", h8Ids]]);
   }
 
-  // 4. Filtrar Incendios de la Comuna
-  if (map.getLayer("fires-heatmap")) {
-    map.setFilter("fires-heatmap", ["==", ["downcase", ["get", "comuna"]], cleanName]);
-  }
-  if (map.getLayer("fires-circles")) {
-    map.setFilter("fires-circles", ["all", [">=", ["get", "area_ha"], 200], ["==", ["downcase", ["get", "comuna"]], cleanName]]);
+  if (map.getLayer("fires-points") || map.getLayer("fires-all-circles")) {
+    if (map.getLayer("fires-all-circles")) {
+      map.setFilter("fires-all-circles", ["==", ["downcase", ["get", "comuna"]], cleanName]);
+    }
+    if (map.getLayer("fires-circles")) {
+      map.setFilter("fires-circles", ["all", [">=", ["get", "area_ha"], 200], ["==", ["downcase", ["get", "comuna"]], cleanName]]);
+    }
+    if (map.getLayer("fires-heatmap")) {
+      map.setFilter("fires-heatmap", ["==", ["downcase", ["get", "comuna"]], cleanName]);
+    }
   }
 
-  // D. Mostrar Botón Limpiar en el Panel
   const btnReset = document.getElementById("btn-reset-view");
   if (btnReset) btnReset.classList.remove("hidden");
-
-  updateStatus(`Comuna seleccionada: ${comunaName}`);
 }
 
-// 6. RESTAURAR VISTA Y ELIMINAR FILTROS ("LIMPIAR")
-function resetCommuneFilter(animate = true) {
+function resetCommuneFilter(flyBackToEvent = true) {
   selectedCommuneFilter = null;
 
-  // Restaurar filtros predeterminados de todas las capas
   if (map.getLayer("comunas-fill")) map.setFilter("comunas-fill", null);
   if (map.getLayer("comunas-lines")) map.setFilter("comunas-lines", null);
+  if (map.getLayer("comunas-m0-fill")) map.setFilter("comunas-m0-fill", null);
+  if (map.getLayer("comunas-m0-lines")) map.setFilter("comunas-m0-lines", null);
 
   if (map.getLayer("h3-res7-fill-red")) map.setFilter("h3-res7-fill-red", ["==", ["get", "alerta"], "ROJO"]);
   if (map.getLayer("h3-res7-lines-red")) map.setFilter("h3-res7-lines-red", ["==", ["get", "alerta"], "ROJO"]);
@@ -745,66 +804,107 @@ function resetCommuneFilter(animate = true) {
   if (map.getLayer("h3-res7-lines-yellow")) map.setFilter("h3-res7-lines-yellow", ["==", ["get", "alerta"], "AMARILLO"]);
 
   if (map.getLayer("alert-heatmap")) map.setFilter("alert-heatmap", null);
-  if (map.getLayer("fires-heatmap")) map.setFilter("fires-heatmap", null);
+  if (map.getLayer("fires-all-circles")) map.setFilter("fires-all-circles", null);
   if (map.getLayer("fires-circles")) map.setFilter("fires-circles", [">=", ["get", "area_ha"], 200]);
+  if (map.getLayer("fires-heatmap")) map.setFilter("fires-heatmap", null);
 
-  // Ocultar Botón Limpiar
   const btnReset = document.getElementById("btn-reset-view");
   if (btnReset) btnReset.classList.add("hidden");
 
-  // Ocultar Inspector
-  document.getElementById("inspector-card").classList.add("hidden");
-
-  // Re-enfocar la cámara en la vista general
-  if (animate) {
-    if (EVENT_CENTERS[activeEventDate]) {
-      const ev = EVENT_CENTERS[activeEventDate];
-      map.flyTo({ center: ev.center, zoom: ev.zoom, speed: 1.2, duration: 1200 });
-    } else {
-      map.flyTo({ center: [-71.8, -36.0], zoom: 6.5, speed: 1.2, duration: 1200 });
-    }
+  if (flyBackToEvent && EVENT_CENTERS[activeEventDate]) {
+    const ev = EVENT_CENTERS[activeEventDate];
+    map.flyTo({ center: ev.center, zoom: ev.zoom, speed: 1.2, duration: 1000 });
   }
-
-  updateStatus(`Vista general restaurada (${activeEventDate})`);
 }
 
-// Helper: Calcular Bounding Box de una Geometría GeoJSON
 function calculateBBox(feature) {
   let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-
-  function traverse(coords) {
-    if (typeof coords[0] === "number") {
+  const processCoords = (coords) => {
+    if (typeof coords[0] === 'number') {
       const [x, y] = coords;
       if (x < minX) minX = x;
-      if (y < minY) minY = y;
       if (x > maxX) maxX = x;
+      if (y < minY) minY = y;
       if (y > maxY) maxY = y;
     } else {
-      coords.forEach(traverse);
+      coords.forEach(processCoords);
     }
-  }
-
-  if (feature.geometry && feature.geometry.coordinates) {
-    traverse(feature.geometry.coordinates);
-  }
-
+  };
+  processCoords(feature.geometry.coordinates);
   return [[minX, minY], [maxX, maxY]];
 }
 
-function updateKPIs(summary, communes) {
-  if (!communes || communes.length === 0) return;
-  const redCount = communes.filter(c => c.alerta_comunal && c.alerta_comunal.includes("ROJA")).length;
-  const yellowCount = communes.filter(c => c.alerta_comunal && c.alerta_comunal.includes("AMARILLA")).length;
-  const totalAlerted = redCount + yellowCount;
+// 6. CONTROLADOR DE METODOLOGÍAS Y COMPARACIÓN (BR-HR vs M0)
+function aplicarModoModelo(mode) {
+  currentModelMode = mode;
+
+  // Actualizar botones de UI
+  const btnBrHr = document.getElementById("btn-model-brhr");
+  const btnM0 = document.getElementById("btn-model-m0");
+  const btnBoth = document.getElementById("btn-model-both");
+  const badge = document.getElementById("model-desc-badge");
+  const chkBrHr = document.getElementById("layer-comunas");
+  const chkM0 = document.getElementById("layer-comunas-m0");
+
+  if (btnBrHr) btnBrHr.classList.toggle("active", mode === "BR_HR");
+  if (btnM0) btnM0.classList.toggle("active", mode === "M0");
+  if (btnBoth) btnBoth.classList.toggle("active", mode === "BOTH");
+
+  if (mode === "BR_HR") {
+    if (map.getLayer("comunas-fill")) map.setLayoutProperty("comunas-fill", "visibility", "visible");
+    if (map.getLayer("comunas-lines")) map.setLayoutProperty("comunas-lines", "visibility", "visible");
+    if (map.getLayer("comunas-m0-fill")) map.setLayoutProperty("comunas-m0-fill", "visibility", "none");
+    if (map.getLayer("comunas-m0-lines")) map.setLayoutProperty("comunas-m0-lines", "visibility", "none");
+    if (chkBrHr) chkBrHr.checked = true;
+    if (chkM0) chkM0.checked = false;
+    if (badge) badge.innerText = "Mostrando BR-HR 2026: Probabilidad continua con alertas rojas y amarillas preventivas.";
+  } else if (mode === "M0") {
+    if (map.getLayer("comunas-fill")) map.setLayoutProperty("comunas-fill", "visibility", "none");
+    if (map.getLayer("comunas-lines")) map.setLayoutProperty("comunas-lines", "visibility", "none");
+    if (map.getLayer("comunas-m0-fill")) map.setLayoutProperty("comunas-m0-fill", "visibility", "visible");
+    if (map.getLayer("comunas-m0-lines")) map.setLayoutProperty("comunas-m0-lines", "visibility", "visible");
+    if (chkBrHr) chkBrHr.checked = false;
+    if (chkM0) chkM0.checked = true;
+    if (badge) badge.innerText = "Mostrando M0 Original CONAF: Regla rígida binaria (≥30% combustible). Sin alerta preventiva.";
+  } else if (mode === "BOTH") {
+    if (map.getLayer("comunas-fill")) map.setLayoutProperty("comunas-fill", "visibility", "visible");
+    if (map.getLayer("comunas-lines")) map.setLayoutProperty("comunas-lines", "visibility", "visible");
+    if (map.getLayer("comunas-m0-fill")) map.setLayoutProperty("comunas-m0-fill", "visibility", "visible");
+    if (map.getLayer("comunas-m0-lines")) map.setLayoutProperty("comunas-m0-lines", "visibility", "visible");
+    if (chkBrHr) chkBrHr.checked = true;
+    if (chkM0) chkM0.checked = true;
+    if (badge) badge.innerText = "Comparador Superpuesto: M0 Original CONAF (borde grueso vino) vs BR-HR Calibrado.";
+  }
+}
+
+// 7. Actualización de KPIs y Tabla
+function updateKPIs(summary, communes, dateStr) {
+  let redCount = 0;
+  let yellowCount = 0;
+  let m0RedCount = 0;
+
+  communes.forEach(c => {
+    if (c.alerta_comunal === "ALERTA ROJA COMUNAL" || (c.pct_superficie_roja || 0) >= 30) {
+      redCount++;
+    } else if (c.alerta_comunal === "ALERTA AMARILLA COMUNAL" || (c.pct_superficie_amarilla || 0) >= 20 || (c.pct_superficie_roja || 0) >= 10) {
+      yellowCount++;
+    }
+    if (c.is_m0_red === true) {
+      m0RedCount++;
+    }
+  });
+
+  const m0El = document.getElementById("kpi-m0-communes");
+  if (m0El) m0El.innerText = m0RedCount;
 
   document.getElementById("kpi-red-communes").innerText = redCount;
   document.getElementById("kpi-yellow-communes").innerText = yellowCount;
 
-  // Actualizar el número de comunas con algún nivel de alerta (Roja o Amarilla) en el label de la capa
-  const layerLabel = document.getElementById("label-layer-comunas");
-  if (layerLabel) {
-    layerLabel.innerHTML = `<strong>🏛️ Comunas en Botón Rojo (${totalAlerted})</strong>`;
-  }
+  const countBrHrEl = document.getElementById("count-brhr-layer");
+  if (countBrHrEl) countBrHrEl.innerText = (redCount + yellowCount);
+
+  const countM0El = document.getElementById("count-m0-layer");
+  if (countM0El) countM0El.innerText = m0RedCount;
 
   if (summary && summary.pct_superficie_combustible_en_riesgo !== undefined) {
     document.getElementById("kpi-risk-pct").innerText = `${summary.pct_superficie_combustible_en_riesgo} %`;
@@ -819,9 +919,15 @@ function renderCommunesTable(communes) {
   const tbody = document.getElementById("communes-tbody");
   tbody.innerHTML = "";
 
-  const sorted = [...communes].sort((a, b) => (b.pct_superficie_roja || 0) - (a.pct_superficie_roja || 0));
+  const sorted = [...communes].sort((a, b) => {
+    // Si M0 está seleccionado, ordenar por M0 primero
+    if (currentModelMode === "M0") {
+      if (a.is_m0_red && !b.is_m0_red) return -1;
+      if (!a.is_m0_red && b.is_m0_red) return 1;
+    }
+    return (b.pct_superficie_roja || 0) - (a.pct_superficie_roja || 0);
+  });
 
-  // Filtrar comunas en alerta primero, o todas si se busca
   sorted.forEach(com => {
     const tr = document.createElement("tr");
     const isRed = com.alerta_comunal === "ALERTA ROJA COMUNAL" || (com.pct_superficie_roja || 0) >= 30;
@@ -829,14 +935,18 @@ function renderCommunesTable(communes) {
     const badgeClass = isRed ? "rojo" : (isYellow ? "amarillo" : "verde");
     const badgeText = isRed ? "ROJA" : (isYellow ? "AMARILLA" : "NORMAL");
 
+    const m0Badge = com.is_m0_red
+      ? `<span class="badge-m0-red">ROJO</span>`
+      : `<span class="badge-m0-none">—</span>`;
+
     tr.innerHTML = `
       <td><strong>${com.comuna}</strong></td>
       <td><small>${com.region ? com.region.replace("Región de", "").replace("Región del", "").replace("Región de los", "").trim() : ""}</small></td>
+      <td class="text-center">${m0Badge}</td>
       <td><strong>${(com.pct_superficie_roja || 0).toFixed(1)}%</strong></td>
       <td><span class="badge-alert ${badgeClass}">${badgeText}</span></td>
     `;
 
-    // Clic en fila de comuna activa el ZOOM y FILTRADO territorial
     tr.addEventListener("click", () => {
       openCommuneDetail(com);
       filterByCommune(com.comuna, com.codcom);
@@ -846,9 +956,9 @@ function renderCommunesTable(communes) {
   });
 }
 
-// 7. Interacciones y Clics
+// 8. Interacciones y Clics
 function setupMapInteractions() {
-  map.on("click", "comunas-fill", (e) => {
+  const handleCommuneClick = (e) => {
     if (!e.features || e.features.length === 0) return;
     const props = e.features[0].properties;
     const comName = props.comuna || props.Comuna;
@@ -858,14 +968,18 @@ function setupMapInteractions() {
       comuna: comName,
       region: props.region_name || props.region || props.Region,
       pct_superficie_roja: props.pct_rojo,
+      pct_superficie_amarilla: props.pct_amarillo,
       total_hexagons: props.total_h3,
       red_hexagons: props.red_h3,
-      alerta_comunal: props.alerta
+      alerta_comunal: props.alerta,
+      is_m0_red: props.is_m0_red
     });
 
-    // Filtrar y hacer zoom a la comuna seleccionada
     filterByCommune(comName, codcom);
-  });
+  };
+
+  map.on("click", "comunas-fill", handleCommuneClick);
+  map.on("click", "comunas-m0-fill", handleCommuneClick);
 
   map.on("click", "h3-res7-fill-red", (e) => handleHexClick(e, "BOTÓN ROJO", "rojo"));
   map.on("click", "h3-res7-fill-yellow", (e) => handleHexClick(e, "ALERTA AMARILLA", "amarillo"));
@@ -923,6 +1037,8 @@ function setupMapInteractions() {
 
   map.on("mouseenter", "comunas-fill", () => map.getCanvas().style.cursor = "pointer");
   map.on("mouseleave", "comunas-fill", () => map.getCanvas().style.cursor = "");
+  map.on("mouseenter", "comunas-m0-fill", () => map.getCanvas().style.cursor = "pointer");
+  map.on("mouseleave", "comunas-m0-fill", () => map.getCanvas().style.cursor = "");
   map.on("mouseenter", "h3-res7-fill-red", () => map.getCanvas().style.cursor = "pointer");
   map.on("mouseleave", "h3-res7-fill-red", () => map.getCanvas().style.cursor = "");
   map.on("mouseenter", "h3-res7-fill-yellow", () => map.getCanvas().style.cursor = "pointer");
@@ -947,16 +1063,23 @@ function openCommuneDetail(com) {
   const isYellow = (com.pct_superficie_roja || 0) >= 10 && !isRed;
   const badgeClass = isRed ? "rojo" : (isYellow ? "amarillo" : "verde");
 
-  showInspector(`🏛️ Comuna: ${com.comuna}`, `
-    <p><strong>Región:</strong> ${com.region}</p>
+  const m0StatusHtml = com.is_m0_red
+    ? `<span class="badge-alert rojo">🔴 ALERTA ROJA (Oficial CONAF)</span>`
+    : `<span class="badge-alert verde">⚪ SIN ALERTA (Falso Negativo / No Detectado)</span>`;
+
+  showInspector(`🏛️ Detalle Comunal: ${com.comuna}`, `
+    <p><strong>Región:</strong> ${com.region || ''}</p>
+    <hr style="margin: 6px 0; border: none; border-top: 1px solid #e2e8f0;" />
+    <p><strong>🏛️ M0 Original CONAF:</strong> ${m0StatusHtml}</p>
+    <p><strong>🚀 BR-HR Calibrado 2026:</strong> <span class="badge-alert ${badgeClass}">${com.alerta_comunal || (isRed ? 'ALERTA ROJA' : (isYellow ? 'ALERTA AMARILLA' : 'NORMAL'))}</span></p>
+    <hr style="margin: 6px 0; border: none; border-top: 1px solid #e2e8f0;" />
     <p><strong>Superficie en Botón Rojo:</strong> <strong>${(com.pct_superficie_roja || 0).toFixed(1)}%</strong></p>
     <p><strong>Total Hexágonos H3:</strong> ${com.total_hexagons || com.total_cells || 0}</p>
     <p><strong>Hexágonos en Alerta Roja:</strong> ${com.red_hexagons || com.red_cells_count || 0}</p>
-    <p><strong>Alerta SENAPRED:</strong> <span class="badge-alert ${badgeClass}">${com.alerta_comunal || 'NORMAL'}</span></p>
   `);
 }
 
-// 8. Event Listeners
+// 9. Event Listeners
 function setupEventListeners() {
   document.getElementById("event-select").addEventListener("change", (e) => {
     const val = e.target.value;
@@ -969,6 +1092,15 @@ function setupEventListeners() {
     renderCommunesTable(filtered);
   });
 
+  // Botones del Selector de Metodología
+  const btnBrHr = document.getElementById("btn-model-brhr");
+  const btnM0 = document.getElementById("btn-model-m0");
+  const btnBoth = document.getElementById("btn-model-both");
+
+  if (btnBrHr) btnBrHr.addEventListener("click", () => { aplicarModoModelo("BR_HR"); renderCommunesTable(communesList); });
+  if (btnM0) btnM0.addEventListener("click", () => { aplicarModoModelo("M0"); renderCommunesTable(communesList); });
+  if (btnBoth) btnBoth.addEventListener("click", () => { aplicarModoModelo("BOTH"); renderCommunesTable(communesList); });
+
   // Botón Limpiar Filtro Comunal
   const btnReset = document.getElementById("btn-reset-view");
   if (btnReset) {
@@ -977,31 +1109,41 @@ function setupEventListeners() {
     });
   }
 
-  // 1. Capa Comunas
+  // 1. Capa Comunas BR-HR
   document.getElementById("layer-comunas").addEventListener("change", (e) => {
     const vis = e.target.checked ? "visible" : "none";
     if (map.getLayer("comunas-fill")) map.setLayoutProperty("comunas-fill", "visibility", vis);
     if (map.getLayer("comunas-lines")) map.setLayoutProperty("comunas-lines", "visibility", vis);
   });
 
-  // 2. Hexágonos Res 7 Rojos
+  // 2. Capa Comunas M0 Original
+  const chkM0 = document.getElementById("layer-comunas-m0");
+  if (chkM0) {
+    chkM0.addEventListener("change", (e) => {
+      const vis = e.target.checked ? "visible" : "none";
+      if (map.getLayer("comunas-m0-fill")) map.setLayoutProperty("comunas-m0-fill", "visibility", vis);
+      if (map.getLayer("comunas-m0-lines")) map.setLayoutProperty("comunas-m0-lines", "visibility", vis);
+    });
+  }
+
+  // 3. Hexágonos Res 7 Rojos
   document.getElementById("layer-h3-red").addEventListener("change", (e) => {
     const vis = e.target.checked ? "visible" : "none";
     if (map.getLayer("h3-res7-fill-red")) map.setLayoutProperty("h3-res7-fill-red", "visibility", vis);
     if (map.getLayer("h3-res7-lines-red")) map.setLayoutProperty("h3-res7-lines-red", "visibility", vis);
   });
 
-  // 3. Hexágonos Res 7 Amarillos
+  // 4. Hexágonos Res 7 Amarillos
   document.getElementById("layer-h3-yellow").addEventListener("change", (e) => {
     const vis = e.target.checked ? "visible" : "none";
     if (map.getLayer("h3-res7-fill-yellow")) map.setLayoutProperty("h3-res7-fill-yellow", "visibility", vis);
     if (map.getLayer("h3-res7-lines-yellow")) map.setLayoutProperty("h3-res7-lines-yellow", "visibility", vis);
   });
 
-  // 4. Mapa de Calor de Alerta Botón Rojo
+  // 5. Mapa de Calor de Alerta Botón Rojo
   toggleLayerCheckbox("layer-alert-kde", "alert-heatmap");
 
-  // 5. Capa Satelital NASA FIRMS en Vivo
+  // 6. Capa Satelital NASA FIRMS en Vivo
   const firmsChk = document.getElementById("layer-firms");
   if (firmsChk) {
     firmsChk.addEventListener("change", (e) => {
@@ -1011,10 +1153,10 @@ function setupEventListeners() {
     });
   }
 
-  // 6. Mapa de Calor Satelital NASA FIRMS
+  // 7. Mapa de Calor Satelital NASA FIRMS
   toggleLayerCheckbox("layer-firms-kde", "firms-heatmap");
 
-  // 7. Focos de Incendio y KDE de Incendios Observados
+  // 8. Focos de Incendio y KDE de Incendios Observados
   toggleLayerCheckbox("layer-fires-all", "fires-all-circles");
   toggleLayerCheckbox("layer-fires", "fires-circles");
   toggleLayerCheckbox("layer-fires-kde", "fires-heatmap");

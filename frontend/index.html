@@ -29,16 +29,20 @@
 
     <!-- KPIs Rápidos -->
     <div class="header-kpis">
+      <div class="kpi-card card-m0">
+        <span class="kpi-label">🏛️ M0 Original CONAF</span>
+        <span class="kpi-value" id="kpi-m0-communes">--</span>
+      </div>
       <div class="kpi-card card-red">
-        <span class="kpi-label">Comunas Alerta Roja</span>
+        <span class="kpi-label">🚀 BR-HR Alerta Roja</span>
         <span class="kpi-value" id="kpi-red-communes">--</span>
       </div>
       <div class="kpi-card card-yellow">
-        <span class="kpi-label">Alerta Amarilla</span>
+        <span class="kpi-label">🟡 BR-HR Amarilla</span>
         <span class="kpi-value" id="kpi-yellow-communes">--</span>
       </div>
       <div class="kpi-card card-blue">
-        <span class="kpi-label">Superficie Combustible en Riesgo</span>
+        <span class="kpi-label">Superficie en Riesgo</span>
         <span class="kpi-value" id="kpi-risk-pct">-- %</span>
       </div>
     </div>
@@ -48,6 +52,19 @@
   <main class="app-main">
     <!-- Panel Lateral Izquierdo -->
     <aside class="sidebar" id="sidebar">
+      <!-- Selector de Metodología y Comparación -->
+      <div class="sidebar-section methodology-selector">
+        <h3>⚖️ Metodología y Comparador</h3>
+        <div class="model-toggle-group">
+          <button id="btn-model-brhr" class="btn-model active" title="Modelo Calibrado BR-HR con Alertas Preventivas">🚀 BR-HR Calibrado</button>
+          <button id="btn-model-m0" class="btn-model" title="Modelo Original de CONAF (Línea Base Oficial)">🏛️ M0 Original CONAF</button>
+          <button id="btn-model-both" class="btn-model" title="Superponer ambos modelos">⚖️ Ambos</button>
+        </div>
+        <div id="model-desc-badge" class="model-desc-badge">
+          Mostrando BR-HR 2026: Probabilidad continua con alertas rojas y amarillas preventivas.
+        </div>
+      </div>
+
       <div class="sidebar-section">
         <h3>📅 Monitoreo actual y eventos históricos</h3>
         <label for="event-select" class="form-label">Escenarios Históricos y Pronóstico:</label>
@@ -77,10 +94,16 @@
       <!-- Control de Capas -->
       <div class="sidebar-section">
         <h3>🗺️ Capas Operativas</h3>
-        <!-- Capa Principal Comunal (Superior) -->
+        <!-- Capa Principal Comunal BR-HR -->
         <div class="layer-item highlight-layer">
           <input type="checkbox" id="layer-comunas" checked />
-          <label for="layer-comunas" id="label-layer-comunas"><strong>🏛️ Comunas en Botón Rojo (0)</strong></label>
+          <label for="layer-comunas" id="label-layer-comunas"><strong>🚀 Comunas BR-HR Calibradas (<span id="count-brhr-layer">0</span>)</strong></label>
+        </div>
+
+        <!-- Capa Comunal M0 Original CONAF -->
+        <div class="layer-item highlight-layer-m0">
+          <input type="checkbox" id="layer-comunas-m0" />
+          <label for="layer-comunas-m0" id="label-layer-comunas-m0"><strong>🏛️ Botón Rojo Original CONAF (M0: <span id="count-m0-layer">0</span>)</strong></label>
         </div>
 
         <hr class="divider" />
@@ -134,19 +157,26 @@
 
       <!-- Leyendas Dinámicas -->
       <div class="sidebar-section" id="legend-section">
-        <h3>📋 Leyenda de Alerta Comunal</h3>
+        <h3>📋 Leyenda y Metodología</h3>
         <div class="legend-content" id="legend-container">
+          <div class="legend-row">
+            <span class="legend-box com-m0"></span>
+            <div>
+              <strong>🏛️ M0 Original CONAF (Oficial)</strong>
+              <small>≥ 30% superficie con regla rígida. Sin alerta preventiva.</small>
+            </div>
+          </div>
           <div class="legend-row">
             <span class="legend-box com-red"></span>
             <div>
-              <strong>Comuna en Alerta Roja</strong>
-              <small>≥ 30% de superficie en condición Botón Rojo.</small>
+              <strong>🚀 BR-HR Alerta Roja (Calibrada)</strong>
+              <small>≥ 30% de superficie en condición crítica.</small>
             </div>
           </div>
           <div class="legend-row">
             <span class="legend-box com-yellow"></span>
             <div>
-              <strong>Comuna en Alerta Amarilla</strong>
+              <strong>🟡 BR-HR Alerta Amarilla Preventiva</strong>
               <small>10% a 29% de superficie en riesgo severo.</small>
             </div>
           </div>
@@ -175,12 +205,13 @@
               <tr>
                 <th>Comuna</th>
                 <th>Región</th>
-                <th>% Rojo</th>
+                <th>M0 CONAF</th>
+                <th>% BR-HR</th>
                 <th>Alerta</th>
               </tr>
             </thead>
             <tbody id="communes-tbody">
-              <tr><td colspan="4" class="text-center">Cargando comunas...</td></tr>
+              <tr><td colspan="5" class="text-center">Cargando comunas...</td></tr>
             </tbody>
           </table>
         </div>
