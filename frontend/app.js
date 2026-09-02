@@ -536,10 +536,21 @@ async function loadForecastData(dateStr) {
     const isSpecialEvent = dateStr !== "LATEST";
     const basePath = isSpecialEvent ? `./data/r2_export/events/${dateStr}` : "./data/r2_export";
 
-    // Extraer focos de incendios históricos de CONAF
+    // Extraer focos de incendios históricos de CONAF (Primero del directorio del evento, luego fallback)
     let firesData = [];
-    if (isSpecialEvent && allFiresGeoJSON && Array.isArray(allFiresGeoJSON)) {
-      firesData = allFiresGeoJSON.filter(f => f.date === dateStr);
+    if (isSpecialEvent) {
+      const eventFires = await safeFetchJSON([
+        `${basePath}/fires.json`,
+        `./data/r2_export/events/${dateStr}/fires.json`,
+        `/data/r2_export/events/${dateStr}/fires.json`,
+        `data/r2_export/events/${dateStr}/fires.json`
+      ]);
+
+      if (eventFires && Array.isArray(eventFires)) {
+        firesData = eventFires;
+      } else if (allFiresGeoJSON && Array.isArray(allFiresGeoJSON)) {
+        firesData = allFiresGeoJSON.filter(f => f.date === dateStr);
+      }
     }
 
     if (isSpecialEvent) {
@@ -605,6 +616,20 @@ async function loadForecastData(dateStr) {
     ]);
     if (firmsGeoJSON && map.getSource("firms-points")) {
       map.getSource("firms-points").setData(firmsGeoJSON);
+    }
+
+    // Sincronizar visibilidad de capas de incendios según el estado de los checkboxes
+    const chkFiresAll = document.getElementById("layer-fires-all");
+    if (chkFiresAll && map.getLayer("fires-all-circles")) {
+      map.setLayoutProperty("fires-all-circles", "visibility", chkFiresAll.checked ? "visible" : "none");
+    }
+    const chkFiresMajor = document.getElementById("layer-fires");
+    if (chkFiresMajor && map.getLayer("fires-circles")) {
+      map.setLayoutProperty("fires-circles", "visibility", chkFiresMajor.checked ? "visible" : "none");
+    }
+    const chkFiresKde = document.getElementById("layer-fires-kde");
+    if (chkFiresKde && map.getLayer("fires-heatmap")) {
+      map.setLayoutProperty("fires-heatmap", "visibility", chkFiresKde.checked ? "visible" : "none");
     }
 
     // Vincular Alertas a Comunas (Calculando M0 y BR-HR)
