@@ -540,7 +540,7 @@ async function loadInitialData() {
   }
 }
 
-// Helper de Fetch Resiliente
+// Helper de Fetch Resiliente con prevención de caché
 async function safeFetchJSON(urls) {
   const candidateUrls = [];
   for (const u of urls) {
@@ -555,7 +555,8 @@ async function safeFetchJSON(urls) {
 
   for (const url of candidateUrls) {
     try {
-      const resp = await fetch(url);
+      const cacheBustUrl = url + (url.includes("?") ? "&" : "?") + "cb=" + Date.now();
+      const resp = await fetch(cacheBustUrl, { cache: "no-store" });
       if (resp.ok) {
         return await resp.json();
       }
@@ -620,24 +621,25 @@ async function loadForecastData(dateStr) {
         "./data/r2_export/h3_res7.geojson",
         "/data/r2_export/h3_res7.geojson",
         "data/r2_export/h3_res7.geojson"
-      ]);
+      ]) || { type: "FeatureCollection", features: [] };
+
       centroidsGeoJSON = await safeFetchJSON([
         "./data/r2_export/h3_centroids.json",
         "/data/r2_export/h3_centroids.json",
         "data/r2_export/h3_centroids.json"
-      ]);
+      ]) || { type: "FeatureCollection", features: [] };
     }
 
     communesList = rawCommunes || [];
 
-    // Actualizar Malla H3
-    if (h3GeoJSON && map.getSource("h3-res7-mesh")) {
-      map.getSource("h3-res7-mesh").setData(h3GeoJSON);
+    // Actualizar Malla H3 (Res 7)
+    if (map.getSource("h3-res7-mesh")) {
+      map.getSource("h3-res7-mesh").setData(h3GeoJSON || { type: "FeatureCollection", features: [] });
     }
 
-    // Actualizar Centroides de Calor de Alerta
-    if (centroidsGeoJSON && map.getSource("h3-res8-centroids")) {
-      map.getSource("h3-res8-centroids").setData(centroidsGeoJSON);
+    // Actualizar Centroides y Puntos H3 (Res 8)
+    if (map.getSource("h3-res8-centroids")) {
+      map.getSource("h3-res8-centroids").setData(centroidsGeoJSON || { type: "FeatureCollection", features: [] });
     }
 
     // Actualizar Focos de Incendios CONAF
